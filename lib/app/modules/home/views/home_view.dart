@@ -10,10 +10,13 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         title: const Text('HomeView'),
         centerTitle: true,
       ),
-      body: Column(),
+      body: const Center(
+        child: Text("Home View"),
+      ),
     );
   }
 }

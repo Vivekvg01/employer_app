@@ -1,23 +1,17 @@
+import 'package:employer_app/app/modules/login/views/login_view.dart';
 import 'package:get/get.dart';
 
 class SplashController extends GetxController {
-  //TODO: Implement SplashController
-
-  final count = 0.obs;
   @override
   void onInit() {
+    toLogin();
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void toLogin() async {
+    await Future.delayed(
+      const Duration(seconds: 3),
+    );
+    Get.off(() =>  LoginView());
   }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }
