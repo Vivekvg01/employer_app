@@ -1,3 +1,5 @@
+import 'package:employer_app/app/common_widgets/auth_pass_textfeild.dart';
+import 'package:employer_app/app/common_widgets/auth_textfeild.dart';
 import 'package:employer_app/app/modules/resetpassword/views/resetpassword_view.dart';
 import 'package:employer_app/app/utils/app_sizes.dart';
 import 'package:flutter/material.dart';
@@ -39,11 +41,15 @@ class ForgetpasswordView extends GetView<ForgetpasswordController> {
                   ),
                 ),
                 sizedheight(size.height * 0.05),
-                TextField(
-                  obscureText: true,
-                  controller: controller.emailController,
-                  decoration: const InputDecoration(
-                    hintText: 'Enter your email',
+                Obx(
+                  () => AuthPassTextFeild(
+                    passwordVisibility: controller.passwordVisibility.value,
+                    authTextController: controller.emailController,
+                    suffixOnTap: () {
+                      controller.passwordVisibility.value =
+                          !controller.passwordVisibility.value;
+                      print(controller.passwordVisibility.value);
+                    },
                   ),
                 ),
                 sizedheight(size.height * 0.05),

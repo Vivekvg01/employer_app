@@ -10,7 +10,7 @@ class OtpController extends GetxController {
 
   void onSubmitButtonClicked() {
     verifyOtp(
-      "639c079d7d5e5631087f2b3d",
+      "639c31a990d6292bf5a1e333",
       otpTextController.text,
       "employer",
     );
@@ -21,11 +21,11 @@ class OtpController extends GetxController {
   Future<OtpModel?> verifyOtp(
       String userId, String otp, String userType) async {
     try {
-      OtpModel otpModel = OtpModel(
+      OtpModel otpModel = OtpModel( 
         userId: userId,
-        otp: otp,
+        otp: otp, 
         userType: userType,
-      );
+      ); 
       final request = await http.post(
         Uri.parse('http://10.0.2.2:3001/api/verify-email'),
         body: otpModel.toJson(),
@@ -39,7 +39,7 @@ class OtpController extends GetxController {
         log(request.body.toString());
       } else if (statusCode == 404) {
         print(statusCode);
-        log(request.body.toString());
+        log(request.body.toString()); 
       }
     } catch (e) {
       log(e.toString());

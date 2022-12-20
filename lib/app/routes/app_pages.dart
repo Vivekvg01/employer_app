@@ -20,12 +20,12 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.SPLASH;  
+  static const INITIAL = Routes.SPLASH;
 
   static final routes = [
     GetPage(
       name: _Paths.HOME,
-      page: () => const HomeView(), 
+      page: () => const HomeView(),
       binding: HomeBinding(),
     ),
     GetPage(
@@ -45,12 +45,12 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.OTP,
-      page: () =>  OtpView(),
+      page: () => OtpView(),
       binding: OtpBinding(),
     ),
     GetPage(
       name: _Paths.FORGETPASSWORD,
-      page: () =>  ForgetpasswordView(),
+      page: () => ForgetpasswordView(),
       binding: ForgetpasswordBinding(),
     ),
     GetPage(

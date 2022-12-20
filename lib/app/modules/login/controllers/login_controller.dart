@@ -1,7 +1,6 @@
 import 'dart:developer';
-
 import 'package:employer_app/app/modules/home/views/home_view.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../model/login_model.dart';
 import 'package:http/http.dart' as http;
@@ -45,6 +44,15 @@ class LoginController extends GetxController {
         //error message
         print('Error response');
         log(request.body.toString());
+        Get.defaultDialog(
+          title: "Username and password does not match",
+          content: ElevatedButton(
+            onPressed: () {
+              Get.back();
+            },
+            child: const Text('Ok'),
+          ),
+        );
       } else {
         print(statusCode);
 
@@ -53,5 +61,6 @@ class LoginController extends GetxController {
     } catch (e) {
       log(e.toString());
     }
+    return null;
   }
 }

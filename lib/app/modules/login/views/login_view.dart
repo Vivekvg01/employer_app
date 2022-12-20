@@ -1,3 +1,6 @@
+import 'package:employer_app/app/common_widgets/auth_pass_textfeild.dart';
+import 'package:employer_app/app/common_widgets/auth_textfeild.dart';
+import 'package:employer_app/app/common_widgets/rect_button.dart';
 import 'package:employer_app/app/modules/forgetpassword/views/forgetpassword_view.dart';
 import 'package:employer_app/app/modules/sign_up/views/sign_up_view.dart';
 import 'package:employer_app/app/utils/app_sizes.dart';
@@ -6,10 +9,10 @@ import 'package:get/get.dart';
 import '../../../utils/app_colors.dart';
 import '../controllers/login_controller.dart';
 
-class LoginView extends GetView<LoginController> {
-  // const LoginView({super.key});
+class LoginView extends GetView {
+  LoginView({super.key});
 
-  final _loginController = Get.put(LoginController());
+  final loginController = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,7 @@ class LoginView extends GetView<LoginController> {
           child: Center(
             child: SingleChildScrollView(
               child: Form(
-                key: controller.formKey,
+                key: loginController.formKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,51 +45,22 @@ class LoginView extends GetView<LoginController> {
                       ),
                     ),
                     sizedheight(size.height * 0.05),
-                    SizedBox(
-                      height: 50,
-                      child: TextFormField(
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return "Email can't be empty";
-                          }
-                          return null;
-                        },
-                        controller: controller.emailController,
-                        decoration: const InputDecoration(
-                          prefixIcon: Icon(Icons.email_outlined),
-                          hintText: 'Email ID',
-                        ),
-                      ),
+                    AuthTextFeild(
+                      hintText: 'Username',
+                      validateText: "Username can't be empty",
+                      authTextController: loginController.emailController,
+                      icon: Icons.person_outline,
                     ),
                     sizedheight(size.height * 0.02),
                     Obx(
-                      () => SizedBox(
-                        height: 50,
-                        child: TextFormField(
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return "Password can't be empty";
-                            }
-                            return null;
-                          },
-                          obscureText: controller.passwordVisibility.value,
-                          controller: controller.passwordController,
-                          decoration: InputDecoration(
-                            prefixIcon: const Icon(Icons.lock_outlined),
-                            hintText: 'Password',
-                            suffixIcon: IconButton(
-                              onPressed: () {
-                                controller.passwordVisibility.value =
-                                    !controller.passwordVisibility.value;
-                              },
-                              icon: Icon(
-                                controller.passwordVisibility.value
-                                    ? Icons.visibility_off
-                                    : Icons.visibility,
-                              ),
-                            ),
-                          ),
-                        ),
+                      () => AuthPassTextFeild(
+                        passwordVisibility:
+                            loginController.passwordVisibility.value,
+                        authTextController: loginController.passwordController,
+                        suffixOnTap: () {
+                          loginController.passwordVisibility.value =
+                              !loginController.passwordVisibility.value;
+                        },
                       ),
                     ),
                     sizedheight(size.height * 0.01),
@@ -105,18 +79,15 @@ class LoginView extends GetView<LoginController> {
                       ),
                     ),
                     sizedheight(size.height * 0.01),
-                    ElevatedButton(
-                      onPressed: () {
-                        controller.onLoginButtonCliked();
-                      },
-                      style: ElevatedButton.styleFrom(
-                        elevation: 0.0,
-                        minimumSize: const Size(350, 48),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
+                    SizedBox(
+                      width: double.infinity,
+                      height: size.height * 0.06,
+                      child: CustomRectButton(
+                        buttonLabel: 'Login',
+                        onButtonClicked: () {
+                          loginController.onLoginButtonCliked();
+                        },
                       ),
-                      child: const Text('Login'),
                     ),
                   ],
                 ),

@@ -1,3 +1,6 @@
+import 'package:employer_app/app/common_widgets/auth_pass_textfeild.dart';
+import 'package:employer_app/app/common_widgets/auth_textfeild.dart';
+import 'package:employer_app/app/common_widgets/rect_button.dart';
 import 'package:employer_app/app/utils/app_sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,6 +9,7 @@ import '../controllers/sign_up_controller.dart';
 
 class SignUpView extends GetView<SignUpController> {
   final SignUpController _signUpController = Get.put(SignUpController());
+
   SignUpView({super.key});
   @override
   Widget build(BuildContext context) {
@@ -37,167 +41,56 @@ class SignUpView extends GetView<SignUpController> {
                       ),
                     ),
                     sizedheight(size.height * 0.05),
-                    TextFormField(
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return "Username can't be empty";
-                        }
-                        return null;
-                      },
-                      controller: _signUpController.nameController,
-                      decoration: const InputDecoration(
-                        prefixIcon: Icon(Icons.person_outline),
-                        hintText: 'Username',
-                      ),
+                    AuthTextFeild(
+                      hintText: 'Username',
+                      validateText: "Username can't be empty",
+                      authTextController: _signUpController.nameController,
+                      icon: Icons.person_outline,
                     ),
                     sizedheight(size.height * 0.02),
-                    TextFormField(
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return "Username can't be empty";
-                        }
-                        return null;
-                      },
-                      controller: _signUpController.emailController,
-                      decoration: const InputDecoration(
-                        prefixIcon: Icon(Icons.email_outlined),
-                        hintText: 'Email ID',
+                    AuthTextFeild(
+                      hintText: 'Email',
+                      validateText: "Email can't be empty",
+                      authTextController: _signUpController.emailController,
+                      icon: Icons.email_outlined,
+                    ),
+                    sizedheight(size.height * 0.02),
+                    Obx(
+                      () => AuthPassTextFeild(
+                        passwordVisibility:
+                            _signUpController.passwordVisibility.value,
+                        authTextController:
+                            _signUpController.passwordController,
+                        suffixOnTap: () {
+                          _signUpController.passwordVisibility.value =
+                              !_signUpController.passwordVisibility.value;
+                        },
                       ),
                     ),
                     sizedheight(size.height * 0.02),
                     Obx(
-                      () => TextFormField(
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return "Username can't be empty";
-                          }
-                          return null;
+                      () => AuthPassTextFeild(
+                        passwordVisibility:
+                            _signUpController.passwordVisibility.value,
+                        authTextController:
+                            _signUpController.cPasswordController,
+                        suffixOnTap: () {
+                          _signUpController.passwordVisibility.value =
+                              !_signUpController.passwordVisibility.value;
                         },
-                        controller: _signUpController.passwordController,
-                        obscureText: _signUpController.passwordVisibility.value,
-                        decoration: InputDecoration(
-                          suffixIcon: IconButton(
-                            onPressed: () {
-                              _signUpController.passwordVisibility.value =
-                                  !_signUpController.passwordVisibility.value;
-                            },
-                            icon: Icon(
-                              _signUpController.passwordVisibility.value == true
-                                  ? Icons.visibility_off
-                                  : Icons.visibility,
-                            ),
-                          ),
-                          prefixIcon: const Icon(Icons.lock_outlined),
-                          hintText: 'Password',
-                        ),
+                        hintText: "Confirm Password",
                       ),
                     ),
-                    sizedheight(size.height * 0.02),
-                    Obx(
-                      () => TextFormField(
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return "Username can't be empty";
-                          }
-                          return null;
-                        },
-                        controller: _signUpController.cPasswordController,
-                        obscureText: _signUpController.passwordVisibility.value,
-                        decoration: InputDecoration(
-                          prefixIcon: const Icon(Icons.lock_outlined),
-                          suffixIcon: IconButton(
-                            onPressed: () {
-                              _signUpController.passwordVisibility.value =
-                                  !_signUpController.passwordVisibility.value;
-                            },
-                            icon: Icon(
-                              _signUpController.passwordVisibility.value == true
-                                  ? Icons.visibility_off
-                                  : Icons.visibility,
-                            ),
-                          ),
-                          hintText: 'Confirm Password',
-                        ),
-                      ),
-                    ),
-                    sizedheight(size.height * 0.01),
                     sizedheight(size.height * 0.04),
-                    ElevatedButton(
-                      onPressed: () {
-                        // Get.to(HomeView());
-                        controller.onSignUpclicked();
-                      },
-                      style: ElevatedButton.styleFrom(
-                        elevation: 0.0,
-                        minimumSize: const Size(350, 48),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
+                    SizedBox(
+                      width: double.infinity,
+                      height: size.height * 0.06,
+                      child: CustomRectButton(
+                        buttonLabel: 'Sign Up',
+                        onButtonClicked: () {
+                          _signUpController.onSignUpclicked();
+                        },
                       ),
-                      child: const Text('Sign Up'),
-                    ),
-                    // SizedBox(height: size.height * 0.02),
-                    // Row(
-                    //   children: const [
-                    //     Expanded(
-                    //       child: Divider(thickness: 1.5),
-                    //     ),
-                    //     Text(
-                    //       "OR",
-                    //       style: TextStyle(fontSize: 16, color: Colors.grey),
-                    //     ),
-                    //     Expanded(
-                    //       child: Divider(thickness: 1.5),
-                    //     ),
-                    //   ],
-                    // ),
-                    // sizedheight(size.height * 0.02),
-                    // ElevatedButton(
-                    //   onPressed: () {
-                    //     Get.to(const HomeView());
-                    //   },
-                    //   style: ElevatedButton.styleFrom(
-                    //     backgroundColor: Colors.transparent,
-                    //     elevation: 0.0,
-                    //     minimumSize: const Size(350, 48),
-                    //     shape: RoundedRectangleBorder(
-                    //       borderRadius: BorderRadius.circular(8.0),
-                    //       side: const BorderSide(color: Colors.black),
-                    //     ),
-                    //   ),
-                    //   child: Row(
-                    //     mainAxisAlignment: MainAxisAlignment.center,
-                    //     children: [
-                    //       Image.asset(
-                    //         'assets/pngegg.png',
-                    //         height: 30,
-                    //         width: 30,
-                    //       ),
-                    //       const Text(
-                    //         'Sign up with google',
-                    //         style: TextStyle(
-                    //           color: Colors.black,
-                    //         ),
-                    //       ),
-                    //     ],
-                    //   ),
-                    // )
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text("Already have an account?"),
-                        TextButton(
-                          onPressed: () {
-                            //Get.to(LoginView());
-                          },
-                          child: Text(
-                            'Login',
-                            style: TextStyle(
-                              color: klightblueColor,
-                            ),
-                          ),
-                        ),
-                      ],
                     ),
                   ],
                 ),
