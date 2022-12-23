@@ -1,8 +1,8 @@
-import 'package:employer_app/app/modules/sign_up/api/signup_api.dart';
-import 'package:employer_app/app/modules/sign_up/models/signup_model.dart';
+import 'package:employer_app/app/modules/auth/sign_up/api/signup_api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import '../../../utils/const_values.dart';
+import '../../../../utils/const_values.dart';
+import '../models/signup_model.dart';
 
 class SignUpController extends GetxController {
   RxBool passwordVisibility = true.obs;
@@ -12,7 +12,6 @@ class SignUpController extends GetxController {
   final TextEditingController cPasswordController = TextEditingController();
 
   final formKey = GlobalKey<FormState>();
-
   void onSignUpclicked() {
     if (formKey.currentState!.validate()) {
       callSignUpApi();

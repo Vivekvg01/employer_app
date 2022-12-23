@@ -1,7 +1,6 @@
+import 'package:employer_app/app/modules/auth/login/controllers/login_controller.dart';
+import 'package:employer_app/app/modules/auth/login/views/login_view.dart';
 import 'package:employer_app/app/modules/dashboard/views/dashboard_view.dart';
-import 'package:employer_app/app/modules/home/views/home_view.dart';
-import 'package:employer_app/app/modules/login/controllers/login_controller.dart';
-import 'package:employer_app/app/modules/login/views/login_view.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 

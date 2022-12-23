@@ -1,10 +1,11 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'package:employer_app/app/modules/otp/views/otp_view.dart';
-import 'package:employer_app/app/modules/sign_up/models/signup_model.dart';
 import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+
+import '../../otp/views/otp_view.dart';
+import '../models/signup_model.dart';
 
 class SignUpApi {
   dynamic statusCode;

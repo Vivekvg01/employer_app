@@ -1,27 +1,26 @@
+import 'package:employer_app/app/modules/auth/otp/bindings/otp_binding.dart';
+import 'package:employer_app/app/modules/auth/otp/views/otp_view.dart';
 import 'package:get/get.dart';
-
-import '../modules/addpost/bindings/addpost_binding.dart';
-import '../modules/addpost/views/addpost_view.dart';
+import '../modules/auth/addpost/bindings/addpost_binding.dart';
+import '../modules/auth/addpost/views/addpost_view.dart';
+import '../modules/auth/forgetpassword/bindings/forgetpassword_binding.dart';
+import '../modules/auth/forgetpassword/views/forgetpassword_view.dart';
+import '../modules/auth/login/bindings/login_binding.dart';
+import '../modules/auth/login/views/login_view.dart';
+import '../modules/auth/resetpassword/bindings/resetpassword_binding.dart';
+import '../modules/auth/resetpassword/views/resetpassword_view.dart';
+import '../modules/auth/sign_up/bindings/sign_up_binding.dart';
+import '../modules/auth/sign_up/views/sign_up_view.dart';
 import '../modules/contracts/bindings/contracts_binding.dart';
 import '../modules/contracts/views/contracts_view.dart';
 import '../modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
 import '../modules/findTalent/bindings/find_talent_binding.dart';
 import '../modules/findTalent/views/find_talent_view.dart';
-import '../modules/forgetpassword/bindings/forgetpassword_binding.dart';
-import '../modules/forgetpassword/views/forgetpassword_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
-import '../modules/login/bindings/login_binding.dart';
-import '../modules/login/views/login_view.dart';
-import '../modules/otp/bindings/otp_binding.dart';
-import '../modules/otp/views/otp_view.dart';
 import '../modules/proposals/bindings/proposals_binding.dart';
 import '../modules/proposals/views/proposals_view.dart';
-import '../modules/resetpassword/bindings/resetpassword_binding.dart';
-import '../modules/resetpassword/views/resetpassword_view.dart';
-import '../modules/sign_up/bindings/sign_up_binding.dart';
-import '../modules/sign_up/views/sign_up_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
 
@@ -65,7 +64,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.RESETPASSWORD,
-      page: () => const ResetpasswordView(),
+      page: () =>  ResetpasswordView(),
       binding: ResetpasswordBinding(),
     ),
     GetPage(

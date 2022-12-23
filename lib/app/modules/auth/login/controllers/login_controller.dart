@@ -1,8 +1,8 @@
-import 'package:employer_app/app/modules/login/model/login_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import '../api/login_api.dart';
+import '../model/login_model.dart';
 
 class LoginController extends GetxController {
   TextEditingController emailController = TextEditingController();

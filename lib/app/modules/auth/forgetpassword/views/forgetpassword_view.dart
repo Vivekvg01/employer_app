@@ -1,9 +1,7 @@
 import 'package:employer_app/app/common_widgets/auth_textfeild.dart';
 import 'package:employer_app/app/utils/app_sizes.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
 import '../controllers/forgetpassword_controller.dart';
 
 class ForgetpasswordView extends GetView {

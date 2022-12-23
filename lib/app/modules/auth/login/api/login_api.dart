@@ -1,13 +1,18 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:employer_app/app/modules/dashboard/controllers/dashboard_controller.dart';
+import 'package:employer_app/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:employer_app/app/modules/home/views/home_view.dart';
-import 'package:employer_app/app/modules/login/model/login_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
+import '../model/login_model.dart';
+
 class LoginApi {
   Future<LoginModel?> postData(String email, String password) async {
+    Get.lazyPut<DashboardController>(() => DashboardController());
+
     dynamic statusCode;
     var headers = {'Content-Type': 'application/json'};
     try {
@@ -35,7 +40,9 @@ class LoginApi {
             snackStyle: SnackStyle.FLOATING,
           ),
         );
-        Get.offAll(HomeView());
+
+        Get.offAll(DashboardView());
+
         LoginModel respModel = LoginModel.fromJson(json);
         return respModel;
       } else if (statusCode == 404) {

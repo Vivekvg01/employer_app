@@ -1,14 +1,11 @@
-import 'dart:developer';
-import 'package:employer_app/app/modules/home/views/home_view.dart';
-import 'package:employer_app/app/modules/login/controllers/login_controller.dart';
-import 'package:employer_app/app/modules/otp/api/api.dart';
-import 'package:employer_app/app/modules/otp/model/otp_model.dart';
+import 'package:employer_app/app/modules/auth/login/controllers/login_controller.dart';
 import 'package:employer_app/app/utils/const_values.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
-
 import '../../sign_up/controllers/sign_up_controller.dart';
+import '../api/api.dart';
+import '../model/otp_model.dart';
 
 class OtpController extends GetxController {
   final TextEditingController otpTextController = TextEditingController();

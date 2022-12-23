@@ -5,8 +5,10 @@ import 'package:get/get.dart';
 import '../../sign_up/views/sign_up_view.dart';
 import '../controllers/resetpassword_controller.dart';
 
-class ResetpasswordView extends GetView<ResetpasswordController> {
-  const ResetpasswordView({Key? key}) : super(key: key);
+class ResetpasswordView extends GetView {
+  ResetpasswordView({Key? key}) : super(key: key);
+
+  final resetPasswordController = Get.put(ResetpasswordController());
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -36,14 +38,14 @@ class ResetpasswordView extends GetView<ResetpasswordController> {
                 ),
                 sizedheight(size.height * 0.05),
                 TextField(
-                  //controller: controller.emailController,
+                  controller: resetPasswordController.otpController,
                   decoration: const InputDecoration(
                     hintText: 'Enter OTP',
                   ),
                 ),
                 sizedheight(size.height * 0.02),
                 TextField(
-                  //controller: controller.emailController,
+                  controller: resetPasswordController.newPassController,
                   decoration: const InputDecoration(
                     hintText: 'Enter new password',
                   ),
@@ -51,7 +53,9 @@ class ResetpasswordView extends GetView<ResetpasswordController> {
                 sizedheight(size.height * 0.05),
                 Center(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      resetPasswordController.onButtonClicked();
+                    },
                     style: ElevatedButton.styleFrom(
                       elevation: 0.0,
                       minimumSize: const Size(350, 48),

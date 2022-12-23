@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:employer_app/app/modules/auth/otp/model/otp_model.dart';
+import 'package:employer_app/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:employer_app/app/modules/home/views/home_view.dart';
-import 'package:employer_app/app/modules/otp/model/otp_model.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
@@ -10,6 +11,7 @@ class OtpApi {
 
   Future<OtpModel?> verifyOtp(
       String userId, String otp, String userType) async {
+    Get.lazyPut<DashboardController>(() => DashboardController());
     var headers = {'Content-Type': 'application/json'};
     try {
       Map<String, dynamic> requestBody = {
@@ -32,7 +34,7 @@ class OtpApi {
         final json = jsonDecode(response.body);
         OtpModel respModel = OtpModel.fromJson(json);
         log(respModel.employerData!);
-        Get.offAll(HomeView());
+        Get.offAll(DashboardController());
         return respModel;
       } else if (statusCode == 404) {
         log(response.body.toString());

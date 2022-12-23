@@ -1,20 +1,18 @@
 import 'package:employer_app/app/common_widgets/auth_pass_textfeild.dart';
 import 'package:employer_app/app/common_widgets/auth_textfeild.dart';
 import 'package:employer_app/app/common_widgets/rect_button.dart';
-import 'package:employer_app/app/modules/forgetpassword/views/forgetpassword_view.dart';
-import 'package:employer_app/app/modules/sign_up/views/sign_up_view.dart';
 import 'package:employer_app/app/utils/app_sizes.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../utils/app_colors.dart';
-import '../controllers/login_controller.dart';
+import '../../../../utils/app_colors.dart';
+import '../../login/views/login_view.dart';
+import '../controllers/sign_up_controller.dart';
 
-class LoginView extends GetView {
-  LoginView({super.key});
+class SignUpView extends GetView<SignUpController> {
+  final SignUpController _signUpController = Get.put(SignUpController());
 
-  final loginController = Get.put(LoginController());
-
+  SignUpView({super.key});
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -25,13 +23,12 @@ class LoginView extends GetView {
           child: Center(
             child: SingleChildScrollView(
               child: Form(
-                key: loginController.formKey,
+                key: controller.formKey,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'Login to',
+                      'Sign up to',
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
@@ -47,46 +44,53 @@ class LoginView extends GetView {
                     ),
                     sizedheight(size.height * 0.05),
                     AuthTextFeild(
+                      hintText: 'Username',
+                      validateText: "Username can't be empty",
+                      authTextController: _signUpController.nameController,
+                      icon: Icons.person_outline,
+                    ),
+                    sizedheight(size.height * 0.02),
+                    AuthTextFeild(
                       hintText: 'Email',
                       validateText: "Email can't be empty",
-                      authTextController: loginController.emailController,
-                      icon: Icons.person_outline,
+                      authTextController: _signUpController.emailController,
+                      icon: Icons.email_outlined,
                     ),
                     sizedheight(size.height * 0.02),
                     Obx(
                       () => AuthPassTextFeild(
                         passwordVisibility:
-                            loginController.passwordVisibility.value,
-                        authTextController: loginController.passwordController,
+                            _signUpController.passwordVisibility.value,
+                        authTextController:
+                            _signUpController.passwordController,
                         suffixOnTap: () {
-                          loginController.passwordVisibility.value =
-                              !loginController.passwordVisibility.value;
+                          _signUpController.passwordVisibility.value =
+                              !_signUpController.passwordVisibility.value;
                         },
                       ),
                     ),
-                    sizedheight(size.height * 0.01),
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: TextButton(
-                        onPressed: () {
-                          Get.to(ForgetpasswordView());
+                    sizedheight(size.height * 0.02),
+                    Obx(
+                      () => AuthPassTextFeild(
+                        passwordVisibility:
+                            _signUpController.passwordVisibility.value,
+                        authTextController:
+                            _signUpController.cPasswordController,
+                        suffixOnTap: () {
+                          _signUpController.passwordVisibility.value =
+                              !_signUpController.passwordVisibility.value;
                         },
-                        child: const Text(
-                          'Forget passoword?',
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 44, 33, 243),
-                          ),
-                        ),
+                        hintText: "Confirm Password",
                       ),
                     ),
-                    sizedheight(size.height * 0.01),
+                    sizedheight(size.height * 0.04),
                     SizedBox(
                       width: double.infinity,
                       height: size.height * 0.06,
                       child: CustomRectButton(
-                        buttonLabel: 'Login',
+                        buttonLabel: 'Sign Up',
                         onButtonClicked: () {
-                          loginController.onLoginButtonCliked();
+                          _signUpController.onSignUpclicked();
                         },
                       ),
                     ),
@@ -94,23 +98,23 @@ class LoginView extends GetView {
                     Center(
                       child: RichText(
                         text: TextSpan(
-                          text: "Dont't have an account?  ",
+                          text: "Already have an account?  ",
                           style: const TextStyle(
                               color: Colors.black, fontSize: 15),
                           children: [
                             TextSpan(
-                              text: "Sign up",
+                              text: "Login",
                               style: const TextStyle(
                                 color: Color.fromARGB(255, 44, 33, 243),
                                 fontSize: 15,
                               ),
                               recognizer: TapGestureRecognizer()
-                                ..onTap = () => Get.to(SignUpView()),
+                                ..onTap = () => Get.to(LoginView()),
                             ),
                           ],
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
