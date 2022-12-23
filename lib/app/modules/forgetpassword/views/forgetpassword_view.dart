@@ -1,6 +1,4 @@
-import 'package:employer_app/app/common_widgets/auth_pass_textfeild.dart';
 import 'package:employer_app/app/common_widgets/auth_textfeild.dart';
-import 'package:employer_app/app/modules/resetpassword/views/resetpassword_view.dart';
 import 'package:employer_app/app/utils/app_sizes.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +6,7 @@ import 'package:get/get.dart';
 
 import '../controllers/forgetpassword_controller.dart';
 
-class ForgetpasswordView extends GetView<ForgetpasswordController> {
+class ForgetpasswordView extends GetView {
   ForgetpasswordView({Key? key}) : super(key: key);
 
   final forgetPassController = Get.put(ForgetpasswordController());
@@ -29,46 +27,44 @@ class ForgetpasswordView extends GetView<ForgetpasswordController> {
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Reset Password?',
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                sizedheight(size.height * 0.05),
-                Obx(
-                  () => AuthPassTextFeild(
-                    passwordVisibility: controller.passwordVisibility.value,
-                    authTextController: controller.emailController,
-                    suffixOnTap: () {
-                      controller.passwordVisibility.value =
-                          !controller.passwordVisibility.value;
-                      print(controller.passwordVisibility.value);
-                    },
-                  ),
-                ),
-                sizedheight(size.height * 0.05),
-                Center(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Get.to(const ResetpasswordView());
-                    },
-                    style: ElevatedButton.styleFrom(
-                      elevation: 0.0,
-                      minimumSize: const Size(350, 48),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
+            child: Form(
+              key: forgetPassController.formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Reset Password?',
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
                     ),
-                    child: const Text('Send Otp'),
                   ),
-                ),
-              ],
+                  sizedheight(size.height * 0.05),
+                  AuthTextFeild(
+                    authTextController: forgetPassController.emailController,
+                    hintText: 'email',
+                    icon: Icons.email,
+                    validateText: "Email can't be empty",
+                  ),
+                  sizedheight(size.height * 0.05),
+                  Center(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        forgetPassController.onSendOtpButtonCLick();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        elevation: 0.0,
+                        minimumSize: const Size(350, 48),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                      ),
+                      child: const Text('Send Otp'),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

@@ -1,33 +1,29 @@
-// To parse this JSON data, do
-//
-//     final welcome = welcomeFromJson(jsonString);
-
-import 'dart:convert';
-
-OtpModel otpModelFromJson(String str) => OtpModel.fromJson(json.decode(str));
-
-String otpModelToJson(OtpModel data) => json.encode(data.toJson());
-
 class OtpModel {
-    OtpModel({
-        required this.userId,
-        required this.otp,
-        required this.userType,
-    });
+  OtpModel({
+    this.id,
+    this.name,
+    this.email,
+    this.emailVerified,
+    this.userType,
+    this.employerData,
+    this.token,
+  });
 
-    String userId;
-    String otp;
-    String userType;
+  String? id;
+  String? name;
+  String? email;
+  bool? emailVerified;
+  String? userType;
+  String? employerData;
+  String? token;
 
-    factory OtpModel.fromJson(Map<String, dynamic> json) => OtpModel(
-        userId: json["userId"],
-        otp: json["otp"],
+  factory OtpModel.fromJson(Map<String, dynamic> json) => OtpModel(
+        id: json["_id"],
+        name: json["name"],
+        email: json["email"],
+        emailVerified: json["emailVerified"],
         userType: json["userType"],
-    );
-
-    Map<String, dynamic> toJson() => {
-        "userId": userId,
-        "otp": otp,
-        "userType": userType,
-    };
+        employerData: json["employerData"],
+        token: json["token"],
+      );
 }

@@ -2,9 +2,11 @@ import 'package:employer_app/app/common_widgets/auth_pass_textfeild.dart';
 import 'package:employer_app/app/common_widgets/auth_textfeild.dart';
 import 'package:employer_app/app/common_widgets/rect_button.dart';
 import 'package:employer_app/app/utils/app_sizes.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../utils/app_colors.dart';
+import '../../login/views/login_view.dart';
 import '../controllers/sign_up_controller.dart';
 
 class SignUpView extends GetView<SignUpController> {
@@ -90,6 +92,27 @@ class SignUpView extends GetView<SignUpController> {
                         onButtonClicked: () {
                           _signUpController.onSignUpclicked();
                         },
+                      ),
+                    ),
+                    sizedheight(size.height * 0.02),
+                    Center(
+                      child: RichText(
+                        text: TextSpan(
+                          text: "Already have an account?  ",
+                          style: const TextStyle(
+                              color: Colors.black, fontSize: 15),
+                          children: [
+                            TextSpan(
+                              text: "Login",
+                              style: const TextStyle(
+                                color: Color.fromARGB(255, 44, 33, 243),
+                                fontSize: 15,
+                              ),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () => Get.to(LoginView()),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],

@@ -11,6 +11,11 @@ abstract class Routes {
   static const FORGETPASSWORD = _Paths.FORGETPASSWORD;
   static const RESETPASSWORD = _Paths.RESETPASSWORD;
   static const AUTH_TEXT_FEILD = _Paths.AUTH_TEXT_FEILD;
+  static const DASHBOARD = _Paths.DASHBOARD;
+  static const FIND_TALENT = _Paths.FIND_TALENT;
+  static const ADDPOST = _Paths.ADDPOST;
+  static const PROPOSALS = _Paths.PROPOSALS;
+  static const CONTRACTS = _Paths.CONTRACTS;
 }
 
 abstract class _Paths {
@@ -23,4 +28,9 @@ abstract class _Paths {
   static const FORGETPASSWORD = '/forgetpassword';
   static const RESETPASSWORD = '/resetpassword';
   static const AUTH_TEXT_FEILD = '/auth-text-feild';
+  static const DASHBOARD = '/dashboard';
+  static const FIND_TALENT = '/find-talent';
+  static const ADDPOST = '/addpost';
+  static const PROPOSALS = '/proposals';
+  static const CONTRACTS = '/contracts';
 }

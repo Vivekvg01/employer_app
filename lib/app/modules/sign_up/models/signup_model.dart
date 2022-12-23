@@ -1,35 +1,41 @@
-import 'dart:convert';
-
-SignUpModel signUpModelFromJson(String str) =>
-    SignUpModel.fromJson(json.decode(str));
-
-String signUpModelToJson(SignUpModel data) => json.encode(data.toJson());
-
 class SignUpModel {
-  String name;
-  String email;
-  String password;
-  String userType;
-
   SignUpModel({
-    required this.name,
-    required this.email,
-    required this.password,
-    required this.userType,
+    this.name,
+    this.email,
+    this.password,
+    this.userType,
+    this.emailVerified,
+    this.isBlocked,
+    this.reported,
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.v,
   });
 
-  factory SignUpModel.fromJson(Map<String, dynamic> json) {
-    return SignUpModel(
-      name: json['name'],
-      email: json['email'],
-      password: json['password'],
-      userType: json['userType'],
-    );
-  }
-  Map<String, dynamic> toJson() => {
-        "name": name,
-        "email": email,
-        "password": password,
-        "userType": userType,
-      };
+  String? name;
+  String? email;
+  String? password;
+  String? userType;
+  bool? emailVerified;
+  bool? isBlocked;
+  int? reported;
+  String? id;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  int? v;
+
+  factory SignUpModel.fromJson(Map<String, dynamic> json) => SignUpModel(
+        name: json["name"] ?? '',
+        email: json["email"] ?? '',
+        password: json["password"] ?? '',
+        userType: json["userType"] ?? '',
+        emailVerified: json["emailVerified"],
+        isBlocked: json["isBlocked"],
+        reported: json["reported"] ?? '',
+        id: json["_id"] ?? '',
+        createdAt: DateTime.parse(json["createdAt"]),
+        updatedAt: DateTime.parse(json["updatedAt"]),
+        v: json["__v"] ?? '',
+      );
 }

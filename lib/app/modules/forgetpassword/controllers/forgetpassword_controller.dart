@@ -4,4 +4,11 @@ import 'package:get/get.dart';
 class ForgetpasswordController extends GetxController {
   final TextEditingController emailController = TextEditingController();
   RxBool passwordVisibility = true.obs;
+  final formKey = GlobalKey<FormState>();
+
+  void onSendOtpButtonCLick() {
+    if (formKey.currentState!.validate()) {
+      //form validated
+    }
+  }
 }

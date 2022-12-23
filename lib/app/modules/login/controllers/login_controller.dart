@@ -1,66 +1,43 @@
-import 'dart:developer';
-import 'package:employer_app/app/modules/home/views/home_view.dart';
+import 'package:employer_app/app/modules/login/model/login_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
-import '../model/login_model.dart';
-import 'package:http/http.dart' as http;
+import '../api/login_api.dart';
 
 class LoginController extends GetxController {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+  final isLoggedIn = false.obs;
+
+  String? tokenId;
+
   RxBool passwordVisibility = true.obs;
-  dynamic statusCode;
 
   final formKey = GlobalKey<FormState>();
 
   void onLoginButtonCliked() {
-    print('-------Login button clicked------');
     if (formKey.currentState!.validate()) {
-      postData(
-        emailController.text,
-        passwordController.text,
-      );
+      callLoginApi();
     }
   }
 
-  Future<LoginModel?> postData(String email, String password) async {
-    try {
-      LoginModel loginModel = LoginModel(
-        email: email,
-        password: password,
-      );
-      final request = await http.post(
-        Uri.parse('http://10.0.2.2:3001/api/login'),
-        body: loginModel.toJson(),
-      );
-      statusCode = request.statusCode;
-      if (statusCode == 200) {
-        //request success
-        print('Login succesfull');
-        log(request.body.toString());
-        Get.offAll(const HomeView());
-      } else if (statusCode == 404) {
-        //error message
-        print('Error response');
-        log(request.body.toString());
-        Get.defaultDialog(
-          title: "Username and password does not match",
-          content: ElevatedButton(
-            onPressed: () {
-              Get.back();
-            },
-            child: const Text('Ok'),
-          ),
-        );
-      } else {
-        print(statusCode);
-
-        log(request.body.toString());
-      }
-    } catch (e) {
-      log(e.toString());
+  Future<void> callLoginApi() async {
+    LoginModel? response = await LoginApi()
+        .postData(emailController.text, passwordController.text);
+    if (response != null) {
+      tokenId = response.token;
     }
-    return null;
+    tokenSaving();
+  }
+
+  void setIsLoggedIn(bool value) {
+    isLoggedIn.value = value;
+  }
+
+  Future<void> tokenSaving() async {
+    final storage = FlutterSecureStorage();
+    await storage.write(key: 'token', value: tokenId);
+    setIsLoggedIn(true);
   }
 }

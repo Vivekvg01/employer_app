@@ -4,6 +4,7 @@ import 'package:employer_app/app/common_widgets/rect_button.dart';
 import 'package:employer_app/app/modules/forgetpassword/views/forgetpassword_view.dart';
 import 'package:employer_app/app/modules/sign_up/views/sign_up_view.dart';
 import 'package:employer_app/app/utils/app_sizes.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../utils/app_colors.dart';
@@ -46,8 +47,8 @@ class LoginView extends GetView {
                     ),
                     sizedheight(size.height * 0.05),
                     AuthTextFeild(
-                      hintText: 'Username',
-                      validateText: "Username can't be empty",
+                      hintText: 'Email',
+                      validateText: "Email can't be empty",
                       authTextController: loginController.emailController,
                       icon: Icons.person_outline,
                     ),
@@ -70,10 +71,10 @@ class LoginView extends GetView {
                         onPressed: () {
                           Get.to(ForgetpasswordView());
                         },
-                        child: Text(
+                        child: const Text(
                           'Forget passoword?',
                           style: TextStyle(
-                            color: klightblueColor,
+                            color: Color.fromARGB(255, 44, 33, 243),
                           ),
                         ),
                       ),
@@ -89,29 +90,33 @@ class LoginView extends GetView {
                         },
                       ),
                     ),
+                    sizedheight(size.height * 0.02),
+                    Center(
+                      child: RichText(
+                        text: TextSpan(
+                          text: "Dont't have an account?  ",
+                          style: const TextStyle(
+                              color: Colors.black, fontSize: 15),
+                          children: [
+                            TextSpan(
+                              text: "Sign up",
+                              style: const TextStyle(
+                                color: Color.fromARGB(255, 44, 33, 243),
+                                fontSize: 15,
+                              ),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () => Get.to(SignUpView()),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),
             ),
           ),
         ),
-      ),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text("Don't have an account?"),
-          TextButton(
-            onPressed: () {
-              Get.to(SignUpView());
-            },
-            child: Text(
-              'Sign Up',
-              style: TextStyle(
-                color: klightblueColor,
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }
