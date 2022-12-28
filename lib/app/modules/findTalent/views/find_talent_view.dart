@@ -12,10 +12,7 @@ class FindTalentView extends GetView<FindTalentController> {
         centerTitle: true,
       ),
       body: const Center(
-        child: Text(
-          'FindTalentView is working',
-          style: TextStyle(fontSize: 20),
-        ),
+        child: TextField(),
       ),
     );
   }

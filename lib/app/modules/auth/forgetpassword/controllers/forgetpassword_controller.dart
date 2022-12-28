@@ -8,12 +8,14 @@ import 'package:http/http.dart' as http;
 class ForgetpasswordController extends GetxController {
   final TextEditingController emailController = TextEditingController();
 
-  final formKey = GlobalKey<FormState>();
+  final forgetPassFormKey = GlobalKey<FormState>();
 
   void onSendOtpButtonCLick() {
-    postData(
-      emailController.text,
-    );
+    if (forgetPassFormKey.currentState!.validate()) {
+      postData(
+        emailController.text,
+      );
+    }
   }
 
   Future<dynamic> postData(String email) async {

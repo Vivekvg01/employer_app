@@ -27,7 +27,7 @@ import '../modules/splash/views/splash_view.dart';
 part 'app_routes.dart';
 
 class AppPages {
-  AppPages._();
+  AppPages._(); 
 
   static const INITIAL = Routes.SPLASH;
 

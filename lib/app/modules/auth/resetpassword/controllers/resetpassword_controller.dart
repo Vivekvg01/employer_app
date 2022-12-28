@@ -9,15 +9,19 @@ class ResetpasswordController extends GetxController {
   TextEditingController otpController = TextEditingController();
   TextEditingController newPassController = TextEditingController();
 
+  final GlobalKey<FormState> resetPassFromKey = GlobalKey<FormState>();
+
   ForgetpasswordController forgetpasswordController =
       Get.put(ForgetpasswordController());
 
   void onButtonClicked() {
-    postData(
-      otpController.text,
-      forgetpasswordController.emailController.text,
-      newPassController.text,
-    );
+    if (resetPassFromKey.currentState!.validate()) {
+      postData(
+        otpController.text,
+        forgetpasswordController.emailController.text,
+        newPassController.text,
+      );
+    }
   }
 }
 

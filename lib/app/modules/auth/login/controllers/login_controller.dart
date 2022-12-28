@@ -11,6 +11,7 @@ class LoginController extends GetxController {
   final isLoggedIn = false.obs;
 
   String? tokenId;
+  String? userId;
 
   RxBool passwordVisibility = true.obs;
 
@@ -27,7 +28,9 @@ class LoginController extends GetxController {
         .postData(emailController.text, passwordController.text);
     if (response != null) {
       tokenId = response.token;
+      userId = response.id;
     }
+    print(userId);
     tokenSaving();
   }
 

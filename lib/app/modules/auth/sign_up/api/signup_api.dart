@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-
 import '../../otp/views/otp_view.dart';
 import '../models/signup_model.dart';
 

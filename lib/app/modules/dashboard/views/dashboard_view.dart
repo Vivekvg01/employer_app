@@ -22,10 +22,10 @@ class DashboardView extends GetView<DashboardController> {
               index: controller.tabIndex,
               children: [
                 HomeView(),
-                FindTalentView(),
-                AddpostView(),
-                ProposalsView(),
-                ContractsView(),
+                const FindTalentView(),
+                const AddpostView(),
+                const ProposalsView(),
+                const ContractsView(),
               ],
             ),
           ),
@@ -51,8 +51,8 @@ class DashboardView extends GetView<DashboardController> {
                 label: 'FIND TALENT',
               ),
               bottomNavigationBarItem(
-                icon: Icons.add,
                 label: '',
+                icon: Icons.add,
               ),
               bottomNavigationBarItem(
                 icon: Icons.file_copy_outlined,
@@ -64,11 +64,17 @@ class DashboardView extends GetView<DashboardController> {
               ),
             ],
           ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              print('post job');
-            },
-            child: const Icon(Icons.add),
+          floatingActionButton: Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              padding: const EdgeInsets.only(bottom: 6.0),
+              child: FloatingActionButton(
+                onPressed: () {
+                  Get.to(AddpostView());
+                },
+                child: const Icon(Icons.add),
+              ),
+            ),
           ),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,

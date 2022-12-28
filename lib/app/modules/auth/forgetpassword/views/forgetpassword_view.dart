@@ -26,7 +26,7 @@ class ForgetpasswordView extends GetView {
           padding: const EdgeInsets.all(20),
           child: Center(
             child: Form(
-              key: forgetPassController.formKey,
+              key: forgetPassController.forgetPassFormKey, 
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
