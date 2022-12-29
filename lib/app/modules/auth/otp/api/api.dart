@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:employer_app/app/modules/auth/otp/model/otp_model.dart';
 import 'package:employer_app/app/modules/dashboard/controllers/dashboard_controller.dart';
-import 'package:employer_app/app/modules/home/views/home_view.dart';
+import 'package:employer_app/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
@@ -33,14 +33,14 @@ class OtpApi {
         //success response
         final json = jsonDecode(response.body);
         OtpModel respModel = OtpModel.fromJson(json);
-        log(respModel.employerData!);
-        Get.offAll(DashboardController());
+
+         Get.offAll(() => const DashboardView());
+
         return respModel;
       } else if (statusCode == 404) {
         log(response.body.toString());
       } else {
-        print(statusCode);
-        print('error occured');
+        log(response.body);
       }
     } catch (e) {
       log(e.toString());

@@ -5,12 +5,12 @@ import 'package:get/get.dart';
 import '../../auth/login/views/login_view.dart';
 
 class HomeController extends GetxController {
-  final loginController = Get.put(LoginController());
+  // final loginController = Get.put(LoginController());
 
-  Future<void> logout() async {
-    final storage = FlutterSecureStorage();
-    await storage.delete(key: 'token');
-    loginController.setIsLoggedIn(false);
-    Get.offAll(() => LoginView());
-  }
+  // Future<void> logout() async {
+  //   final storage = FlutterSecureStorage();
+  //   await storage.delete(key: 'token');
+  //   loginController.setIsLoggedIn(false);
+  //   Get.offAll(() => LoginView());
+  // }
 }

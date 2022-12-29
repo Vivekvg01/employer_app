@@ -15,10 +15,10 @@ class LoginController extends GetxController {
 
   RxBool passwordVisibility = true.obs;
 
-  final formKey = GlobalKey<FormState>();
+  final loginFormKey = GlobalKey<FormState>();
 
   void onLoginButtonCliked() {
-    if (formKey.currentState!.validate()) {
+    if (loginFormKey.currentState!.validate()) {
       callLoginApi();
     }
   }
@@ -31,6 +31,7 @@ class LoginController extends GetxController {
       userId = response.id;
     }
     print(userId);
+    print(tokenId);
     tokenSaving();
   }
 

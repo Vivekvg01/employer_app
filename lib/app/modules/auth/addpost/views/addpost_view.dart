@@ -53,6 +53,13 @@ class AddpostView extends GetView<AddpostController> {
               sizedheight(size.height * 0.03),
               TextFormField(
                 decoration: const InputDecoration(
+                  hintText: "\$ Budget ",
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              sizedheight(size.height * 0.03),
+              TextFormField(
+                decoration: const InputDecoration(
                   hintText: 'Number of days to finish',
                   border: OutlineInputBorder(),
                 ),

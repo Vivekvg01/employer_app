@@ -39,14 +39,11 @@ class LoginApi {
             snackStyle: SnackStyle.FLOATING,
           ),
         );
-
-        Get.offAll(DashboardView());
-
+        Get.offAll(const DashboardView());
         LoginModel respModel = LoginModel.fromJson(json);
         return respModel;
       } else if (statusCode == 404) {
         //error message
-        print('Error response');
         Get.showSnackbar(
           const GetSnackBar(
             message: "Username and password does not match",

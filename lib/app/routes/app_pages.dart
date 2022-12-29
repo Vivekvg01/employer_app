@@ -1,12 +1,15 @@
-import 'package:employer_app/app/modules/auth/otp/bindings/otp_binding.dart';
-import 'package:employer_app/app/modules/auth/otp/views/otp_view.dart';
 import 'package:get/get.dart';
+
+import '../modules/all_chats/bindings/all_chats_binding.dart';
+import '../modules/all_chats/views/all_chats_view.dart';
 import '../modules/auth/addpost/bindings/addpost_binding.dart';
 import '../modules/auth/addpost/views/addpost_view.dart';
 import '../modules/auth/forgetpassword/bindings/forgetpassword_binding.dart';
 import '../modules/auth/forgetpassword/views/forgetpassword_view.dart';
 import '../modules/auth/login/bindings/login_binding.dart';
 import '../modules/auth/login/views/login_view.dart';
+import '../modules/auth/otp/bindings/otp_binding.dart';
+import '../modules/auth/otp/views/otp_view.dart';
 import '../modules/auth/resetpassword/bindings/resetpassword_binding.dart';
 import '../modules/auth/resetpassword/views/resetpassword_view.dart';
 import '../modules/auth/sign_up/bindings/sign_up_binding.dart';
@@ -27,7 +30,7 @@ import '../modules/splash/views/splash_view.dart';
 part 'app_routes.dart';
 
 class AppPages {
-  AppPages._(); 
+  AppPages._();
 
   static const INITIAL = Routes.SPLASH;
 
@@ -64,7 +67,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.RESETPASSWORD,
-      page: () =>  ResetpasswordView(),
+      page: () => ResetpasswordView(),
       binding: ResetpasswordBinding(),
     ),
     GetPage(
@@ -74,7 +77,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.FIND_TALENT,
-      page: () => const FindTalentView(),
+      page: () => FindTalentView(),
       binding: FindTalentBinding(),
     ),
     GetPage(
@@ -91,6 +94,11 @@ class AppPages {
       name: _Paths.CONTRACTS,
       page: () => const ContractsView(),
       binding: ContractsBinding(),
+    ),
+    GetPage(
+      name: _Paths.ALL_CHATS,
+      page: () => const AllChatsView(),
+      binding: AllChatsBinding(),
     ),
   ];
 }

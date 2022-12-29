@@ -3,16 +3,24 @@ import 'package:get/get.dart';
 import '../controllers/find_talent_controller.dart';
 
 class FindTalentView extends GetView<FindTalentController> {
-  const FindTalentView({Key? key}) : super(key: key);
+  FindTalentView({Key? key}) : super(key: key);
+
+  final _findTalendController = Get.put(FindTalentController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('FindTalentView'),
-        centerTitle: true,
-      ),
-      body: const Center(
-        child: TextField(),
+        actions: [
+          ElevatedButton.icon(
+            onPressed: () {
+              _findTalendController.logout(); 
+            },
+            icon: const Icon(Icons.logout),
+            label: const Text("Log out"),
+          ),
+        ],
       ),
     );
   }

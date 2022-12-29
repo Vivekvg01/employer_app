@@ -7,46 +7,45 @@ import '../../otp/views/otp_view.dart';
 import '../models/signup_model.dart';
 
 class SignUpApi {
-  dynamic statusCode;
-
   Future<SignUpModel?> postData(
     String name,
     String email,
     String password,
     String userType,
   ) async {
+    dynamic statusCode;
     var headers = {'Content-Type': 'application/json'};
     try {
       Map<String, dynamic> requestBody = {
         "name": name,
         "email": email,
         "password": password,
-        "userType": userType,
+        "userType": userType
       };
-
       final url = Uri.parse('http://10.0.2.2:3001/api/register');
-
-      final respone = await http.post(
+      http.Response response = await http.post(
         url,
         body: jsonEncode(requestBody),
         headers: headers,
       );
-      statusCode = respone.statusCode;
+      statusCode = response.statusCode;
       if (statusCode == 200) {
         //success response
-        final json = jsonDecode(respone.body);
+        final json = jsonDecode(response.body);
         SignUpModel respModel = SignUpModel.fromJson(json);
-        print(respModel.id);
+
         Get.to(OtpView());
-        print(respModel.id);
+
         return respModel;
       } else if (statusCode == 404) {
         //email already been used
-        GetSnackBar(
-          message: "Email already in use",
-          backgroundColor: primaryColor,
-          duration: const Duration(seconds: 3),
-          snackStyle: SnackStyle.FLOATING,
+        Get.showSnackbar(
+          GetSnackBar(
+            message: "Email already in use",
+            backgroundColor: kredColor,
+            duration: const Duration(seconds: 3),
+            snackStyle: SnackStyle.FLOATING,
+          ),
         );
       } else {
         print('error occured');

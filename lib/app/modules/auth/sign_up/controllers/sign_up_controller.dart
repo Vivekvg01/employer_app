@@ -11,9 +11,9 @@ class SignUpController extends GetxController {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController cPasswordController = TextEditingController();
 
-  final formKey = GlobalKey<FormState>();
+  final signUpFormKey = GlobalKey<FormState>();
   void onSignUpclicked() {
-    if (formKey.currentState!.validate()) {
+    if (signUpFormKey.currentState!.validate()) {
       callSignUpApi();
     }
   }
@@ -27,6 +27,9 @@ class SignUpController extends GetxController {
       passwordController.text,
       userType,
     );
-    employerId = response!.id;
+    if (response != null) {
+      employerId = response.id;
+    }
+    print(employerId);
   }
 }

@@ -16,6 +16,7 @@ abstract class Routes {
   static const ADDPOST = _Paths.ADDPOST;
   static const PROPOSALS = _Paths.PROPOSALS;
   static const CONTRACTS = _Paths.CONTRACTS;
+  static const ALL_CHATS = _Paths.ALL_CHATS;
 }
 
 abstract class _Paths {
@@ -33,4 +34,5 @@ abstract class _Paths {
   static const ADDPOST = '/addpost';
   static const PROPOSALS = '/proposals';
   static const CONTRACTS = '/contracts';
+  static const ALL_CHATS = '/all-chats';
 }

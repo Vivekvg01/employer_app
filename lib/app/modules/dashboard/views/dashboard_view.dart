@@ -22,7 +22,7 @@ class DashboardView extends GetView<DashboardController> {
               index: controller.tabIndex,
               children: [
                 HomeView(),
-                const FindTalentView(),
+                 FindTalentView(),
                 const AddpostView(),
                 const ProposalsView(),
                 const ContractsView(),

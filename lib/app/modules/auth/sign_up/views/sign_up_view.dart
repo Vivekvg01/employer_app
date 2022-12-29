@@ -23,7 +23,7 @@ class SignUpView extends GetView<SignUpController> {
           child: Center(
             child: SingleChildScrollView(
               child: Form(
-                key: controller.formKey,
+                key: controller.signUpFormKey,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

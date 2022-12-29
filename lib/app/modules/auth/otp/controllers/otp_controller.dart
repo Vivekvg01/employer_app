@@ -39,7 +39,7 @@ class OtpController extends GetxController {
   }
 
   Future<void> tokenSaving() async {
-    final storage = FlutterSecureStorage();
+    const storage = FlutterSecureStorage();
     await storage.write(key: 'token', value: tokenId);
     loginController.setIsLoggedIn(true);
   }

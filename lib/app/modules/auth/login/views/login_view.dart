@@ -25,7 +25,7 @@ class LoginView extends GetView {
           child: Center(
             child: SingleChildScrollView(
               child: Form(
-                key: loginController.formKey,
+                key: loginController.loginFormKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
