@@ -4,7 +4,7 @@ import 'package:employer_app/app/modules/home/controllers/home_controller.dart';
 import 'package:employer_app/app/modules/proposals/controllers/proposals_controller.dart';
 import 'package:get/get.dart';
 
-import '../../auth/addpost/controllers/addpost_controller.dart';
+import '../../addpost/controllers/addpost_controller.dart';
 import '../controllers/dashboard_controller.dart';
 
 class DashboardBinding extends Bindings {

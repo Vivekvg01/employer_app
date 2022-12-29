@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import '../../sign_up/controllers/sign_up_controller.dart';
-import '../api/api.dart';
+import '../api/otp_api.dart';
 import '../model/otp_model.dart';
 
 class OtpController extends GetxController {

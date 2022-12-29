@@ -6,3 +6,4 @@ Color kWhiteColor = const Color(0xFFFFFFFF);
 Color klightblueColor = const Color(0xff2196f3);
 Color kBlackColor = const Color(0xFF000000);
 Color kdarkGreen = const Color(0xff1d4354);
+Color kLightGrey = const Color(0xffBDBDBD);

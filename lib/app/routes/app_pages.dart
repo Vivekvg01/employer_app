@@ -2,8 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/all_chats/bindings/all_chats_binding.dart';
 import '../modules/all_chats/views/all_chats_view.dart';
-import '../modules/auth/addpost/bindings/addpost_binding.dart';
-import '../modules/auth/addpost/views/addpost_view.dart';
+import '../modules/addpost/bindings/addpost_binding.dart';
+import '../modules/addpost/views/addpost_view.dart';
 import '../modules/auth/forgetpassword/bindings/forgetpassword_binding.dart';
 import '../modules/auth/forgetpassword/views/forgetpassword_view.dart';
 import '../modules/auth/login/bindings/login_binding.dart';
@@ -82,7 +82,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.ADDPOST,
-      page: () => const AddpostView(),
+      page: () => AddpostView(),
       binding: AddpostBinding(),
     ),
     GetPage(

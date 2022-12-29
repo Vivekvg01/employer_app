@@ -3,10 +3,8 @@ import 'package:employer_app/app/modules/findTalent/views/find_talent_view.dart'
 import 'package:employer_app/app/modules/proposals/views/proposals_view.dart';
 import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
-import '../../auth/addpost/views/addpost_view.dart';
+import '../../addpost/views/addpost_view.dart';
 import '../../home/views/home_view.dart';
 import '../controllers/dashboard_controller.dart';
 
@@ -23,7 +21,7 @@ class DashboardView extends GetView<DashboardController> {
               children: [
                 HomeView(),
                  FindTalentView(),
-                const AddpostView(),
+                 AddpostView(),
                 const ProposalsView(),
                 const ContractsView(),
               ],
