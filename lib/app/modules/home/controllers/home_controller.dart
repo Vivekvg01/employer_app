@@ -1,5 +1,5 @@
 import 'package:employer_app/app/modules/home/api/get_my_jobs_api.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:get/get.dart';
 
 class HomeController extends GetxController {
   @override
@@ -7,6 +7,8 @@ class HomeController extends GetxController {
     jobDatas();
     super.onInit();
   }
+
+  RxBool isLoading = false.obs; 
 
   void jobDatas() async {
     Future.delayed(const Duration(seconds: 1));

@@ -49,6 +49,7 @@ class LoginView extends GetView {
                     AuthTextFeild(
                       hintText: 'Email',
                       validateText: "Email can't be empty",
+                      emailvalidationMessage: "Enter a valid email",
                       authTextController: loginController.emailController,
                       icon: Icons.person_outline,
                     ),

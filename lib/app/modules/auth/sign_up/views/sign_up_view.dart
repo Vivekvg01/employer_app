@@ -53,6 +53,7 @@ class SignUpView extends GetView<SignUpController> {
                     AuthTextFeild(
                       hintText: 'Email',
                       validateText: "Email can't be empty",
+                      emailvalidationMessage: "Enter a valid email",
                       authTextController: _signUpController.emailController,
                       icon: Icons.email_outlined,
                     ),

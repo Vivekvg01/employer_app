@@ -12,6 +12,7 @@ class AddpostView extends GetView<AddpostController> {
 
   @override
   Widget build(BuildContext context) {
+    final selectedValue = 'Option 1'.obs;
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -73,10 +74,29 @@ class AddpostView extends GetView<AddpostController> {
                 ),
               ),
               sizedheight(size.height * 0.03),
-              TextFormField(
-                decoration: const InputDecoration(
-                  hintText: 'Advanced',
-                  border: OutlineInputBorder(),
+              Obx(
+                () => Container(
+                  width: size.width * 0.5,
+                  decoration: BoxDecoration(
+                    color: kLightGrey,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Center(
+                    child: DropdownButton<String>(
+                      value: addPostController.dropdownCurrentValue.value,
+                      items:
+                          addPostController.dropdownValues.map((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        addPostController.dropdownCurrentValue.value =
+                            newValue!;
+                      },
+                    ),
+                  ),
                 ),
               ),
               sizedheight(size.height * 0.03),

@@ -6,6 +6,7 @@ class AuthTextFeild extends StatelessWidget {
   String validateText;
   IconData icon;
   TextEditingController authTextController = TextEditingController();
+  String? emailvalidationMessage;
 
   AuthTextFeild({
     Key? key,
@@ -13,6 +14,7 @@ class AuthTextFeild extends StatelessWidget {
     required this.validateText,
     required this.icon,
     required this.authTextController,
+    this.emailvalidationMessage,
   }) : super(key: key);
 
   @override
@@ -21,6 +23,10 @@ class AuthTextFeild extends StatelessWidget {
       validator: (value) {
         if (value == null || value.isEmpty) {
           return validateText;
+        } else if (emailvalidationMessage != null) {
+          if (!RegExp(r'.+@.+\.com$').hasMatch(value)) {
+            return emailvalidationMessage;
+          }
         }
         return null;
       },

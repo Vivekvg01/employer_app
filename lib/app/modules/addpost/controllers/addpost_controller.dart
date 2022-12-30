@@ -11,23 +11,21 @@ class AddpostController extends GetxController {
   final TextEditingController budgetController = TextEditingController();
   final TextEditingController deadlineController = TextEditingController();
 
+  RxString dropdownCurrentValue = "Easy".obs;
+  List<String> dropdownValues = ['Easy', 'Intermediate', 'Advanced'];
+
   String? jobTitile;
   String? status;
 
   void addPost() async {
+    print(dropdownCurrentValue.toLowerCase());
     PostJobResModel? response = await PostJobApi().postJob(
       titleController.text,
       descriptionController.text,
       budgetController.text,
       deadlineController.text,
-      "easy",
+      dropdownCurrentValue.toLowerCase(),
       searchTagController.text,
     );
-
-    if (response != null) {
-      jobTitile = response.job!.title;
-      status = response.job!.status;
-      // proposals = response.job!.proposals![0];
-    }
   }
 }
