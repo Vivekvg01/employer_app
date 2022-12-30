@@ -1,11 +1,12 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:employer_app/app/modules/addpost/models/request_model/pos_job_req_model.dart';
+import 'package:employer_app/app/modules/addpost/models/response_model/post_job_response_model.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 
 class PostJobApi {
-  void postJob(
+  Future<PostJobResModel?> postJob(
     String title,
     String description,
     String budget,
@@ -23,6 +24,8 @@ class PostJobApi {
         searchTag: searchTag,
       );
 
+      var reqJson = jsonEncode(postJobReqModel.toJson());
+
       const storage = FlutterSecureStorage();
       final token = await storage.read(key: 'token');
 
@@ -37,13 +40,20 @@ class PostJobApi {
 
       final response = await http.post(
         url,
-        body: json,
+        body: reqJson,
         headers: headers,
       );
-      final respBodyJson = jsonDecode(response.body);
-      log(respBodyJson);
+
+      if (response.statusCode >= 200 && response.statusCode <= 299) {
+        //log(response.body);
+        final jsonResp = jsonDecode(response.body);
+
+        PostJobResModel postJobReqModel = PostJobResModel.fromJson(jsonResp);
+        return postJobReqModel;
+      }
     } catch (e) {
       log(e.toString());
     }
+    return null;
   }
 }

@@ -56,6 +56,7 @@ class AddpostView extends GetView<AddpostController> {
               ),
               sizedheight(size.height * 0.03),
               TextFormField(
+                keyboardType: TextInputType.number,
                 controller: addPostController.budgetController,
                 decoration: const InputDecoration(
                   hintText: "\$ Budget ",
@@ -65,6 +66,7 @@ class AddpostView extends GetView<AddpostController> {
               sizedheight(size.height * 0.03),
               TextFormField(
                 controller: addPostController.deadlineController,
+                keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
                   hintText: 'Number of days to finish',
                   border: OutlineInputBorder(),

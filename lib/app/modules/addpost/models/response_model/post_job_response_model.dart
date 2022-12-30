@@ -1,5 +1,5 @@
-class PostJob {
-  PostJob({
+class PostJobResModel {
+  PostJobResModel({
     this.job,
     this.user,
   });
@@ -7,7 +7,8 @@ class PostJob {
   Job? job;
   User? user;
 
-  factory PostJob.fromJson(Map<String, dynamic> json) => PostJob(
+  factory PostJobResModel.fromJson(Map<String, dynamic> json) =>
+      PostJobResModel(
         job: Job.fromJson(json["job"]),
         user: User.fromJson(json["user"]),
       );
