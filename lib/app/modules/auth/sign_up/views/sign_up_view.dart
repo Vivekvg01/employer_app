@@ -110,7 +110,7 @@ class SignUpView extends GetView<SignUpController> {
                                 fontSize: 15,
                               ),
                               recognizer: TapGestureRecognizer()
-                                ..onTap = () => Get.to(LoginView()),
+                                ..onTap = () => Get.back(),
                             ),
                           ],
                         ),

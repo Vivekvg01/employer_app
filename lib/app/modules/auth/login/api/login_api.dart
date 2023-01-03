@@ -53,8 +53,7 @@ class LoginApi {
           ),
         );
       } else {
-        print(statusCode);
-        log(response.body.toString());
+        log(response.body.toString()); 
       }
     } catch (e) {
       log(e.toString());

@@ -106,7 +106,7 @@ class LoginView extends GetView {
                                 fontSize: 15,
                               ),
                               recognizer: TapGestureRecognizer()
-                                ..onTap = () => Get.to(SignUpView()),
+                                ..onTap = () => Get.to(() => SignUpView()),
                             ),
                           ],
                         ),
