@@ -10,14 +10,14 @@ class SplashView extends GetView<SplashController> {
   Widget build(BuildContext context) {
     controller.onInit();
     return Scaffold(
-      backgroundColor: primaryColor,
+      backgroundColor: AppColors.primaryColor,
       body: Center(
         child: Text(
           'GET WORKER',
           style: TextStyle(
             fontSize: 30,
             fontWeight: FontWeight.bold,
-            color: kWhiteColor,
+            color: AppColors.kWhiteColor,
           ),
         ),
       ),

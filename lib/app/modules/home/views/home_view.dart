@@ -1,3 +1,4 @@
+import 'package:employer_app/app/modules/addpost/views/addpost_view.dart';
 import 'package:employer_app/app/modules/all_chats/views/all_chats_view.dart';
 import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:employer_app/app/utils/app_sizes.dart';
@@ -18,18 +19,21 @@ class HomeView extends GetView {
         title: Text(
           'GET WORKER',
           style: TextStyle(
-            color: primaryColor,
+            color: AppColors.primaryColor,
           ),
         ),
-        backgroundColor: kdarkGreen,
+        backgroundColor: AppColors.kdarkGreen,
         actions: [
           IconButton(
-            onPressed: () {},
+            tooltip: "Add post",
+            onPressed: () {
+              Get.to(() => AddpostView());
+            },
             icon: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(
-                  color: kWhiteColor,
+                  color: AppColors.kWhiteColor,
                 ),
               ),
               child: const Icon(Icons.add),
@@ -40,6 +44,12 @@ class HomeView extends GetView {
               Get.to(const AllChatsView());
             },
             icon: const Icon(Icons.message),
+          ),
+          IconButton(
+            onPressed: () {
+              homeController.logout();
+            },
+            icon: const Icon(Icons.logout),
           ),
         ],
       ),
@@ -52,7 +62,7 @@ class HomeView extends GetView {
                   return Container(
                     height: size.height * 0.15,
                     decoration: BoxDecoration(
-                      color: kLightGrey,
+                      color: AppColors.kLightGrey,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Padding(
@@ -87,7 +97,7 @@ class HomeView extends GetView {
                   );
                 },
                 separatorBuilder: (_, __) => const Divider(),
-                itemCount: 10,
+                itemCount: 3,
               ),
       ),
     );

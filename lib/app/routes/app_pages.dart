@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 
-import '../modules/all_chats/bindings/all_chats_binding.dart';
-import '../modules/all_chats/views/all_chats_view.dart';
 import '../modules/addpost/bindings/addpost_binding.dart';
 import '../modules/addpost/views/addpost_view.dart';
+import '../modules/all_chats/bindings/all_chats_binding.dart';
+import '../modules/all_chats/views/all_chats_view.dart';
 import '../modules/auth/forgetpassword/bindings/forgetpassword_binding.dart';
 import '../modules/auth/forgetpassword/views/forgetpassword_view.dart';
 import '../modules/auth/login/bindings/login_binding.dart';
@@ -22,6 +22,8 @@ import '../modules/findTalent/bindings/find_talent_binding.dart';
 import '../modules/findTalent/views/find_talent_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/profile/bindings/profile_binding.dart';
+import '../modules/profile/views/profile_view.dart';
 import '../modules/proposals/bindings/proposals_binding.dart';
 import '../modules/proposals/views/proposals_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
@@ -99,6 +101,11 @@ class AppPages {
       name: _Paths.ALL_CHATS,
       page: () => const AllChatsView(),
       binding: AllChatsBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFILE,
+      page: () => const ProfileView(),
+      binding: ProfileBinding(),
     ),
   ];
 }

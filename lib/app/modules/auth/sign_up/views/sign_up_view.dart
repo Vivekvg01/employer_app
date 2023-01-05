@@ -39,7 +39,7 @@ class SignUpView extends GetView<SignUpController> {
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
-                        color: primaryColor,
+                        color: AppColors.primaryColor,
                       ),
                     ),
                     sizedheight(size.height * 0.05),

@@ -54,7 +54,7 @@ class PostJobApi {
         log(postJobReqModel.job!.description.toString());
         GetSnackBar(
           message: "Something went wrong!",
-          backgroundColor: kredColor,
+          backgroundColor: AppColors.kredColor,
           duration: const Duration(seconds: 3),
           snackStyle: SnackStyle.FLOATING,
         );
@@ -63,7 +63,7 @@ class PostJobApi {
         log(response.body);
         GetSnackBar(
           message: "Post added successfully",
-          backgroundColor: primaryColor,
+          backgroundColor: AppColors.primaryColor,
           duration: const Duration(seconds: 3),
           snackStyle: SnackStyle.FLOATING,
         );

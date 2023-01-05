@@ -43,7 +43,7 @@ class SignUpApi {
         Get.showSnackbar(
           GetSnackBar(
             message: "Email already in use",
-            backgroundColor: kredColor,
+            backgroundColor: AppColors.kredColor,
             duration: const Duration(seconds: 3),
             snackStyle: SnackStyle.FLOATING,
           ),

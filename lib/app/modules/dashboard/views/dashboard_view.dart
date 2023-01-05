@@ -1,10 +1,10 @@
 import 'package:employer_app/app/modules/contracts/views/contracts_view.dart';
 import 'package:employer_app/app/modules/findTalent/views/find_talent_view.dart';
+import 'package:employer_app/app/modules/profile/views/profile_view.dart';
 import 'package:employer_app/app/modules/proposals/views/proposals_view.dart';
 import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../addpost/views/addpost_view.dart';
 import '../../home/views/home_view.dart';
 import '../controllers/dashboard_controller.dart';
 
@@ -20,16 +20,16 @@ class DashboardView extends GetView<DashboardController> {
               index: controller.tabIndex,
               children: [
                 HomeView(),
-                 FindTalentView(),
-                 AddpostView(),
-                const ProposalsView(),
-                const ContractsView(),
+                FindTalentView(),
+                ProposalsView(),
+                ContractsView(),
+                ProfileView(),
               ],
             ),
           ),
           bottomNavigationBar: BottomNavigationBar(
             unselectedItemColor: Colors.black,
-            selectedItemColor: primaryColor,
+            selectedItemColor: AppColors.primaryColor,
             onTap: controller.changeTabIndex,
             currentIndex: controller.tabIndex,
             showSelectedLabels: true,
@@ -49,10 +49,6 @@ class DashboardView extends GetView<DashboardController> {
                 label: 'FIND TALENT',
               ),
               bottomNavigationBarItem(
-                label: '',
-                icon: Icons.add,
-              ),
-              bottomNavigationBarItem(
                 icon: Icons.file_copy_outlined,
                 label: 'PROPOSAL',
               ),
@@ -60,22 +56,12 @@ class DashboardView extends GetView<DashboardController> {
                 icon: Icons.library_books_outlined,
                 label: 'Contracts',
               ),
+              bottomNavigationBarItem(
+                icon: Icons.person,
+                label: 'Profile',
+              ),
             ],
           ),
-          floatingActionButton: Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              padding: const EdgeInsets.only(bottom: 6.0),
-              child: FloatingActionButton(
-                onPressed: () {
-                  Get.to(AddpostView());
-                },
-                child: const Icon(Icons.add),
-              ),
-            ),
-          ),
-          floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerDocked,
         );
       },
     );

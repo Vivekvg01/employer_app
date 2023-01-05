@@ -82,7 +82,7 @@ class ResetpasswordView extends GetView {
             child: Text(
               'Sign Up',
               style: TextStyle(
-                color: klightblueColor,
+                color: AppColors.klightblueColor,
               ),
             ),
           ),

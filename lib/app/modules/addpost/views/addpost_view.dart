@@ -16,11 +16,11 @@ class AddpostView extends GetView<AddpostController> {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
-          color: kBlackColor,
+          color: AppColors.kBlackColor,
         ),
         title: Text(
           'Add Post',
-          style: TextStyle(color: kBlackColor),
+          style: TextStyle(color: AppColors.kBlackColor),
         ),
         elevation: 0.0,
         backgroundColor: Colors.transparent,
@@ -77,7 +77,7 @@ class AddpostView extends GetView<AddpostController> {
                 () => Container(
                   width: size.width * 0.5,
                   decoration: BoxDecoration(
-                    color: kLightGrey,
+                    color: AppColors.kLightGrey,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Center(
