@@ -12,7 +12,6 @@ class AddpostView extends GetView<AddpostController> {
 
   @override
   Widget build(BuildContext context) {
-    final selectedValue = 'Option 1'.obs;
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(

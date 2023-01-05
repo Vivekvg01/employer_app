@@ -65,22 +65,22 @@ class LoginView extends GetView {
                         },
                       ),
                     ),
-                    sizedheight(size.height * 0.01),
+                    sizedheight(size.height * 0.02),
                     Align(
                       alignment: Alignment.topRight,
-                      child: TextButton(
-                        onPressed: () {
-                          Get.to(ForgetpasswordView());
-                        },
-                        child: const Text(
-                          'Forget passoword?',
-                          style: TextStyle(
+                      child: RichText(
+                        text: TextSpan(
+                          text: "Forget Password?",
+                          style: const TextStyle(
                             color: Color.fromARGB(255, 44, 33, 243),
+                            fontSize: 15,
                           ),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () => Get.to(() => ForgetpasswordView()),
                         ),
                       ),
                     ),
-                    sizedheight(size.height * 0.01),
+                    sizedheight(size.height * 0.02),
                     SizedBox(
                       width: double.infinity,
                       height: size.height * 0.06,

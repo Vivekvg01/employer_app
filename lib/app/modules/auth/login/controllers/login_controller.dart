@@ -11,7 +11,7 @@ class LoginController extends GetxController {
   final isLoggedIn = false.obs;
 
   String? tokenId;
-  String? userId;
+  String? employerId;
 
   RxBool passwordVisibility = true.obs;
 
@@ -28,10 +28,9 @@ class LoginController extends GetxController {
         .postData(emailController.text, passwordController.text);
     if (response != null) {
       tokenId = response.token;
-      userId = response.id;
+      employerId = response.id;
+      print(employerId);
     }
-    print(userId);
-    print(tokenId);
     tokenSaving();
   }
 
@@ -42,6 +41,7 @@ class LoginController extends GetxController {
   Future<void> tokenSaving() async {
     const storage = FlutterSecureStorage();
     await storage.write(key: 'token', value: tokenId);
+    await storage.write(key: 'employerId', value: employerId);
     setIsLoggedIn(true);
   }
 }

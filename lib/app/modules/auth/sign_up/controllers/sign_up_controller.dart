@@ -30,6 +30,5 @@ class SignUpController extends GetxController {
     if (response != null) {
       employerId = response.id;
     }
-    print(employerId);
   }
 }

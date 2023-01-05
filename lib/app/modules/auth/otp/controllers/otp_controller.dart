@@ -15,6 +15,7 @@ class OtpController extends GetxController {
   late SignUpController signUpController;
 
   String? tokenId;
+  String? employerId;
 
   @override
   void onInit() {
@@ -41,6 +42,7 @@ class OtpController extends GetxController {
   Future<void> tokenSaving() async {
     const storage = FlutterSecureStorage();
     await storage.write(key: 'token', value: tokenId);
+    await storage.write(key: 'employerId', value: signUpController.employerId);
     loginController.setIsLoggedIn(true);
   }
 }

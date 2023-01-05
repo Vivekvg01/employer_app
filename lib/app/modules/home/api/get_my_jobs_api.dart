@@ -1,15 +1,19 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:employer_app/app/modules/home/models/get_myjobs_model.dart';
+import 'package:employer_app/app/utils/api_endpoints.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 
 class GetMyJobsApi {
-   void getMyjobs() async {
-    final url =
-        Uri.parse('http://10.0.2.2:3001/api/mypost/639809f2a527d75011eb2c03');
+  Future<MyJobs?> getMyjobs() async {
     const storage = FlutterSecureStorage();
 
+    final employerId = await storage.read(key: 'employerId');
     final token = await storage.read(key: 'token');
+
+    final url = Uri.parse('${ApiEndPoints().kBaseUrl}/mypost/$employerId');
+
     var headers = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -20,10 +24,11 @@ class GetMyJobsApi {
         url,
         headers: headers,
       );
-      var respData = jsonDecode(response.body);
-      log(respData.toString());
+      final json = jsonDecode(response.body);
+      MyJobs myJobsResp = MyJobs.fromJson(json);
     } catch (e) {
       log(e.toString());
     }
+    return null;
   }
 }

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:employer_app/app/modules/addpost/models/request_model/pos_job_req_model.dart';
 import 'package:employer_app/app/modules/addpost/models/response_model/post_job_response_model.dart';
+import 'package:employer_app/app/utils/api_endpoints.dart';
 import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
@@ -30,6 +31,7 @@ class PostJobApi {
 
       const storage = FlutterSecureStorage();
       final token = await storage.read(key: 'token');
+      final employerId = await storage.read(key: 'employerId');
 
       var headers = {
         'Content-Type': 'application/json',
@@ -37,8 +39,7 @@ class PostJobApi {
         'Authorization': 'Bearer $token',
       };
 
-      final url = Uri.parse(
-          'http://10.0.2.2:3001/api/postJob/639809f2a527d75011eb2c03');
+      final url = Uri.parse('${ApiEndPoints().kBaseUrl}/postJob/$employerId');
 
       final response = await http.post(
         url,

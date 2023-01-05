@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:employer_app/app/utils/api_endpoints.dart';
 import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -22,7 +23,7 @@ class SignUpApi {
         "password": password,
         "userType": userType
       };
-      final url = Uri.parse('http://10.0.2.2:3001/api/register');
+      final url = Uri.parse('${ApiEndPoints().kBaseUrl}/register');
       http.Response response = await http.post(
         url,
         body: jsonEncode(requestBody),

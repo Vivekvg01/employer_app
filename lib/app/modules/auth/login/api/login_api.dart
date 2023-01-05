@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:employer_app/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:employer_app/app/modules/dashboard/views/dashboard_view.dart';
+import 'package:employer_app/app/utils/api_endpoints.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-
 import '../model/login_model.dart';
 
 class LoginApi {
@@ -20,7 +20,7 @@ class LoginApi {
         "password": password,
       };
 
-      final url = Uri.parse('http://10.0.2.2:3001/api/login');
+      final url = Uri.parse("${ApiEndPoints().kBaseUrl}/login");
       http.Response response = await http.post(
         url,
         body: jsonEncode(requestBody),
@@ -29,7 +29,7 @@ class LoginApi {
       statusCode = response.statusCode;
       if (statusCode == 200) {
         //request success
-        print('Login succesfull');
+
         final json = jsonDecode(response.body);
         Get.showSnackbar(
           const GetSnackBar(
@@ -53,7 +53,7 @@ class LoginApi {
           ),
         );
       } else {
-        log(response.body.toString()); 
+        log(response.body.toString());
       }
     } catch (e) {
       log(e.toString());

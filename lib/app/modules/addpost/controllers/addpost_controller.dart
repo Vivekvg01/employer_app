@@ -18,7 +18,6 @@ class AddpostController extends GetxController {
   String? status;
 
   void addPost() async {
-    print(dropdownCurrentValue.toLowerCase());
     PostJobResModel? response = await PostJobApi().postJob(
       titleController.text,
       descriptionController.text,
