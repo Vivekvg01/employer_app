@@ -18,6 +18,8 @@ import '../modules/contracts/bindings/contracts_binding.dart';
 import '../modules/contracts/views/contracts_view.dart';
 import '../modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
+import '../modules/employerDetails/bindings/employer_details_binding.dart';
+import '../modules/employerDetails/views/employer_details_view.dart';
 import '../modules/findTalent/bindings/find_talent_binding.dart';
 import '../modules/findTalent/views/find_talent_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -106,6 +108,11 @@ class AppPages {
       name: _Paths.PROFILE,
       page: () => const ProfileView(),
       binding: ProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.EMPLOYER_DETAILS,
+      page: () => const EmployeeDetails(),
+      binding: EmployerDetailsBinding(),
     ),
   ];
 }

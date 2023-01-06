@@ -15,7 +15,7 @@ class FindTalentView extends GetView<FindTalentController> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.kdarkGreen,
+        backgroundColor: AppColors.kDarkGreen,
         title: const Text('Find talents'),
       ),
       body: ListView(
@@ -29,7 +29,7 @@ class FindTalentView extends GetView<FindTalentController> {
               border: OutlineInputBorder(),
             ),
           ),
-          sizedheight(size.height * 0.05),
+          sizedheight(size.height * 0.02),
           ListView.separated(
             physics: const ClampingScrollPhysics(),
             shrinkWrap: true,

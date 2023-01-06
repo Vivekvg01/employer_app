@@ -22,7 +22,7 @@ class HomeView extends GetView {
             color: AppColors.primaryColor,
           ),
         ),
-        backgroundColor: AppColors.kdarkGreen,
+        backgroundColor: AppColors.kDarkGreen,
         actions: [
           IconButton(
             tooltip: "Add post",

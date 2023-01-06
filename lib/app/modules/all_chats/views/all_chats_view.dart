@@ -11,7 +11,7 @@ class AllChatsView extends GetView<AllChatsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.kdarkGreen,
+        backgroundColor: AppColors.kDarkGreen,
         title: const Text('Messages'),
       ),
       body: ListView.separated(

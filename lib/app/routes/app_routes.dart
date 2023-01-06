@@ -18,6 +18,8 @@ abstract class Routes {
   static const CONTRACTS = _Paths.CONTRACTS;
   static const ALL_CHATS = _Paths.ALL_CHATS;
   static const PROFILE = _Paths.PROFILE;
+  static const EMPLOYEEDETAILS = _Paths.EMPLOYEEDETAILS;
+  static const EMPLOYER_DETAILS = _Paths.EMPLOYER_DETAILS;
 }
 
 abstract class _Paths {
@@ -37,4 +39,6 @@ abstract class _Paths {
   static const CONTRACTS = '/contracts';
   static const ALL_CHATS = '/all-chats';
   static const PROFILE = '/profile';
+  static const EMPLOYEEDETAILS = '/employeedetails';
+  static const EMPLOYER_DETAILS = '/employer-details';
 }

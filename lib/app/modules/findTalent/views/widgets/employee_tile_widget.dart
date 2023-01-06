@@ -1,4 +1,6 @@
+import 'package:employer_app/app/modules/employerDetails/views/employer_details_view.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class EmployeeTileWidget extends StatelessWidget {
   const EmployeeTileWidget({super.key});
@@ -23,7 +25,7 @@ class EmployeeTileWidget extends StatelessWidget {
               radius: 30,
             ),
             title: Text(
-              'I am a web developer',
+              'I am an app developer',
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
               style: TextStyle(
@@ -40,6 +42,9 @@ class EmployeeTileWidget extends StatelessWidget {
               radius: 20,
               child: Icon(Icons.bookmark_outline, size: 20),
             ),
+            onTap: () {
+              Get.to(() => const EmployeeDetails());
+            },
           ),
         ],
       ),
