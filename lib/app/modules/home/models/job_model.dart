@@ -42,5 +42,3 @@ class JobModel {
         v: json["__v"] ?? "",
       );
 }
-
-

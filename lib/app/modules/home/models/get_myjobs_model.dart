@@ -7,9 +7,12 @@ class MyJobs {
 
   List<JobModel>? jobModel;
 
-  factory MyJobs.fromJson(List<dynamic> parsedJson) {
-    List<JobModel> joblist = <JobModel>[];
-    joblist = parsedJson.map((i) => JobModel.fromJson(i)).toList();
-    return MyJobs(joblist);
+  MyJobs.fromJson(Map<String, dynamic> parsedJson) {
+    if (parsedJson['result'] != null) {
+      jobModel = <JobModel>[];
+      parsedJson['result'].forEach((val) {
+        jobModel!.add(JobModel.fromJson(val));
+      });
+    }
   }
 }

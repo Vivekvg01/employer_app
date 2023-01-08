@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 part of 'app_pages.dart';
 // DO NOT EDIT. This is code generated via package:get_cli/get_cli.dart
 
@@ -10,7 +12,6 @@ abstract class Routes {
   static const OTP = _Paths.OTP;
   static const FORGETPASSWORD = _Paths.FORGETPASSWORD;
   static const RESETPASSWORD = _Paths.RESETPASSWORD;
-  static const AUTH_TEXT_FEILD = _Paths.AUTH_TEXT_FEILD;
   static const DASHBOARD = _Paths.DASHBOARD;
   static const FIND_TALENT = _Paths.FIND_TALENT;
   static const ADDPOST = _Paths.ADDPOST;
@@ -20,6 +21,7 @@ abstract class Routes {
   static const PROFILE = _Paths.PROFILE;
   static const EMPLOYEEDETAILS = _Paths.EMPLOYEEDETAILS;
   static const EMPLOYER_DETAILS = _Paths.EMPLOYER_DETAILS;
+  static const JOB_DETAILS = _Paths.JOB_DETAILS;
 }
 
 abstract class _Paths {
@@ -31,7 +33,7 @@ abstract class _Paths {
   static const OTP = '/otp';
   static const FORGETPASSWORD = '/forgetpassword';
   static const RESETPASSWORD = '/resetpassword';
-  static const AUTH_TEXT_FEILD = '/auth-text-feild';
+
   static const DASHBOARD = '/dashboard';
   static const FIND_TALENT = '/find-talent';
   static const ADDPOST = '/addpost';
@@ -41,4 +43,5 @@ abstract class _Paths {
   static const PROFILE = '/profile';
   static const EMPLOYEEDETAILS = '/employeedetails';
   static const EMPLOYER_DETAILS = '/employer-details';
+  static const JOB_DETAILS = '/job-details';
 }

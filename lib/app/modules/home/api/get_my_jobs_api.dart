@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:employer_app/app/modules/home/models/get_myjobs_model.dart';
+import 'package:employer_app/app/modules/home/models/job_model.dart';
 import 'package:employer_app/app/utils/api_endpoints.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
@@ -24,8 +25,9 @@ class GetMyJobsApi {
         url,
         headers: headers,
       );
-      final json = jsonDecode(response.body);
-      MyJobs myJobsResp = MyJobs.fromJson(json);
+      List<dynamic> res = json.decode(response.body);
+      List<JobModel> list = res.map((e) => JobModel.fromJson(e)).toList();
+      return MyJobs(list);
     } catch (e) {
       log(e.toString());
     }

@@ -23,9 +23,7 @@ class ProposalsView extends GetView<ProposalsController> {
         ),
       ),
       body: ListView(
-        children: [
-          Container(),
-        ],
+        children: [],
       ),
     );
   }
