@@ -25,9 +25,11 @@ class GetMyJobsApi {
         url,
         headers: headers,
       );
-      List<dynamic> res = json.decode(response.body);
-      List<JobModel> list = res.map((e) => JobModel.fromJson(e)).toList();
-      return MyJobs(list);
+      if (response.statusCode == 200) {
+        List<dynamic> res = json.decode(response.body);
+        List<JobModel> list = res.map((e) => JobModel.fromJson(e)).toList();
+        return MyJobs(list);
+      }
     } catch (e) {
       log(e.toString());
     }

@@ -1,11 +1,6 @@
-import 'dart:convert';
-
-import 'package:employer_app/app/modules/auth/login/controllers/login_controller.dart';
-import 'package:employer_app/app/modules/auth/login/views/login_view.dart';
 import 'package:employer_app/app/modules/home/api/get_my_jobs_api.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:employer_app/app/modules/home/models/job_model.dart';
 import 'package:get/get.dart';
-
 
 class HomeController extends GetxController {
   @override
@@ -14,26 +9,28 @@ class HomeController extends GetxController {
     super.onInit();
   }
 
-  final loginController = Get.put(LoginController());
-
-  Future<void> logout() async {
-    const storage = FlutterSecureStorage();
-    await storage.delete(key: 'token');
-    loginController.setIsLoggedIn(false);
-    Get.offAll(() => LoginView());
-  }
+//   final _loginController = Get.put(LoginController());
+//   logout funcion clears the token
+//   Future<void> logout() async {
+//     const storage = FlutterSecureStorage();
+//     await storage.delete(key: 'token');
+//     _loginController.setIsLoggedIn(false);
+//     Get.offAll(() => LoginView());
+//   }
 
   RxBool isLoading = false.obs;
 
-  List<Map> myJobsList = [];
+  List<JobModel> myJobsList = [];
 
+  //Api call on initilize page
   void jobDatas() async {
-    Future.delayed(const Duration(seconds: 1));
+    Future.delayed(const Duration(seconds: 3));
     var response = await GetMyJobsApi().getMyjobs();
     if (response != null) {
-      for (var element in response.jobModel!) {
-        print(element.description);
+      if (response.jobModel != null) {
+        myJobsList = response.jobModel!;
       }
+      isLoading = false.obs;
     }
   }
 }

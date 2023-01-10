@@ -12,6 +12,7 @@ class FindTalentView extends GetView<FindTalentController> {
 
   @override
   Widget build(BuildContext context) {
+    findTalendController.onInit();
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -34,9 +35,18 @@ class FindTalentView extends GetView<FindTalentController> {
             physics: const ClampingScrollPhysics(),
             shrinkWrap: true,
             itemBuilder: (ctx, index) {
-              return EmployeeTileWidget();
+              return EmployeeTileWidget(
+                employeeTitle: findTalendController
+                    .employList![index]!.userTitle
+                    .toString(),
+                totalEarned: findTalendController
+                    .employList![index]!.totalEarned
+                    .toString(),
+                imageUrl:
+                    findTalendController.employList![index]!.image.toString(),
+              );
             },
-            itemCount: 10,
+            itemCount: findTalendController.employList?.length ?? 0,
             separatorBuilder: (_, __) => sizedheight(size.height * 0.02),
           ),
         ],

@@ -1,16 +1,25 @@
-import 'package:employer_app/app/modules/auth/login/controllers/login_controller.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:employer_app/app/modules/findTalent/api/get_all_employee_api.dart';
+import 'package:employer_app/app/modules/findTalent/models/all_employees/all_employees_model.dart';
 import 'package:get/get.dart';
 
-import '../../auth/login/views/login_view.dart';
+import '../models/all_employees/employee_model.dart';
 
 class FindTalentController extends GetxController {
-  final loginController = Get.put(LoginController());
+  @override
+  void onInit() {
+    getEmployeeDatas();
+    super.onInit();
+  }
 
-  Future<void> logout() async {
-    final storage = FlutterSecureStorage();
-    await storage.delete(key: 'token');
-    loginController.setIsLoggedIn(false);
-    Get.offAll(() => LoginView());
+  List<AllEmplyee?>? employList = [];
+
+  void getEmployeeDatas() async {
+    GetAllEmployee? response = await GetAlllEmployeeApi().getAllEmpolyees();
+
+    if (response != null) {
+      if (response.allEmplyees != null) {
+        employList = response.allEmplyees;
+      }
+    }
   }
 }

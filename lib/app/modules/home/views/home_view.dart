@@ -1,7 +1,6 @@
 import 'package:employer_app/app/modules/addpost/views/addpost_view.dart';
 import 'package:employer_app/app/modules/all_chats/views/all_chats_view.dart';
-import 'package:employer_app/app/modules/home/views/my_job_tile_widget.dart';
-import 'package:employer_app/app/modules/jobDetails/views/job_details_view.dart';
+import 'package:employer_app/app/modules/home/views/widgets/my_job_tile_widget.dart';
 import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:employer_app/app/utils/app_sizes.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +48,7 @@ class HomeView extends GetView {
           ),
           IconButton(
             onPressed: () {
-              homeController.logout();
+              //homeController.logout();
             },
             icon: const Icon(Icons.logout),
           ),
@@ -61,10 +60,19 @@ class HomeView extends GetView {
             : ListView.separated(
                 padding: const EdgeInsets.all(15),
                 itemBuilder: (context, index) {
-                  return const MyJobsTileWidget();
+                  return MyJobsTileWidget(
+                    title: homeController.myJobsList[index].title ?? '',
+                    status: homeController.myJobsList[index].status ?? '',
+                    proposalLength: homeController
+                            .myJobsList[index].proposals?.length
+                            .toString() ??
+                        '0',
+                    description:
+                        homeController.myJobsList[index].description ?? '',
+                  );
                 },
                 separatorBuilder: (_, __) => sizedheight(size.height * 0.02),
-                itemCount: 4,
+                itemCount: homeController.myJobsList.length,
               ),
       ),
     );

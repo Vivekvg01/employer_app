@@ -39,10 +39,12 @@ class SignUpApi {
 
         return respModel;
       } else if (statusCode == 404) {
-        //email already been used
+        //error response
+        final data = jsonDecode(response.body);
+        final errorMessage = data['message'];
         Get.showSnackbar(
           GetSnackBar(
-            message: "Email already in use",
+            message: errorMessage,
             backgroundColor: AppColors.kredColor,
             duration: const Duration(seconds: 3),
             snackStyle: SnackStyle.FLOATING,

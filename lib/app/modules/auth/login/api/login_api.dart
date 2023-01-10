@@ -29,8 +29,7 @@ class LoginApi {
       statusCode = response.statusCode;
       if (statusCode == 200) {
         //request success
-
-        final json = jsonDecode(response.body);
+        final data = jsonDecode(response.body);
         Get.showSnackbar(
           const GetSnackBar(
             message: "Login successfull",
@@ -40,15 +39,16 @@ class LoginApi {
           ),
         );
         Get.offAll(const DashboardView());
-        LoginModel respModel = LoginModel.fromJson(json);
+        LoginModel respModel = LoginModel.fromJson(data);
         return respModel;
       } else if (statusCode == 404) {
-        //error message
+        final data = jsonDecode(response.body);
+        final errorMessage = data['message'];
         Get.showSnackbar(
-          const GetSnackBar(
-            message: "Username and password does not match",
+          GetSnackBar(
+            message: errorMessage,
             backgroundColor: Colors.red,
-            duration: Duration(seconds: 3),
+            duration: const Duration(seconds: 3),
             snackStyle: SnackStyle.FLOATING,
           ),
         );

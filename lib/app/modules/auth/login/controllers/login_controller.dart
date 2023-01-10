@@ -29,7 +29,6 @@ class LoginController extends GetxController {
     if (response != null) {
       tokenId = response.token;
       employerId = response.id;
-      print(employerId);
     }
     tokenSaving();
   }
