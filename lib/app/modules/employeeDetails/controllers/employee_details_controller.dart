@@ -1,9 +1,6 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:get/get.dart';
-
 import 'package:employer_app/app/modules/employeeDetails/models/employee_details_api.dart';
 import 'package:employer_app/app/modules/findTalent/controllers/find_talent_controller.dart';
-
 import '../api/employee_details_api.dart';
 
 class EmployeeDetailsController extends GetxController {
@@ -18,13 +15,23 @@ class EmployeeDetailsController extends GetxController {
     super.onInit();
   }
 
+  RxBool isLoading = false.obs;
+
   String? employeeName;
   String? employerId;
   String? userInfo;
   String? userTitle;
-  List<dynamic>? completedJobs;
+  String? imageUrl;
+  dynamic totalEarnings;
+  RxList<dynamic>? completedJobs = [].obs;
+
+  RxList<Skill?> skillsList = <Skill?>[].obs;
+  RxList<Education?> educationList = <Education?>[].obs;
+  RxList<Language?> languageList = <Language?>[].obs;
+  RxList<Portfolio?>? portFolios = <Portfolio?>[].obs;
 
   void getEmployeeDetails() async {
+    isLoading(true);
     GetEmployeeDetails? response =
         await EmployeeDetailsApi().getAllEmpolyee(empoloyeeId);
     if (response != null) {
@@ -33,6 +40,7 @@ class EmployeeDetailsController extends GetxController {
           employeeName = response.owner!.name!;
         }
       }
+
       if (response.userInfo != null) {
         userInfo = response.userInfo;
       }
@@ -40,8 +48,27 @@ class EmployeeDetailsController extends GetxController {
         userTitle = response.userTitle;
       }
       if (response.completedJobs != null) {
-        completedJobs = response.completedJobs;
+        completedJobs?.value = response.completedJobs!;
+      }
+      if (response.image != null) {
+        imageUrl = response.image;
+      }
+      if (response.totalEarned != null) {
+        totalEarnings = response.totalEarned;
+      }
+      if (response.skills != null) {
+        skillsList.value = response.skills!;
+      }
+      if (response.educations != null) {
+        educationList.value = response.educations ?? [];
+      }
+      if (response.languages != null) {
+        languageList.value = response.languages ?? [];
+      }
+      if (response.portfolios != null) {
+        portFolios?.value = response.portfolios ?? [];
       }
     }
+    isLoading(false);
   }
 }
