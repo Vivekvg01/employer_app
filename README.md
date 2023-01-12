@@ -65,7 +65,7 @@ Login Screen                    |   Job Screen             |  Job Detail Screen
 
 [![License](https://img.shields.io/:License-MIT-blue.svg?style=flat-square)](http://badges.mit-license.org)
 - MIT License
-- Copyright 2022 © [Vivek V.G](https://github.com/aswinsubhash)
+- Copyright 2022 © [Vivek V.G]('https://github.com/Vivekvg01)
 
 
 
