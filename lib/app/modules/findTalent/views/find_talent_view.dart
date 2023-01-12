@@ -1,6 +1,7 @@
 import 'package:employer_app/app/modules/findTalent/views/widgets/employee_tile_widget.dart';
 import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:employer_app/app/utils/app_sizes.dart';
+import 'package:employer_app/app/utils/const_values.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/find_talent_controller.dart';
@@ -42,8 +43,9 @@ class FindTalentView extends GetView<FindTalentController> {
                 totalEarned: findTalendController
                     .employList![index]!.totalEarned
                     .toString(),
-                imageUrl:
-                    findTalendController.employList![index]!.image.toString(),
+                imageUrl: findTalendController.employList?[index]?.image ??
+                    defaultProfileImgae,
+                emoployerId: findTalendController.employList![index]?.owner?.id ?? '',
               );
             },
             itemCount: findTalendController.employList?.length ?? 0,

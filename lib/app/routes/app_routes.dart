@@ -20,8 +20,8 @@ abstract class Routes {
   static const ALL_CHATS = _Paths.ALL_CHATS;
   static const PROFILE = _Paths.PROFILE;
   static const EMPLOYEEDETAILS = _Paths.EMPLOYEEDETAILS;
-  static const EMPLOYER_DETAILS = _Paths.EMPLOYER_DETAILS;
   static const JOB_DETAILS = _Paths.JOB_DETAILS;
+  static const EMPLOYEE_DETAILS = _Paths.EMPLOYEE_DETAILS;
 }
 
 abstract class _Paths {
@@ -33,7 +33,6 @@ abstract class _Paths {
   static const OTP = '/otp';
   static const FORGETPASSWORD = '/forgetpassword';
   static const RESETPASSWORD = '/resetpassword';
-
   static const DASHBOARD = '/dashboard';
   static const FIND_TALENT = '/find-talent';
   static const ADDPOST = '/addpost';
@@ -42,6 +41,6 @@ abstract class _Paths {
   static const ALL_CHATS = '/all-chats';
   static const PROFILE = '/profile';
   static const EMPLOYEEDETAILS = '/employeedetails';
-  static const EMPLOYER_DETAILS = '/employer-details';
   static const JOB_DETAILS = '/job-details';
+  static const EMPLOYEE_DETAILS = '/employee-details';
 }

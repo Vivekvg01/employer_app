@@ -1,14 +1,20 @@
 import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:employer_app/app/utils/app_sizes.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../../../utils/const_values.dart';
-import '../controllers/employer_details_controller.dart';
 
-class EmployeeDetails extends GetView<EmployerDetailsController> {
-  const EmployeeDetails({Key? key}) : super(key: key);
+import 'package:get/get.dart';
+
+import '../../../utils/const_values.dart';
+import '../controllers/employee_details_controller.dart';
+
+class EmployeeDetailsView extends GetView<EmployeeDetailsController> {
+  EmployeeDetailsView({Key? key}) : super(key: key);
+
+  final employeeDetailsController = Get.put(EmployeeDetailsController());
+
   @override
   Widget build(BuildContext context) {
+    employeeDetailsController.onInit();
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(

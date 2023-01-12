@@ -65,7 +65,7 @@ class MyJobsTileWidget extends StatelessWidget {
               sizedheight(10),
               const Text(
                 'budget: 20',
-                style:  TextStyle(
+                style: TextStyle(
                   fontSize: 16,
                 ),
               ),

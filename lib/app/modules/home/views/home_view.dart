@@ -14,67 +14,73 @@ class HomeView extends GetView {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title: Text(
-          'GET WORKER',
-          style: TextStyle(
-            color: AppColors.primaryColor,
-          ),
-        ),
-        backgroundColor: AppColors.kDarkGreen,
-        actions: [
-          IconButton(
-            tooltip: "Add post",
-            onPressed: () {
-              Get.to(() => AddpostView());
-            },
-            icon: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(
-                  color: AppColors.kWhiteColor,
+    return GetX<HomeController>(
+        init: homeController..onInit(),
+        builder: (context) {
+          return Scaffold(
+            appBar: AppBar(
+              elevation: 0,
+              title: Text(
+                'GET WORKER',
+                style: TextStyle(
+                  color: AppColors.primaryColor,
                 ),
               ),
-              child: const Icon(Icons.add),
+              backgroundColor: AppColors.kDarkGreen,
+              actions: [
+                IconButton(
+                  tooltip: "Add post",
+                  onPressed: () {
+                    Get.to(() => AddpostView());
+                  },
+                  icon: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+                        color: AppColors.kWhiteColor,
+                      ),
+                    ),
+                    child: const Icon(Icons.add),
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    Get.to(const AllChatsView());
+                  },
+                  icon: const Icon(Icons.message),
+                ),
+                IconButton(
+                  onPressed: () {
+                    homeController.logout();
+                  },
+                  icon: const Icon(Icons.logout),
+                ),
+              ],
             ),
-          ),
-          IconButton(
-            onPressed: () {
-              Get.to(const AllChatsView());
-            },
-            icon: const Icon(Icons.message),
-          ),
-          IconButton(
-            onPressed: () {
-              //homeController.logout();
-            },
-            icon: const Icon(Icons.logout),
-          ),
-        ],
-      ),
-      body: SafeArea(
-        child: homeController.isLoading.value
-            ? const Center(child: CircularProgressIndicator())
-            : ListView.separated(
-                padding: const EdgeInsets.all(15),
-                itemBuilder: (context, index) {
-                  return MyJobsTileWidget(
-                    title: homeController.myJobsList[index].title ?? '',
-                    status: homeController.myJobsList[index].status ?? '',
-                    proposalLength: homeController
-                            .myJobsList[index].proposals?.length
-                            .toString() ??
-                        '0',
-                    description:
-                        homeController.myJobsList[index].description ?? '',
-                  );
-                },
-                separatorBuilder: (_, __) => sizedheight(size.height * 0.02),
-                itemCount: homeController.myJobsList.length,
-              ),
-      ),
-    );
+            body: SafeArea(
+              child: homeController.isLoading.value
+                  ? const Center(child: CircularProgressIndicator())
+                  : ListView.separated(
+                      padding: const EdgeInsets.all(15),
+                      itemBuilder: (context, index) {
+                        return MyJobsTileWidget(
+                          title: homeController.myJobsList[index].title ?? '',
+                          status: homeController.myJobsList[index].status ?? '',
+                          proposalLength: homeController
+                                  .myJobsList[index].proposals?.length
+                                  .toString() ??
+                              '0',
+                          description:
+                              homeController.myJobsList[index].description ??
+                                  '',
+                        );
+                      },
+                      separatorBuilder: (_, __) =>
+                          sizedheight(size.height * 0.02),
+                      itemCount: homeController.myJobsList.length,
+                    ),
+            ),
+          );
+        });
   }
 }

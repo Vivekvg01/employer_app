@@ -2,8 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:employer_app/app/modules/employerDetails/views/employer_details_view.dart';
-
 import '../../controllers/find_talent_controller.dart';
 
 class EmployeeTileWidget extends StatelessWidget {
@@ -12,11 +10,13 @@ class EmployeeTileWidget extends StatelessWidget {
     required this.employeeTitle,
     required this.totalEarned,
     required this.imageUrl,
+    required this.emoployerId,
   }) : super(key: key);
 
   final String employeeTitle;
   final String totalEarned;
   final String imageUrl;
+  final String emoployerId;
 
   final findTalentController = Get.put(FindTalentController());
 
@@ -34,9 +34,7 @@ class EmployeeTileWidget extends StatelessWidget {
         children: [
           ListTile(
             leading: CircleAvatar(
-              backgroundImage: NetworkImage(
-                findTalentController.employList![0]!.image.toString(),
-              ),
+              backgroundImage: NetworkImage(imageUrl),
               radius: 30,
             ),
             title: Text(
@@ -60,7 +58,7 @@ class EmployeeTileWidget extends StatelessWidget {
               child: Icon(Icons.bookmark_outline, size: 20),
             ),
             onTap: () {
-              Get.to(() => const EmployeeDetails());
+              findTalentController.gotoEmployerDetailsPage(emoployerId);
             },
           ),
         ],
