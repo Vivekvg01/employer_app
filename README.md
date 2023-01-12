@@ -47,9 +47,9 @@ Employer can do  the following:
 
 ## Screenshots 
 
-Login Screen                    |   Job Screen             |  Job Detail Screen
+Login Screen                    |   Signup Screen             |  View Proposal Screen
 :-------------------------:|:-------------------------:|:-------------------------:
-![]()|![](assets/screenshots/login.png)|![](assets/screenshots/signup.png)|![](assets/screenshots/find%20talends.png)
+|![](assets/screenshots/login.png)|![](assets/screenshots/signup.png)|![](assets/screenshots/find%20talends.png)
 
 
 ## Packages and Credits
