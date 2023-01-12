@@ -37,15 +37,18 @@ class FindTalentView extends GetView<FindTalentController> {
             shrinkWrap: true,
             itemBuilder: (ctx, index) {
               return EmployeeTileWidget(
+                employeeName: findTalendController
+                        .employList?[index]?.owner?.name
+                        .toString() ??
+                    '',
                 employeeTitle: findTalendController
-                    .employList![index]!.userTitle
-                    .toString(),
-                totalEarned: findTalendController
-                    .employList![index]!.totalEarned
-                    .toString(),
+                        .employList?[index]?.userTitle
+                        .toString() ??
+                    'No title',
                 imageUrl: findTalendController.employList?[index]?.image ??
                     defaultProfileImgae,
-                emoployerId: findTalendController.employList![index]?.owner?.id ?? '',
+                emoployerId:
+                    findTalendController.employList![index]?.owner?.id ?? '',
               );
             },
             itemCount: findTalendController.employList?.length ?? 0,

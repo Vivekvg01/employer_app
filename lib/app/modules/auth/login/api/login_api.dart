@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:employer_app/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:employer_app/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:employer_app/app/utils/api_endpoints.dart';
+import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -47,7 +48,7 @@ class LoginApi {
         Get.showSnackbar(
           GetSnackBar(
             message: errorMessage,
-            backgroundColor: Colors.red,
+            backgroundColor: AppColors.kredColor,
             duration: const Duration(seconds: 3),
             snackStyle: SnackStyle.FLOATING,
           ),

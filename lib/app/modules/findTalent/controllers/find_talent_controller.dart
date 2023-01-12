@@ -11,7 +11,7 @@ class FindTalentController extends GetxController {
     super.onInit();
   }
 
-  late String employeIdVal;
+   String? employeIdVal;
 
   RxList<AllEmplyee?>? employList = <AllEmplyee?>[].obs;
 

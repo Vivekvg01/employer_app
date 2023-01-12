@@ -14,50 +14,50 @@ class HomeView extends GetView {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return GetX<HomeController>(
-        init: homeController..onInit(),
-        builder: (context) {
-          return Scaffold(
-            appBar: AppBar(
-              elevation: 0,
-              title: Text(
-                'GET WORKER',
-                style: TextStyle(
-                  color: AppColors.primaryColor,
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        title: Text(
+          'GET WORKER',
+          style: TextStyle(
+            color: AppColors.primaryColor,
+          ),
+        ),
+        backgroundColor: AppColors.kDarkGreen,
+        actions: [
+          IconButton(
+            tooltip: "Add post",
+            onPressed: () {
+              Get.to(() => AddpostView());
+            },
+            icon: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: AppColors.kWhiteColor,
                 ),
               ),
-              backgroundColor: AppColors.kDarkGreen,
-              actions: [
-                IconButton(
-                  tooltip: "Add post",
-                  onPressed: () {
-                    Get.to(() => AddpostView());
-                  },
-                  icon: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(
-                        color: AppColors.kWhiteColor,
-                      ),
-                    ),
-                    child: const Icon(Icons.add),
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    Get.to(const AllChatsView());
-                  },
-                  icon: const Icon(Icons.message),
-                ),
-                IconButton(
-                  onPressed: () {
-                    homeController.logout();
-                  },
-                  icon: const Icon(Icons.logout),
-                ),
-              ],
+              child: const Icon(Icons.add),
             ),
-            body: SafeArea(
+          ),
+          IconButton(
+            onPressed: () {
+              Get.to(const AllChatsView());
+            },
+            icon: const Icon(Icons.message),
+          ),
+          IconButton(
+            onPressed: () {
+              homeController.logout();
+            },
+            icon: const Icon(Icons.logout),
+          ),
+        ],
+      ),
+      body: GetX<HomeController>(
+          init: homeController..onInit(),
+          builder: (context) {
+            return SafeArea(
               child: homeController.isLoading.value
                   ? const Center(child: CircularProgressIndicator())
                   : ListView.separated(
@@ -79,8 +79,8 @@ class HomeView extends GetView {
                           sizedheight(size.height * 0.02),
                       itemCount: homeController.myJobsList.length,
                     ),
-            ),
-          );
-        });
+            );
+          }),
+    );
   }
 }

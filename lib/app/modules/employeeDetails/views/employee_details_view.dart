@@ -29,21 +29,21 @@ class EmployeeDetailsView extends GetView<EmployeeDetailsController> {
         padding: const EdgeInsets.all(20),
         children: [
           //first section starts
-          const ListTile(
-            leading: CircleAvatar(
+          ListTile(
+            leading: const CircleAvatar(
               radius: 32,
               backgroundImage: NetworkImage(
                 'https://images.pexels.com/photos/762527/pexels-photo-762527.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
               ),
             ),
             title: Text(
-              'Vivek',
-              style: TextStyle(
+              employeeDetailsController.employeeName ?? 'No Name',
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w500,
               ),
             ),
-            subtitle: Text(
+            subtitle: const Text(
               'Since:01-01-2023',
               style: TextStyle(
                 fontSize: 12,
@@ -83,9 +83,12 @@ class EmployeeDetailsView extends GetView<EmployeeDetailsController> {
                     ),
                   ),
                   sizedheight(size.height * 0.01),
-                  const Text(
-                    '2',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  Text(
+                    employeeDetailsController.completedJobs?.length
+                            .toString() ??
+                        '0',
+                    style: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -94,17 +97,56 @@ class EmployeeDetailsView extends GetView<EmployeeDetailsController> {
           sizedheight(size.height * 0.02),
           //second section ends
           kDivider1,
+          //third section starts
           sizedheight(size.height * 0.02),
           const Text(
-            'I am an app developer',
-            style: TextStyle(
+            'Skills',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: List.generate(
+              3,
+              (index) {
+                return Column(
+                  children: const [
+                    //sizedheight(size),
+                    Text('Getx'),
+                  ],
+                );
+              },
+            ),
+          ),
+          const Text(
+            'Language',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: List.generate(
+              3,
+              (index) {
+                return Column(
+                  children: [
+                    sizedheight(size.height * 0.02),
+                    const Text('Getx'),
+                  ],
+                );
+              },
+            ),
+          ),
+          //third section ends
+          sizedheight(size.height * 0.02),
+          Text(
+            employeeDetailsController.userTitle ?? 'No title',
+            style: const TextStyle(
               fontSize: 19,
               fontWeight: FontWeight.w500,
             ),
           ),
           sizedheight(size.height * 0.02),
-          const Text(
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+          Text(
+            employeeDetailsController.userInfo ?? '',
           ),
         ],
       ),

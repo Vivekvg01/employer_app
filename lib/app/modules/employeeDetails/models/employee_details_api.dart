@@ -27,7 +27,7 @@ class GetEmployeeDetails {
 
   String? id;
   Owner? owner;
-  double? totalEarned;
+  dynamic totalEarned;
   List<Language?>? languages;
   List<Education?>? educations;
   List<Skill?>? skills;

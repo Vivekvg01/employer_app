@@ -7,14 +7,14 @@ import '../../controllers/find_talent_controller.dart';
 class EmployeeTileWidget extends StatelessWidget {
   EmployeeTileWidget({
     Key? key,
+    required this.employeeName,
     required this.employeeTitle,
-    required this.totalEarned,
     required this.imageUrl,
     required this.emoployerId,
   }) : super(key: key);
 
+  final String employeeName;
   final String employeeTitle;
-  final String totalEarned;
   final String imageUrl;
   final String emoployerId;
 
@@ -38,7 +38,7 @@ class EmployeeTileWidget extends StatelessWidget {
               radius: 30,
             ),
             title: Text(
-              employeeTitle,
+              employeeName,
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
               style: TextStyle(
@@ -50,7 +50,7 @@ class EmployeeTileWidget extends StatelessWidget {
             subtitle: Padding(
               padding: const EdgeInsets.all(5),
               child: Text(
-                'total earned : $totalEarned',
+                employeeTitle,
               ),
             ),
             trailing: const CircleAvatar(
