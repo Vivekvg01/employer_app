@@ -45,24 +45,27 @@ class JobDetailsView extends GetView<JobDetailsController> {
                     sizedheight(size.height * 0.01),
                     kDivider1,
                     sizedheight(size.height * 0.01),
-                    const Text(
-                      'Budget : \$30',
-                      style: TextStyle(
+                    Text(
+                      'Budget : \$${jobDetailsController.budget}',
+                      style: const TextStyle(
                         fontSize: 16,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                     sizedheight(size.height * 0.02),
-                    const Text(
-                      'Deadline : 10 days',
-                      style: TextStyle(
+                    Text(
+                      'Deadline : ${jobDetailsController.deadline} days',
+                      style: const TextStyle(
                         fontSize: 16,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                     sizedheight(size.height * 0.02),
-                    const Text(
-                      'Difficulty : \$30',
-                      style: TextStyle(
+                    Text(
+                      'Difficulty : ${jobDetailsController.difficultyLevel}',
+                      style: const TextStyle(
                         fontSize: 16,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                     sizedheight(size.height * 0.03),

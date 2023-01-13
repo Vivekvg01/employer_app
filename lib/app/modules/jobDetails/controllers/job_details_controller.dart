@@ -19,6 +19,9 @@ class JobDetailsController extends GetxController {
 
   String? jobTitle;
   String? jobDescription;
+  String? difficultyLevel;
+  int? budget;
+  int? deadline;
 
   void getJobDetails() async {
     isLoading(true);
@@ -30,6 +33,15 @@ class JobDetailsController extends GetxController {
       }
       if (response.description != null) {
         jobDescription = response.description;
+      }
+      if (response.deadline != null) {
+        deadline = response.deadline;
+      }
+      if (response.budget != null) {
+        budget = response.budget;
+      }
+      if (response.level != null) {
+        difficultyLevel = response.level;
       }
     }
     isLoading(false);

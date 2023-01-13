@@ -46,9 +46,8 @@ class GetAllEmployeeApi {
     try {
       http.Response response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
-        final data = json.decode(response.body);
-        GetAllEmployee respModel = GetAllEmployee.fromJson(data);
-        return respModel;
+        final List data = json.decode(response.body);
+        
       }
     } catch (e) {
       log(e.toString());

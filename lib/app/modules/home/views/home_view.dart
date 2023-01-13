@@ -74,6 +74,7 @@ class HomeView extends GetView {
                               homeController.myJobsList[index].description ??
                                   '',
                           jobId: homeController.myJobsList[index].id ?? '',
+                          budget: homeController.myJobsList[index].budget.toString(),
                         );
                       },
                       separatorBuilder: (_, __) =>

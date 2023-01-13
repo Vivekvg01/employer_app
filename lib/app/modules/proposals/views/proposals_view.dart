@@ -10,20 +10,38 @@ class ProposalsView extends GetView<ProposalsController> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        iconTheme: IconThemeData(
-          color: AppColors.kBlackColor,
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: AppColors.kDarkGreen,
+          centerTitle: true,
+          title: Text(
+            'Proposals',
+            style: TextStyle(color: AppColors.kWhiteColor),
+          ),
+          bottom: TabBar(
+            tabs: [
+              Text('All Proposals'),
+              Text('Shortlisted(1)'),
+              Text('Messaged'),
+            ],
+          ),
         ),
-        backgroundColor: AppColors.kDarkGreen,
-        title: Text(
-          'Proposals',
-          style: TextStyle(color: AppColors.kWhiteColor),
+        body: TabBarView(
+          children: [
+            Center(
+              child: Text("All Proposals"),
+            ),
+            Center(
+              child: Text("Shortlisted"),
+            ),
+            Center(
+              child: Text("Messaged"),
+            ),
+          ],
         ),
-      ),
-      body: ListView(
-        children: [],
       ),
     );
   }

@@ -10,7 +10,9 @@ class MyJobsTileWidget extends StatelessWidget {
     required this.title,
     required this.status,
     required this.proposalLength,
-    required this.description, required this.jobId,
+    required this.description,
+    required this.jobId,
+    required this.budget,
   });
 
   final String title;
@@ -18,6 +20,7 @@ class MyJobsTileWidget extends StatelessWidget {
   final String proposalLength;
   final String description;
   final String jobId;
+  final String budget;
 
   final homeController = Get.put(HomeController());
 
@@ -63,9 +66,9 @@ class MyJobsTileWidget extends StatelessWidget {
                 ),
               ),
               sizedheight(10),
-              const Text(
-                'budget: 20',
-                style: TextStyle(
+              Text(
+                'budget: \$$budget',
+                style: const TextStyle(
                   fontSize: 16,
                 ),
               ),
