@@ -1,23 +1,41 @@
+import 'package:employer_app/app/modules/home/controllers/home_controller.dart';
+import 'package:employer_app/app/modules/jobDetails/api/job_details_api.dart';
+import 'package:employer_app/app/modules/jobDetails/model/job_details_model.dart';
+import 'package:employer_app/app/modules/proposals/views/proposals_view.dart';
 import 'package:get/get.dart';
 
 class JobDetailsController extends GetxController {
-  //TODO: Implement JobDetailsController
+  final homeController = Get.put(HomeController());
+  late String jobId;
 
-  final count = 0.obs;
   @override
   void onInit() {
+    jobId = homeController.jobIdVal!;
+    getJobDetails();
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  RxBool isLoading = false.obs;
+
+  String? jobTitle;
+  String? jobDescription;
+
+  void getJobDetails() async {
+    isLoading(true);
+    JobDetailsModel? response = await JobDetailsApi().getJobDetails(jobId);
+
+    if (response != null) {
+      if (response.title != null) {
+        jobTitle = response.title;
+      }
+      if (response.description != null) {
+        jobDescription = response.description;
+      }
+    }
+    isLoading(false);
   }
 
-  @override
-  void onClose() {
-    super.onClose();
+  void gotToViewPropsals() {
+    Get.to(() => const ProposalsView());
   }
-
-  void increment() => count.value++;
 }

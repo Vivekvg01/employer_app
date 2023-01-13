@@ -1,5 +1,4 @@
 import 'package:employer_app/app/modules/home/controllers/home_controller.dart';
-import 'package:employer_app/app/modules/jobDetails/views/job_details_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../utils/app_colors.dart';
@@ -11,13 +10,14 @@ class MyJobsTileWidget extends StatelessWidget {
     required this.title,
     required this.status,
     required this.proposalLength,
-    required this.description,
+    required this.description, required this.jobId,
   });
 
   final String title;
   final String status;
   final String proposalLength;
   final String description;
+  final String jobId;
 
   final homeController = Get.put(HomeController());
 
@@ -25,7 +25,7 @@ class MyJobsTileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return InkWell(
-      onTap: () => Get.to(() => const JobDetailsView()),
+      onTap: () => homeController.getJobDetailsPage(jobId),
       child: Container(
         height: size.height * 0.28,
         decoration: BoxDecoration(

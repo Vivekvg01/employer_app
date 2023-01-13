@@ -13,7 +13,6 @@ class FindTalentView extends GetView<FindTalentController> {
 
   @override
   Widget build(BuildContext context) {
-    findTalendController.onInit();
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(

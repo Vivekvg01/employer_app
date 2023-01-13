@@ -8,21 +8,26 @@ class FindTalentController extends GetxController {
   @override
   void onInit() {
     getEmployeeDatas();
+    //getSearchResult();
     super.onInit();
   }
 
-   String? employeIdVal;
+  String? employeIdVal;
 
   RxList<AllEmplyee?>? employList = <AllEmplyee?>[].obs;
 
   void getEmployeeDatas() async {
-    GetAllEmployee? response = await GetAlllEmployeeApi().getAllEmpolyees();
+    GetAllEmployee? response = await GetAllEmployeeApi().getAllEmpolyees();
 
     if (response != null) {
       if (response.allEmplyees != null) {
         employList?.value = response.allEmplyees!;
       }
     }
+  }
+
+  void getSearchResult() {
+    GetAllEmployeeApi().searchEmployee();
   }
 
   void gotoEmployerDetailsPage(String employeeId) {

@@ -112,7 +112,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.JOB_DETAILS,
-      page: () => const JobDetailsView(),
+      page: () => JobDetailsView(),
       binding: JobDetailsBinding(),
     ),
     GetPage(

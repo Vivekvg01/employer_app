@@ -1,6 +1,7 @@
 import 'package:employer_app/app/modules/auth/login/controllers/login_controller.dart';
 import 'package:employer_app/app/modules/home/api/get_my_jobs_api.dart';
 import 'package:employer_app/app/modules/home/models/job_model.dart';
+import 'package:employer_app/app/modules/jobDetails/views/job_details_view.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 
@@ -23,6 +24,7 @@ class HomeController extends GetxController {
   }
 
   RxBool isLoading = false.obs;
+  String? jobIdVal;
 
   List<JobModel> myJobsList = [];
 
@@ -35,6 +37,13 @@ class HomeController extends GetxController {
         myJobsList = response.jobModel!;
       }
       isLoading(false);
+    }
+  }
+
+  void getJobDetailsPage(String? jobId) async {
+    if (jobId != null) {
+      jobIdVal = jobId;
+      Get.to(() =>  JobDetailsView());
     }
   }
 }
