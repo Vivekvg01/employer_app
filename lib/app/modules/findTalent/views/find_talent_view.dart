@@ -1,4 +1,5 @@
 import 'package:employer_app/app/modules/findTalent/views/widgets/employee_tile_widget.dart';
+import 'package:employer_app/app/modules/findTalent/views/widgets/search_widget.dart';
 import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:employer_app/app/utils/app_sizes.dart';
 import 'package:employer_app/app/utils/const_values.dart';
@@ -18,18 +19,21 @@ class FindTalentView extends GetView<FindTalentController> {
       appBar: AppBar(
         backgroundColor: AppColors.kDarkGreen,
         title: const Text('Find talents'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              showSearch(
+                context: context,
+                delegate: FindTalendsSearch(),
+              );
+            },
+            icon: const Icon(Icons.search),
+          )
+        ],
       ),
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [
-          const TextField(
-            decoration: InputDecoration(
-              contentPadding: EdgeInsets.all(0),
-              prefixIcon: Icon(Icons.search),
-              hintText: 'Search talents based on skills',
-              border: OutlineInputBorder(),
-            ),
-          ),
           sizedheight(size.height * 0.02),
           ListView.separated(
             physics: const ClampingScrollPhysics(),
@@ -48,6 +52,9 @@ class FindTalentView extends GetView<FindTalentController> {
                     defaultProfileImgae,
                 emoployerId:
                     findTalendController.employList![index]?.owner?.id ?? '',
+                onBookMarkTap: () {
+                  findTalendController.onSaveButtonClicked();
+                },
               );
             },
             itemCount: findTalendController.employList?.length ?? 0,

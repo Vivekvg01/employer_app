@@ -173,13 +173,15 @@ class EmployeeDetailsView extends GetView<EmployeeDetailsController> {
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
+                    sizedheight(size.height * 0.01),
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: List.generate(
                         employeeDetailsController.educationList.length,
                         (index) {
                           return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
                                 employeeDetailsController
@@ -215,8 +217,9 @@ class EmployeeDetailsView extends GetView<EmployeeDetailsController> {
                               ),
                               child: Image.network(
                                 employeeDetailsController
-                                    .portFolios?[index]!.image
-                                    .toString() ?? '',
+                                        .portFolios?[index]!.image
+                                        .toString() ??
+                                    '',
                                 fit: BoxFit.cover,
                               ),
                             ),

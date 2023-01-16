@@ -21,18 +21,18 @@ class ProposalsView extends GetView<ProposalsController> {
             'Proposals',
             style: TextStyle(color: AppColors.kWhiteColor),
           ),
-          bottom: TabBar(
+          bottom: const TabBar(
             tabs: [
-              Text('All Proposals'),
+              Text('All proposals'),
               Text('Shortlisted(1)'),
               Text('Messaged'),
             ],
           ),
         ),
-        body: TabBarView(
+        body: const TabBarView(
           children: [
             Center(
-              child: Text("All Proposals"),
+              child: Text("No Poposal found"),
             ),
             Center(
               child: Text("Shortlisted"),

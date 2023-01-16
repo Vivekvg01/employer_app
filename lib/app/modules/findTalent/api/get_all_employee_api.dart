@@ -31,12 +31,12 @@ class GetAllEmployeeApi {
     return null;
   }
 
-  Future<GetAllEmployee?> searchEmployee() async {
+  Future<List<GetAllEmployee>?> searchEmployee(String query) async {
     const storage = FlutterSecureStorage();
     final token = await storage.read(key: 'token');
 
     final url = Uri.parse(
-        'http://10.0.2.2:3001/api/employer/allEmployees?keyword=React&earnings=&language=&jobsDone=&pageNumber=1');
+        '${ApiEndPoints().kBaseUrl}/employer/allEmployees?keyword=$query&earnings=&language=&jobsDone=&pageNumber=1');
 
     var headers = {
       'Content-Type': 'application/json',
@@ -46,11 +46,12 @@ class GetAllEmployeeApi {
     try {
       http.Response response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
-        final List data = json.decode(response.body);
-        
+        log(response.body);
+        final data = json.decode(response.body) as List;
+        return data.map((e) => GetAllEmployee.fromJson(e)).toList();
       }
     } catch (e) {
-      log(e.toString());
+      throw Exception("Failed to Load data");
     }
     return null;
   }

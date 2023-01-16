@@ -1,0 +1,3 @@
+class ProfileApi {
+  getProfileData() async {}
+}

@@ -22,6 +22,7 @@ abstract class Routes {
   static const EMPLOYEEDETAILS = _Paths.EMPLOYEEDETAILS;
   static const JOB_DETAILS = _Paths.JOB_DETAILS;
   static const EMPLOYEE_DETAILS = _Paths.EMPLOYEE_DETAILS;
+  static const RECHARGE = _Paths.RECHARGE;
 }
 
 abstract class _Paths {
@@ -43,4 +44,5 @@ abstract class _Paths {
   static const EMPLOYEEDETAILS = '/employeedetails';
   static const JOB_DETAILS = '/job-details';
   static const EMPLOYEE_DETAILS = '/employee-details';
+  static const RECHARGE = '/recharge';
 }

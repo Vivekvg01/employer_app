@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+
 import '../modules/addpost/bindings/addpost_binding.dart';
 import '../modules/addpost/views/addpost_view.dart';
 import '../modules/all_chats/bindings/all_chats_binding.dart';
@@ -29,6 +30,8 @@ import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
 import '../modules/proposals/bindings/proposals_binding.dart';
 import '../modules/proposals/views/proposals_view.dart';
+import '../modules/recharge/bindings/recharge_binding.dart';
+import '../modules/recharge/views/recharge_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
 
@@ -119,6 +122,11 @@ class AppPages {
       name: _Paths.EMPLOYEE_DETAILS,
       page: () => EmployeeDetailsView(),
       binding: EmployeeDetailsBinding(),
+    ),
+    GetPage(
+      name: _Paths.RECHARGE,
+      page: () => const RechargeView(),
+      binding: RechargeBinding(),
     ),
   ];
 }

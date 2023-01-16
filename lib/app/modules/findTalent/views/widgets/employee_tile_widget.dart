@@ -11,12 +11,14 @@ class EmployeeTileWidget extends StatelessWidget {
     required this.employeeTitle,
     required this.imageUrl,
     required this.emoployerId,
+    required this.onBookMarkTap,
   }) : super(key: key);
 
   final String employeeName;
   final String employeeTitle;
   final String imageUrl;
   final String emoployerId;
+  final VoidCallback onBookMarkTap;
 
   final findTalentController = Get.put(FindTalentController());
 
@@ -53,9 +55,12 @@ class EmployeeTileWidget extends StatelessWidget {
                 employeeTitle,
               ),
             ),
-            trailing: const CircleAvatar(
+            trailing: CircleAvatar(
               radius: 20,
-              child: Icon(Icons.bookmark_outline, size: 20),
+              child: IconButton(
+                onPressed: onBookMarkTap,
+                icon: const Icon(Icons.bookmark_outline, size: 20),
+              ),
             ),
             onTap: () {
               findTalentController.gotoEmployerDetailsPage(emoployerId);

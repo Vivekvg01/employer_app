@@ -1,6 +1,9 @@
+import 'dart:ffi';
+
 import 'package:employer_app/app/modules/employeeDetails/views/employee_details_view.dart';
 import 'package:employer_app/app/modules/findTalent/api/get_all_employee_api.dart';
 import 'package:employer_app/app/modules/findTalent/models/all_employees/all_employees_model.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import '../models/all_employees/employee_model.dart';
 
@@ -8,11 +11,17 @@ class FindTalentController extends GetxController {
   @override
   void onInit() {
     getEmployeeDatas();
-    //getSearchResult();
+    //   getSearchResult();
     super.onInit();
   }
 
+  final TextEditingController searchTextController = TextEditingController();
+
   String? employeIdVal;
+
+  RxBool isSaved = false.obs;
+
+  void onSaveButtonClicked() {}
 
   RxList<AllEmplyee?>? employList = <AllEmplyee?>[].obs;
 
@@ -26,11 +35,7 @@ class FindTalentController extends GetxController {
     }
   }
 
-  void getSearchResult() {
-    GetAllEmployeeApi().searchEmployee();
-  }
-
-  void gotoEmployerDetailsPage(String employeeId) {
+  void gotoEmployerDetailsPage(String? employeeId) {
     if (employeeId != null) {
       employeIdVal = employeeId;
       Get.to(

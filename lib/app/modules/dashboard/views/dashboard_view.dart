@@ -1,7 +1,7 @@
 import 'package:employer_app/app/modules/contracts/views/contracts_view.dart';
 import 'package:employer_app/app/modules/findTalent/views/find_talent_view.dart';
 import 'package:employer_app/app/modules/profile/views/profile_view.dart';
-import 'package:employer_app/app/modules/proposals/views/proposals_view.dart';
+import 'package:employer_app/app/modules/recharge/views/recharge_view.dart';
 import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,7 +21,7 @@ class DashboardView extends GetView<DashboardController> {
               children: [
                 HomeView(),
                 FindTalentView(),
-                ProposalsView(),
+                RechargeView(),
                 ContractsView(),
                 ProfileView(),
               ],
@@ -49,8 +49,8 @@ class DashboardView extends GetView<DashboardController> {
                 label: 'FIND TALENT',
               ),
               bottomNavigationBarItem(
-                icon: Icons.file_copy_outlined,
-                label: 'PROPOSAL',
+                icon: Icons.currency_rupee,
+                label: 'RECHARGE',
               ),
               bottomNavigationBarItem(
                 icon: Icons.library_books_outlined,
