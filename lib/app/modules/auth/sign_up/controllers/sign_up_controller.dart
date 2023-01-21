@@ -1,3 +1,4 @@
+import 'package:employer_app/app/common_widgets/loader_over_screen.dart';
 import 'package:employer_app/app/modules/auth/sign_up/api/signup_api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -21,6 +22,7 @@ class SignUpController extends GetxController {
   String? employerId;
 
   void callSignUpApi() async {
+    ShowLoaderOverScreen.showLoader();
     SignUpModel? response = await SignUpApi().postData(
       nameController.text,
       emailController.text,
@@ -30,5 +32,6 @@ class SignUpController extends GetxController {
     if (response != null) {
       employerId = response.id;
     }
+    ShowLoaderOverScreen.stopLoader();
   }
 }

@@ -1,5 +1,7 @@
+import 'package:employer_app/app/modules/profile/views/widgets/data_count_widgets.dart';
 import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:employer_app/app/utils/app_sizes.dart';
+import 'package:employer_app/app/utils/const_values.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/profile_controller.dart';
@@ -8,6 +10,8 @@ class ProfileView extends GetView<ProfileController> {
   const ProfileView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final profileController = Get.put(ProfileController());
+    profileController.onInit();
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -23,63 +27,55 @@ class ProfileView extends GetView<ProfileController> {
             CircleAvatar(
               radius: 48,
               child: Image.network(
-                'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
-                fit: BoxFit.cover,
+                defaultProfileImgae,
+                fit: BoxFit.contain,
               ),
             ),
             sizedheight(size.height * 0.03),
             Row(
               children: [
-                Container(
-                  height: size.height * 0.1,
-                  width: size.width * 0.4,
-                  color: AppColors.kDarkGreen,
-                  child: Center(
-                    child: Text(
-                      'Total Hires',
-                      style: TextStyle(
-                        color: AppColors.kWhiteColor,
-                      ),
-                    ),
-                  ),
+                DataCountWidget(
+                  title: 'TOTAL HIRES',
+                  count: profileController.totalHires ?? 0,
                 ),
                 sizedWidth(size.width * 0.08),
-                Container(
-                  height: size.height * 0.1,
-                  width: size.width * 0.4,
-                  decoration: BoxDecoration(
-                    color: AppColors.kDarkGreen,
-                  ),
-                  child: Center(
-                    child: Text(
-                      'Total Spends',
-                      style: TextStyle(
-                        color: AppColors.kWhiteColor,
-                      ),
-                    ),
-                  ),
+                DataCountWidget(
+                  title: 'TOTAL SPENDS',
+                  count: profileController.totalSpends ?? 0,
                 ),
               ],
             ),
             sizedheight(size.height * 0.02),
-            const TextField(
+            TextField(
+              enabled: false,
               decoration: InputDecoration(
-                prefixIcon: Icon(Icons.person),
-                hintText: 'Name',
+                prefixIcon: const Icon(
+                  Icons.person,
+                ),
+                labelText: 'Name',
+                suffixIcon: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.edit),
+                ),
               ),
             ),
             sizedheight(size.height * 0.02),
-            const TextField(
+            TextField(
+              enabled: false,
               decoration: InputDecoration(
-                hintText: 'Email',
-                prefixIcon: Icon(Icons.email),
+                prefixIcon: const Icon(Icons.person),
+                labelText: 'Email',
+                suffixIcon: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.edit),
+                ),
               ),
             ),
-            sizedheight(size.height * 0.05),
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text('Update Profile'),
-            ),
+            // sizedheight(size.height * 0.05),
+            // ElevatedButton(
+            //   onPressed: () {},
+            //   child: const Text('Update Profile'),
+            // ),
           ],
         ),
       ),

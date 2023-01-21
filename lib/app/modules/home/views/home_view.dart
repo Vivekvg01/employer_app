@@ -42,7 +42,7 @@ class HomeView extends GetView {
           ),
           IconButton(
             onPressed: () {
-              Get.to(const AllChatsView());
+             homeController.gotToChat();
             },
             icon: const Icon(Icons.message),
           ),
@@ -55,34 +55,35 @@ class HomeView extends GetView {
         ],
       ),
       body: GetX<HomeController>(
-          init: homeController..onInit(),
-          builder: (context) {
-            return SafeArea(
-              child: homeController.isLoading.value
-                  ? const Center(child: CircularProgressIndicator())
-                  : ListView.separated(
-                      padding: const EdgeInsets.all(15),
-                      itemBuilder: (context, index) {
-                        return MyJobsTileWidget(
-                          title: homeController.myJobsList[index].title ?? '',
-                          status: homeController.myJobsList[index].status ?? '',
-                          proposalLength: homeController
-                                  .myJobsList[index].proposals?.length
-                                  .toString() ??
-                              '0',
-                          description:
-                              homeController.myJobsList[index].description ??
-                                  '',
-                          jobId: homeController.myJobsList[index].id ?? '',
-                          budget: homeController.myJobsList[index].budget.toString(),
-                        );
-                      },
-                      separatorBuilder: (_, __) =>
-                          sizedheight(size.height * 0.02),
-                      itemCount: homeController.myJobsList.length,
-                    ),
-            );
-          }),
+        init: homeController..onInit(),
+        builder: (context) {
+          return SafeArea(
+            child: homeController.isLoading.value
+                ? const Center(child: CircularProgressIndicator())
+                : ListView.separated(
+                    padding: const EdgeInsets.all(15),
+                    itemBuilder: (context, index) {
+                      return MyJobsTileWidget(
+                        title: homeController.myJobsList[index].title ?? '',
+                        status: homeController.myJobsList[index].status ?? '',
+                        proposalLength: homeController
+                                .myJobsList[index].proposals?.length
+                                .toString() ??
+                            '0',
+                        description:
+                            homeController.myJobsList[index].description ?? '',
+                        jobId: homeController.myJobsList[index].id ?? '',
+                        budget:
+                            homeController.myJobsList[index].budget.toString(),
+                      );
+                    },
+                    separatorBuilder: (_, __) =>
+                        sizedheight(size.height * 0.02),
+                    itemCount: homeController.myJobsList.length,
+                  ),
+          );
+        },
+      ),
     );
   }
 }

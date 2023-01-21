@@ -158,8 +158,9 @@ class EmployeeDetailsView extends GetView<EmployeeDetailsController> {
                               sizedheight(size.height * 0.01),
                               Text(
                                 employeeDetailsController
-                                    .languageList[index]!.language
-                                    .toString(),
+                                        .languageList[index]?.language
+                                        .toString() ??
+                                    '',
                               ),
                             ],
                           );
@@ -205,28 +206,31 @@ class EmployeeDetailsView extends GetView<EmployeeDetailsController> {
                       childAspectRatio: 3 / 2,
                       crossAxisCount: 2,
                       children: List.generate(
-                        employeeDetailsController.portFolios?.length ?? 0,
+                        employeeDetailsController.portFolios?.length ?? 1,
                         (index) {
                           return UnconstrainedBox(
-                            child: Container(
-                              height: 100,
-                              width: 150,
-                              decoration: BoxDecoration(
-                                color: AppColors.kLightGrey,
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child: Image.network(
-                                employeeDetailsController
-                                        .portFolios?[index]!.image
-                                        .toString() ??
-                                    '',
-                                fit: BoxFit.cover,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: Container(
+                                height: 100,
+                                width: 150,
+                                decoration: BoxDecoration(
+                                  color: AppColors.kLightGrey,
+                                ),
+                                child: Image.network(
+                                  employeeDetailsController
+                                          .portFolios?[index]!.image
+                                          .toString() ??
+                                      '',
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                           );
                         },
                       ),
                     )
+                    //third section ends
                   ],
                 );
         },

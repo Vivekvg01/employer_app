@@ -47,7 +47,7 @@ class AllEmplyee {
   int? reported;
   List<dynamic>? activeContracts;
   List<dynamic>? myProposals;
-  int? pendingWithdraw;
+  num? pendingWithdraw;
   List<dynamic>? savedJobs;
   List<String?>? notification;
   int? v;

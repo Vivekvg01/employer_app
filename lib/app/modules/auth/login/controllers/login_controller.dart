@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
+import '../../../../common_widgets/loader_over_screen.dart';
 import '../api/login_api.dart';
 import '../model/login_model.dart';
 
@@ -24,12 +25,15 @@ class LoginController extends GetxController {
   }
 
   Future<void> callLoginApi() async {
+    ShowLoaderOverScreen.showLoader();
+    await Future.delayed(const Duration(seconds: 2));
     LoginModel? response = await LoginApi()
         .postData(emailController.text, passwordController.text);
     if (response != null) {
       tokenId = response.token;
       employerId = response.id;
     }
+    ShowLoaderOverScreen.stopLoader();
     tokenSaving();
   }
 

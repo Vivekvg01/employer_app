@@ -30,7 +30,7 @@ class MyJobsTileWidget extends StatelessWidget {
     return InkWell(
       onTap: () => homeController.getJobDetailsPage(jobId),
       child: Container(
-        height: size.height * 0.28,
+       // height: size.height * 0.28,
         decoration: BoxDecoration(
           color: AppColors.kLightGrey,
           borderRadius: BorderRadius.circular(10),

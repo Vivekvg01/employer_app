@@ -1,4 +1,4 @@
-import 'my_profile_employer_data_model.dart';
+import 'my_prof_employee_data.dart';
 
 class Owner {
   Owner({
@@ -44,6 +44,8 @@ class Owner {
         updatedAt: DateTime.parse(json["updatedAt"]),
         v: json["__v"],
         employerData: json["employerData"],
-        employeeData: json["employeeData"],
+        employeeData: json["employeeData"] == null
+            ? null
+            : EmployeeData.fromJson(json["employeeData"]),
       );
 }

@@ -22,45 +22,56 @@ class FindTalentView extends GetView<FindTalentController> {
         actions: [
           IconButton(
             onPressed: () {
-              showSearch(
-                context: context,
-                delegate: FindTalendsSearch(),
-              );
+              // showSearch(
+              //   context: context,
+              //   delegate: FindTalendsSearch(),
+              // );
             },
             icon: const Icon(Icons.search),
           )
         ],
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(20),
-        children: [
-          sizedheight(size.height * 0.02),
-          ListView.separated(
-            physics: const ClampingScrollPhysics(),
-            shrinkWrap: true,
-            itemBuilder: (ctx, index) {
-              return EmployeeTileWidget(
-                employeeName: findTalendController
-                        .employList?[index]?.owner?.name
-                        .toString() ??
-                    '',
-                employeeTitle: findTalendController
-                        .employList?[index]?.userTitle
-                        .toString() ??
-                    'No title',
-                imageUrl: findTalendController.employList?[index]?.image ??
-                    defaultProfileImgae,
-                emoployerId:
-                    findTalendController.employList![index]?.owner?.id ?? '',
-                onBookMarkTap: () {
-                  findTalendController.onSaveButtonClicked();
-                },
-              );
-            },
-            itemCount: findTalendController.employList?.length ?? 0,
-            separatorBuilder: (_, __) => sizedheight(size.height * 0.02),
-          ),
-        ],
+      body: Obx(
+        () => findTalendController.isLoading.value
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : ListView(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 20,
+                ),
+                children: [
+                  ListView.separated(
+                    physics: const ClampingScrollPhysics(),
+                    shrinkWrap: true,
+                    itemBuilder: (ctx, index) {
+                      return EmployeeTileWidget(
+                        employeeName: findTalendController
+                                .employList?[index]?.owner?.name
+                                .toString() ??
+                            '',
+                        employeeTitle: findTalendController
+                                .employList?[index]?.userTitle
+                                .toString() ??
+                            'No title',
+                        imageUrl:
+                            findTalendController.employList?[index]?.image ??
+                                defaultProfileImgae,
+                        emoployerId: findTalendController
+                                .employList![index]?.owner?.id ??
+                            '',
+                        onBookMarkTap: () {
+                          findTalendController.onSaveButtonClicked();
+                        },
+                      );
+                    },
+                    itemCount: findTalendController.employList?.length ?? 0,
+                    separatorBuilder: (_, __) =>
+                        sizedheight(size.height * 0.02),
+                  ),
+                ],
+              ),
       ),
     );
   }

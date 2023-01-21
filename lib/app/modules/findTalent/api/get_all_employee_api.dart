@@ -26,8 +26,8 @@ class GetAllEmployeeApi {
         return respModel;
       }
     } catch (e) {
-      log(e.toString());
-    }
+    throw Exception('Failed to load data');
+    } 
     return null;
   }
 
@@ -51,7 +51,7 @@ class GetAllEmployeeApi {
         return data.map((e) => GetAllEmployee.fromJson(e)).toList();
       }
     } catch (e) {
-      throw Exception("Failed to Load data");
+      throw Exception("Failed to Load data"); 
     }
     return null;
   }

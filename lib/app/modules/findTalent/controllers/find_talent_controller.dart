@@ -11,7 +11,7 @@ class FindTalentController extends GetxController {
   @override
   void onInit() {
     getEmployeeDatas();
-    //   getSearchResult();
+    //getSearchResult();
     super.onInit();
   }
 
@@ -20,12 +20,15 @@ class FindTalentController extends GetxController {
   String? employeIdVal;
 
   RxBool isSaved = false.obs;
+  RxBool isLoading = false.obs;
 
   void onSaveButtonClicked() {}
 
   RxList<AllEmplyee?>? employList = <AllEmplyee?>[].obs;
 
   void getEmployeeDatas() async {
+    isLoading(true);
+    await Future.delayed(const Duration(seconds: 3));
     GetAllEmployee? response = await GetAllEmployeeApi().getAllEmpolyees();
 
     if (response != null) {
@@ -33,6 +36,7 @@ class FindTalentController extends GetxController {
         employList?.value = response.allEmplyees!;
       }
     }
+    isLoading(false);
   }
 
   void gotoEmployerDetailsPage(String? employeeId) {

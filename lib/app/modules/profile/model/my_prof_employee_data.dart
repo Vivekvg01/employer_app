@@ -13,7 +13,7 @@ class EmployeeData {
 
   factory EmployeeData.fromJson(Map<String, dynamic> json) => EmployeeData(
         id: json["_id"],
-        totalEarned: json["totalEarned"].toDouble(),
+        totalEarned: json["totalEarned"]?.toDouble(),
         userTitle: json["userTitle"],
         image: json["image"],
       );
