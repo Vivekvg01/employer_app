@@ -16,8 +16,13 @@ class ProfileController extends GetxController {
   String? name;
   String? email;
 
-  TextEditingController? nameController = TextEditingController();
-  TextEditingController? emailController = TextEditingController();
+  Rx<TextEditingController>? nameController = TextEditingController().obs;
+  Rx<TextEditingController>? emailController = TextEditingController().obs;
+
+  void onProfileSaveButtonClicked(String name) async {
+    ProfileApi().editProfileData(name: name);
+    Get.back();
+  }
 
   void callApi() async {
     MyProfileModel? response = await ProfileApi().getProfileData();
@@ -49,7 +54,7 @@ class ProfileController extends GetxController {
   }
 
   void assigningvalues() {
-    nameController?.text = name ?? '';
-    emailController?.text = email ?? '';
+    nameController?.value.text = name ?? '';
+    emailController?.value.text = email ?? '';
   }
 }

@@ -1,6 +1,6 @@
-import 'package:employer_app/app/common_widgets/rect_button.dart';
 import 'package:employer_app/app/modules/profile/views/widgets/data_count_widgets.dart';
 import 'package:employer_app/app/modules/profile/views/widgets/diabled_profile_view.dart';
+import 'package:employer_app/app/modules/profile/views/widgets/edit_name_bottom_sheet.dart';
 import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:employer_app/app/utils/app_sizes.dart';
 import 'package:employer_app/app/utils/const_values.dart';
@@ -49,7 +49,14 @@ class ProfileView extends GetView<ProfileController> {
             ),
             sizedheight(size.height * 0.04),
             GestureDetector(
-              onTap: () {}, 
+              onTap: () {
+                Get.bottomSheet(
+                  EditNameBottomSheet(
+                    textFeildVal:
+                        profileController.nameController?.value.text ?? '',
+                  ),
+                );
+              },
               child: DiasableProfileFeild(
                 textController: profileController.nameController!,
                 icon: Icons.person,
@@ -58,7 +65,7 @@ class ProfileView extends GetView<ProfileController> {
             sizedheight(size.height * 0.03),
             TextField(
               enabled: false,
-              controller: profileController.emailController!,
+              controller: profileController.emailController!.value,
               decoration: InputDecoration(
                 prefixIcon: Icon(
                   Icons.email,
@@ -67,10 +74,6 @@ class ProfileView extends GetView<ProfileController> {
               ),
             ),
             sizedheight(size.height * 0.05),
-            CustomRectButton(
-              buttonLabel: 'Update Profile',
-              onButtonClicked: () {},
-            ),
           ],
         ),
       ),

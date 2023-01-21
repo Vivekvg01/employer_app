@@ -1,18 +1,18 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:employer_app/app/common_widgets/loader_over_screen.dart';
-import 'package:employer_app/app/modules/auth/login/controllers/login_controller.dart';
-import 'package:employer_app/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:employer_app/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:employer_app/app/utils/api_endpoints.dart';
 import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import '../../../dashboard/controllers/dashboard_controller.dart';
 import '../model/login_model.dart';
 
 class LoginApi {
   Future<LoginModel?> postData(String email, String password) async {
+    Get.lazyPut<DashboardController>(() => DashboardController());
     ShowLoaderOverScreen.showLoader();
     dynamic statusCode;
     var headers = {'Content-Type': 'application/json'};
@@ -40,13 +40,14 @@ class LoginApi {
             snackStyle: SnackStyle.FLOATING,
           ),
         );
-        Get.offAll(const DashboardView());
+        Get.offAll(() => const DashboardView());
         LoginModel respModel = LoginModel.fromJson(data);
         ShowLoaderOverScreen.stopLoader();
         return respModel;
       } else if (statusCode == 404) {
         final data = jsonDecode(response.body);
         final errorMessage = data['message'];
+        ShowLoaderOverScreen.stopLoader();
         Get.showSnackbar(
           GetSnackBar(
             message: errorMessage,
@@ -55,7 +56,6 @@ class LoginApi {
             snackStyle: SnackStyle.FLOATING,
           ),
         );
-        ShowLoaderOverScreen.stopLoader();
       }
     } catch (e) {
       log(e.toString());

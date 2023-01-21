@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:employer_app/app/modules/auth/forgetpassword/controllers/forgetpassword_controller.dart';
+import 'package:employer_app/app/utils/api_endpoints.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -33,15 +34,15 @@ void postData(String otp, String email, String password) async {
       "otp": otp,
       "password": password,
     };
-    final url = Uri.parse('http://10.0.2.2:3001/api/forgotPasswordVerify');
+
+    final url = Uri.parse('${ApiEndPoints().kBaseUrl}/forgotPasswordVerify');
     http.Response response = await http.patch(
       url,
       body: jsonEncode(requestBody),
       headers: headers,
     );
-    var respBody = response.body;
-    log(respBody);
-    if (respBody == '"success"') {
+    
+    if (response.body == '"success"') {
       Get.showSnackbar(
         const GetSnackBar(
           message: "Password changed",
@@ -51,7 +52,6 @@ void postData(String otp, String email, String password) async {
         ),
       );
     } else {
-      print('failed');
       Get.showSnackbar(
         const GetSnackBar(
           message: "Wrong Otp",
