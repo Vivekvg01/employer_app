@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:employer_app/app/modules/employeeDetails/views/employee_details_view.dart';
 import 'package:employer_app/app/modules/findTalent/api/get_all_employee_api.dart';
 import 'package:employer_app/app/modules/findTalent/models/all_employees/all_employees_model.dart';
@@ -16,15 +14,18 @@ class FindTalentController extends GetxController {
   }
 
   final TextEditingController searchTextController = TextEditingController();
+  final TextEditingController searchController = TextEditingController();
+  final FocusNode searchFocusNode = FocusNode();
 
   String? employeIdVal;
 
   RxBool isSaved = false.obs;
   RxBool isLoading = false.obs;
+  RxBool isSearching = false.obs;
 
   void onSaveButtonClicked() {}
 
-  RxList<AllEmplyee?>? employList = <AllEmplyee?>[].obs;
+  RxList<AllEmplyee?>? employeeList = <AllEmplyee?>[].obs;
 
   void getEmployeeDatas() async {
     isLoading(true);
@@ -33,7 +34,7 @@ class FindTalentController extends GetxController {
 
     if (response != null) {
       if (response.allEmplyees != null) {
-        employList?.value = response.allEmplyees!;
+        employeeList?.value = response.allEmplyees!;
       }
     }
     isLoading(false);

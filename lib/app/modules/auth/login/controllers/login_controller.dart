@@ -25,7 +25,6 @@ class LoginController extends GetxController {
   }
 
   Future<void> callLoginApi() async {
-    ShowLoaderOverScreen.showLoader();
     await Future.delayed(const Duration(seconds: 2));
     LoginModel? response = await LoginApi()
         .postData(emailController.text, passwordController.text);
@@ -33,7 +32,7 @@ class LoginController extends GetxController {
       tokenId = response.token;
       employerId = response.id;
     }
-    ShowLoaderOverScreen.stopLoader();
+
     tokenSaving();
   }
 

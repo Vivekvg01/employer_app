@@ -1,4 +1,6 @@
+import 'package:employer_app/app/common_widgets/rect_button.dart';
 import 'package:employer_app/app/modules/profile/views/widgets/data_count_widgets.dart';
+import 'package:employer_app/app/modules/profile/views/widgets/diabled_profile_view.dart';
 import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:employer_app/app/utils/app_sizes.dart';
 import 'package:employer_app/app/utils/const_values.dart';
@@ -45,37 +47,30 @@ class ProfileView extends GetView<ProfileController> {
                 ),
               ],
             ),
-            sizedheight(size.height * 0.02),
+            sizedheight(size.height * 0.04),
+            GestureDetector(
+              onTap: () {}, 
+              child: DiasableProfileFeild(
+                textController: profileController.nameController!,
+                icon: Icons.person,
+              ),
+            ),
+            sizedheight(size.height * 0.03),
             TextField(
               enabled: false,
+              controller: profileController.emailController!,
               decoration: InputDecoration(
-                prefixIcon: const Icon(
-                  Icons.person,
-                ),
-                labelText: 'Name',
-                suffixIcon: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.edit),
+                prefixIcon: Icon(
+                  Icons.email,
+                  color: AppColors.kDarkGreen,
                 ),
               ),
             ),
-            sizedheight(size.height * 0.02),
-            TextField(
-              enabled: false,
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.person),
-                labelText: 'Email',
-                suffixIcon: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.edit),
-                ),
-              ),
+            sizedheight(size.height * 0.05),
+            CustomRectButton(
+              buttonLabel: 'Update Profile',
+              onButtonClicked: () {},
             ),
-            // sizedheight(size.height * 0.05),
-            // ElevatedButton(
-            //   onPressed: () {},
-            //   child: const Text('Update Profile'),
-            // ),
           ],
         ),
       ),

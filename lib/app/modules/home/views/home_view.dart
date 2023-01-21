@@ -1,5 +1,4 @@
 import 'package:employer_app/app/modules/addpost/views/addpost_view.dart';
-import 'package:employer_app/app/modules/all_chats/views/all_chats_view.dart';
 import 'package:employer_app/app/modules/home/views/widgets/my_job_tile_widget.dart';
 import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:employer_app/app/utils/app_sizes.dart';
@@ -42,7 +41,7 @@ class HomeView extends GetView {
           ),
           IconButton(
             onPressed: () {
-             homeController.gotToChat();
+              homeController.gotToChat();
             },
             icon: const Icon(Icons.message),
           ),

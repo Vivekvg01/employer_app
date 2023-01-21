@@ -39,7 +39,8 @@ class HomeController extends GetxController {
     var response = await GetMyJobsApi().getMyjobs();
     if (response != null) {
       if (response.jobModel != null) {
-        myJobsList = response.jobModel!;
+        //Add the reversed response list to show the frequently added list to the first.
+        myJobsList = response.jobModel!.reversed.toList();
       }
       isLoading(false);
     }

@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:employer_app/app/common_widgets/loader_over_screen.dart';
+import 'package:employer_app/app/modules/auth/login/controllers/login_controller.dart';
 import 'package:employer_app/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:employer_app/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:employer_app/app/utils/api_endpoints.dart';
@@ -11,8 +13,7 @@ import '../model/login_model.dart';
 
 class LoginApi {
   Future<LoginModel?> postData(String email, String password) async {
-    Get.lazyPut<DashboardController>(() => DashboardController());
-
+    ShowLoaderOverScreen.showLoader();
     dynamic statusCode;
     var headers = {'Content-Type': 'application/json'};
     try {
@@ -41,6 +42,7 @@ class LoginApi {
         );
         Get.offAll(const DashboardView());
         LoginModel respModel = LoginModel.fromJson(data);
+        ShowLoaderOverScreen.stopLoader();
         return respModel;
       } else if (statusCode == 404) {
         final data = jsonDecode(response.body);
@@ -53,8 +55,7 @@ class LoginApi {
             snackStyle: SnackStyle.FLOATING,
           ),
         );
-      } else {
-        log(response.body.toString());
+        ShowLoaderOverScreen.stopLoader();
       }
     } catch (e) {
       log(e.toString());
