@@ -13,7 +13,6 @@ class FindTalentView extends GetView<FindTalentController> {
 
   @override
   Widget build(BuildContext context) {
-    // final size = MediaQuery.of(context).size;
     return Obx(
       () => Scaffold(
         appBar: AppBar(
@@ -30,25 +29,29 @@ class FindTalentView extends GetView<FindTalentController> {
               : Container(),
           title: findTalendController.isSearching.value
               ? TextField(
-                  controller: findTalendController.searchController,
+                  controller: findTalendController.searchController.value,
                   focusNode: findTalendController.searchFocusNode,
                   decoration: const InputDecoration(
                     hintText: "Search...",
                     border: InputBorder.none,
                     hintStyle: TextStyle(color: Colors.white),
                   ),
+                  onSubmitted: (query) {
+                    findTalendController.searchTalends(query);
+                  },
                   style: const TextStyle(color: Colors.white),
                   autofocus: true,
                 )
               : Transform(
                   transform: Matrix4.translationValues(-25.0, 0.0, 0.0),
-                  child: const Text('Find Talent')),
+                  child: const Text('Find Talent'),
+                ),
           actions: findTalendController.isSearching.value
               ? <Widget>[
                   IconButton(
-                    icon: const Icon(Icons.close),
+                    icon: const Icon(Icons.close), 
                     onPressed: () {
-                      findTalendController.searchController.clear();
+                      findTalendController.searchController.value.clear();
                       findTalendController.isSearching.value = false;
                       findTalendController.searchFocusNode.unfocus();
                     },
@@ -74,33 +77,67 @@ class FindTalentView extends GetView<FindTalentController> {
                   vertical: 20,
                 ),
                 children: [
-                  ListView.separated(
-                    physics: const ClampingScrollPhysics(),
-                    shrinkWrap: true,
-                    itemBuilder: (ctx, index) {
-                      return EmployeeTileWidget(
-                        employeeName: findTalendController
-                                .employeeList?[index]?.owner?.name
-                                .toString() ??
-                            '',
-                        employeeTitle: findTalendController
-                                .employeeList?[index]?.userTitle
-                                .toString() ??
-                            'No title',
-                        imageUrl:
-                            findTalendController.employeeList?[index]?.image ??
-                                defaultProfileImgae,
-                        emoployerId: findTalendController
-                                .employeeList![index]?.owner?.id ??
-                            '',
-                        onBookMarkTap: () {
-                          findTalendController.onSaveButtonClicked();
-                        },
-                      );
-                    },
-                    itemCount: findTalendController.employeeList?.length ?? 0,
-                    separatorBuilder: (_, __) => sizedheight(Get.height * 0.02),
-                  ),
+                  findTalendController.employeeSearchResultList!.isEmpty
+                      ? ListView.separated(
+                          physics: const ClampingScrollPhysics(),
+                          shrinkWrap: true,
+                          itemBuilder: (ctx, index) {
+                            return EmployeeTileWidget(
+                              employeeName: findTalendController
+                                      .employeeList?[index]?.owner?.name
+                                      .toString() ??
+                                  '',
+                              employeeTitle: findTalendController
+                                      .employeeList?[index]?.userTitle
+                                      .toString() ??
+                                  'No title',
+                              imageUrl: findTalendController
+                                      .employeeList?[index]?.image ??
+                                  defaultProfileImgae,
+                              emoployerId: findTalendController
+                                      .employeeList![index]?.owner?.id ??
+                                  '',
+                            );
+                          },
+                          itemCount:
+                              findTalendController.employeeList?.length ?? 0,
+                          separatorBuilder: (_, __) =>
+                              sizedheight(Get.height * 0.02),
+                        )
+                      : ListView.separated(
+                          physics: const ClampingScrollPhysics(),
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) {
+                            return EmployeeTileWidget(
+                              employeeName: findTalendController
+                                      .employeeSearchResultList?[index]
+                                      ?.owner
+                                      ?.name
+                                      .toString() ??
+                                  '',
+                              employeeTitle: findTalendController
+                                      .employeeSearchResultList?[index]
+                                      ?.userTitle
+                                      .toString() ??
+                                  '',
+                              imageUrl: findTalendController
+                                      .employeeSearchResultList?[index]?.image
+                                      .toString() ??
+                                  '',
+                              emoployerId: findTalendController
+                                      .employeeSearchResultList?[index]
+                                      ?.owner
+                                      ?.id
+                                      .toString() ??
+                                  '',
+                            );
+                          },
+                          separatorBuilder: (context, index) =>
+                              sizedheight(Get.height * 0.02),
+                          itemCount: findTalendController
+                                  .employeeSearchResultList?.length ??
+                              0,
+                        ),
                 ],
               ),
       ),

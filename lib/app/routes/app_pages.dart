@@ -14,6 +14,8 @@ import '../modules/auth/resetpassword/bindings/resetpassword_binding.dart';
 import '../modules/auth/resetpassword/views/resetpassword_view.dart';
 import '../modules/auth/sign_up/bindings/sign_up_binding.dart';
 import '../modules/auth/sign_up/views/sign_up_view.dart';
+import '../modules/chat_room/bindings/chat_room_binding.dart';
+import '../modules/chat_room/views/chat_room_view.dart';
 import '../modules/contracts/bindings/contracts_binding.dart';
 import '../modules/contracts/views/contracts_view.dart';
 import '../modules/dashboard/bindings/dashboard_binding.dart';
@@ -34,7 +36,6 @@ import '../modules/recharge/bindings/recharge_binding.dart';
 import '../modules/recharge/views/recharge_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
-
 part 'app_routes.dart';
 
 class AppPages {
@@ -51,7 +52,7 @@ class AppPages {
     GetPage(
       name: _Paths.LOGIN,
       page: () => LoginView(),
-      binding: LoginBinding(), 
+      binding: LoginBinding(),
     ),
     GetPage(
       name: _Paths.SIGN_UP,
@@ -86,7 +87,7 @@ class AppPages {
     GetPage(
       name: _Paths.FIND_TALENT,
       page: () => FindTalentView(),
-      binding: FindTalentBinding(), 
+      binding: FindTalentBinding(),
     ),
     GetPage(
       name: _Paths.ADDPOST,
@@ -127,6 +128,11 @@ class AppPages {
       name: _Paths.RECHARGE,
       page: () => const RechargeView(),
       binding: RechargeBinding(),
+    ),
+    GetPage(
+      name: _Paths.CHAT_ROOM,
+      page: () => const ChatRoomView(),
+      binding: ChatRoomBinding(),
     ),
   ];
 }

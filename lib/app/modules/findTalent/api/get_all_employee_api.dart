@@ -26,12 +26,12 @@ class GetAllEmployeeApi {
         return respModel;
       }
     } catch (e) {
-    throw Exception('Failed to load data');
-    } 
+      throw Exception('Failed to load data');
+    }
     return null;
   }
 
-  Future<List<GetAllEmployee>?> searchEmployee(String query) async {
+  Future<GetAllEmployee?> searchEmployee(String query) async {
     const storage = FlutterSecureStorage();
     final token = await storage.read(key: 'token');
 
@@ -47,11 +47,11 @@ class GetAllEmployeeApi {
       http.Response response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
         log(response.body);
-        final data = json.decode(response.body) as List;
-        return data.map((e) => GetAllEmployee.fromJson(e)).toList();
+        final data = json.decode(response.body);
+        return GetAllEmployee.fromJson(data);
       }
     } catch (e) {
-      throw Exception("Failed to Load data"); 
+      throw Exception("Failed to Load data");
     }
     return null;
   }

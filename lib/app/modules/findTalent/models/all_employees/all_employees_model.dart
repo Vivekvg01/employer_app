@@ -7,16 +7,18 @@ class GetAllEmployee {
     this.pages,
   });
 
-  List<AllEmplyee?>? allEmplyees;
+  List<AllEmployee?>? allEmplyees;
   int? page;
   int? pages;
 
-  factory GetAllEmployee.fromJson(Map<String, dynamic> json) =>
-      GetAllEmployee(
+  factory GetAllEmployee.fromJson(Map<String, dynamic> json) => GetAllEmployee(
         allEmplyees: json["allEmplyees"] == null
             ? []
-            : List<AllEmplyee?>.from(
-                json["allEmplyees"]!.map((x) => AllEmplyee.fromJson(x))),
+            : List<AllEmployee?>.from(
+                json["allEmplyees"]!.map(
+                  (x) => AllEmployee.fromJson(x),
+                ),
+              ),
         page: json["page"],
         pages: json["pages"],
       );

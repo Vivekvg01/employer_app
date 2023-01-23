@@ -23,6 +23,8 @@ abstract class Routes {
   static const JOB_DETAILS = _Paths.JOB_DETAILS;
   static const EMPLOYEE_DETAILS = _Paths.EMPLOYEE_DETAILS;
   static const RECHARGE = _Paths.RECHARGE;
+  static const CHAT_ROOM = _Paths.CHAT_ROOM;
+  static const TALEND_SEARCH_RESULT = _Paths.TALEND_SEARCH_RESULT;
 }
 
 abstract class _Paths {
@@ -45,4 +47,6 @@ abstract class _Paths {
   static const JOB_DETAILS = '/job-details';
   static const EMPLOYEE_DETAILS = '/employee-details';
   static const RECHARGE = '/recharge';
+  static const CHAT_ROOM = '/chat-room';
+  static const TALEND_SEARCH_RESULT = '/talend-search-result';
 }

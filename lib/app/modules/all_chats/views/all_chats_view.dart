@@ -1,3 +1,4 @@
+import 'package:employer_app/app/modules/chat_room/views/chat_room_view.dart';
 import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -15,10 +16,11 @@ class AllChatsView extends GetView<AllChatsController> {
         title: const Text('Messages'),
       ),
       body: ListView.separated(
-        itemBuilder: (ctx, index) => const ListTile(
-          leading: CircleAvatar(radius: 25),
-          title: Text("Freelancer"),
-          subtitle: Text('Hey'),
+        itemBuilder: (ctx, index) => ListTile(
+          onTap: () => Get.to(ChatRoomView()),
+          leading: const CircleAvatar(radius: 25),
+          title: const Text("Freelancer"),
+          subtitle: const Text('Hey'),
         ),
         separatorBuilder: (_, __) => const Divider(),
         itemCount: 20,

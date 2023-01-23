@@ -2,8 +2,8 @@ import 'package:employer_app/app/modules/findTalent/models/all_employees/owner_m
 import 'package:employer_app/app/modules/findTalent/models/all_employees/skill_model.dart';
 import 'language_model.dart';
 
-class AllEmplyee {
-  AllEmplyee({
+class AllEmployee {
+  AllEmployee({
     this.id,
     this.owner,
     this.totalEarned,
@@ -55,7 +55,7 @@ class AllEmplyee {
   String? image;
   String? bankDetails;
 
-  factory AllEmplyee.fromJson(Map<String, dynamic> json) => AllEmplyee(
+  factory AllEmployee.fromJson(Map<String, dynamic> json) => AllEmployee(
         id: json["_id"],
         owner: Owner.fromJson(json["owner"]),
         totalEarned: json["totalEarned"].toDouble(),
