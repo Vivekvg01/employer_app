@@ -8,3 +8,4 @@ class FindTalentBinding extends Bindings {
     Get.lazyPut<FindTalentController>(() => FindTalentController());
   }
 }
+ 

@@ -11,10 +11,10 @@ class ProfileController extends GetxController {
     super.onInit();
   }
 
-  int? totalHires;
-  int? totalSpends;
-  String? name;
-  String? email;
+  RxInt? totalHires = 0.obs;
+  RxInt? totalSpends = 0.obs; 
+  RxString name = ''.obs;
+  RxString email = ''.obs;
 
   Rx<TextEditingController>? nameController = TextEditingController().obs;
   Rx<TextEditingController>? emailController = TextEditingController().obs;
@@ -30,31 +30,25 @@ class ProfileController extends GetxController {
     //If the response and its instances are  not null then assigning values to the variables.
     if (response != null) {
       if (response.totalSpend != null) {
-        totalSpends = response.totalSpend;
+        totalSpends!.value = response.totalSpend!;
       }
       if (response.hires != null) {
-        totalHires = response.hires;
+        totalHires!.value = response.hires!;
       }
       //checking the owner and its instances are  not null and assigning the values to the variables.
       if (response.owner != null) {
         if (response.owner!.name != null) {
-          name = response.owner!.name;
-        } else {
-          //if value is null assign it as an empty string
-          name = '';
+          name.value = response.owner!.name!;
         }
         if (response.owner!.email != null) {
-          email = response.owner!.email;
-        } else {
-          //if value is null assign it as an empty string
-          email = '';
+          email.value = response.owner!.email!;
         }
       }
     }
   }
 
   void assigningvalues() {
-    nameController?.value.text = name ?? '';
-    emailController?.value.text = email ?? '';
+    nameController?.value.text = name.value;
+    emailController?.value.text = email.value;
   }
 }

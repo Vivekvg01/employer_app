@@ -51,7 +51,7 @@ class AppPages {
     GetPage(
       name: _Paths.LOGIN,
       page: () => LoginView(),
-      binding: LoginBinding(),
+      binding: LoginBinding(), 
     ),
     GetPage(
       name: _Paths.SIGN_UP,
@@ -86,7 +86,7 @@ class AppPages {
     GetPage(
       name: _Paths.FIND_TALENT,
       page: () => FindTalentView(),
-      binding: FindTalentBinding(),
+      binding: FindTalentBinding(), 
     ),
     GetPage(
       name: _Paths.ADDPOST,

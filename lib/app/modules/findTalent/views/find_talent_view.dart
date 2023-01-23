@@ -13,7 +13,7 @@ class FindTalentView extends GetView<FindTalentController> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    // final size = MediaQuery.of(context).size;
     return Obx(
       () => Scaffold(
         appBar: AppBar(
@@ -48,6 +48,7 @@ class FindTalentView extends GetView<FindTalentController> {
                   IconButton(
                     icon: const Icon(Icons.close),
                     onPressed: () {
+                      findTalendController.searchController.clear();
                       findTalendController.isSearching.value = false;
                       findTalendController.searchFocusNode.unfocus();
                     },
@@ -98,8 +99,7 @@ class FindTalentView extends GetView<FindTalentController> {
                       );
                     },
                     itemCount: findTalendController.employeeList?.length ?? 0,
-                    separatorBuilder: (_, __) =>
-                        sizedheight(size.height * 0.02),
+                    separatorBuilder: (_, __) => sizedheight(Get.height * 0.02),
                   ),
                 ],
               ),

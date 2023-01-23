@@ -38,17 +38,17 @@ class ProfileView extends GetView<ProfileController> {
               children: [
                 DataCountWidget(
                   title: 'TOTAL HIRES',
-                  count: profileController.totalHires ?? 0,
+                  count: profileController.totalHires!.value,
                 ),
                 sizedWidth(size.width * 0.08),
                 DataCountWidget(
                   title: 'TOTAL SPENDS',
-                  count: profileController.totalSpends ?? 0,
+                  count: profileController.totalSpends!.value,
                 ),
               ],
             ),
             sizedheight(size.height * 0.04),
-            GestureDetector(
+            ListTile(
               onTap: () {
                 Get.bottomSheet(
                   EditNameBottomSheet(
@@ -57,22 +57,27 @@ class ProfileView extends GetView<ProfileController> {
                   ),
                 );
               },
-              child: DiasableProfileFeild(
-                textController: profileController.nameController!,
-                icon: Icons.person,
-              ),
+              leading: Icon(Icons.person, color: AppColors.kDarkGreen),
+              title: Text(profileController.nameController!.value.text),
+              subtitle: const Padding(
+                  padding: EdgeInsets.only(
+                    top: 5.0,
+                  ),
+                  child: Text(
+                    'This is not your username or pin.This name will be vibile to the employes.',
+                    style: TextStyle(fontSize: 13),
+                  )),
+              trailing: Icon(Icons.edit, color: AppColors.kDarkGreen),
             ),
-            sizedheight(size.height * 0.03),
-            TextField(
-              enabled: false,
-              controller: profileController.emailController!.value,
-              decoration: InputDecoration(
-                prefixIcon: Icon(
-                  Icons.email,
-                  color: AppColors.kDarkGreen,
-                ),
+            kDivider1,
+            ListTile(
+              leading: Icon(
+                Icons.email,
+                color: AppColors.kDarkGreen,
               ),
+              title: Text(profileController.emailController!.value.text),
             ),
+            kDivider1,
             sizedheight(size.height * 0.05),
           ],
         ),
