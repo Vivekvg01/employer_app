@@ -1,9 +1,12 @@
+import 'package:employer_app/app/modules/profile/views/widgets/change_password_bottom_sheet.dart';
 import 'package:employer_app/app/modules/profile/views/widgets/completed_jobs_bottom_sheet.dart';
 import 'package:employer_app/app/modules/profile/views/widgets/data_count_widgets.dart';
 import 'package:employer_app/app/modules/profile/views/widgets/edit_name_bottom_sheet.dart';
+import 'package:employer_app/app/modules/profile/views/widgets/purchase_history_bottom_sheet.dart';
 import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:employer_app/app/utils/app_sizes.dart';
 import 'package:employer_app/app/utils/const_values.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/profile_controller.dart';
@@ -26,15 +29,32 @@ class ProfileView extends GetView<ProfileController> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           children: [
             sizedheight(size.height * 0.02),
-            CircleAvatar(
+            const CircleAvatar(
               radius: 48,
-              child: Image.network(
-                defaultProfileImgae,
-                fit: BoxFit.contain,
+            ),
+            sizedheight(size.height * 0.02),
+            Center(
+              child: RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: 'Change Password?',
+                      style: TextStyle(
+                        color: AppColors.kDarkGreen,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          Get.bottomSheet(const ChangePasswordBottmSheet());
+                        },
+                    ),
+                  ],
+                ),
               ),
             ),
             sizedheight(size.height * 0.03),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 DataCountWidget(
                   title: 'TOTAL HIRES',
@@ -93,7 +113,11 @@ class ProfileView extends GetView<ProfileController> {
             ),
             kDivider1,
             ListTile(
-              onTap: () {},
+              onTap: () {
+                Get.bottomSheet(
+                  const PurchaseHistryBottomSheet(),
+                );
+              },
               leading: Icon(
                 Icons.currency_rupee,
                 color: AppColors.kDarkGreen,

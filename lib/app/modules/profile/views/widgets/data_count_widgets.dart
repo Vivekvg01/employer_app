@@ -16,8 +16,8 @@ class DataCountWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
-      height: size.height * 0.1,
-      width: size.width * 0.4,
+      height: size.height * 0.09,
+      width: size.width * 0.35,
       decoration: BoxDecoration(
         color: AppColors.kDarkGreen,
         borderRadius: BorderRadius.circular(10),

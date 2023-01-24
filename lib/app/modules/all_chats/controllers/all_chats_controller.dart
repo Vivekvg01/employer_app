@@ -1,8 +1,7 @@
 import 'package:get/get.dart';
 
 class AllChatsController extends GetxController {
-  //TODO: Implement AllChatsController
-
+  
   final count = 0.obs;
   @override
   void onInit() {

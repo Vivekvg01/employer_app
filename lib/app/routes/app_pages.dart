@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-
 import '../modules/addpost/bindings/addpost_binding.dart';
 import '../modules/addpost/views/addpost_view.dart';
 import '../modules/all_chats/bindings/all_chats_binding.dart';

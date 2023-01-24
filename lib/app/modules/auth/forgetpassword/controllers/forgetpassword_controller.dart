@@ -32,11 +32,10 @@ class ForgetpasswordController extends GetxController {
       );
       var respBody = response.body;
       if (respBody == '"Success"') {
-        print('otp send');
         Get.to(ResetpasswordView());
         return respBody;
       } else {
-        print('failed');
+        log('failed');
       }
     } catch (e) {
       log(e.toString());

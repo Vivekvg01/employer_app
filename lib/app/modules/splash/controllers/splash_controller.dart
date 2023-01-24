@@ -23,10 +23,10 @@ class SplashController extends GetxController {
     }
 
     if (loginController.isLoggedIn.value) {
-      await Future.delayed(const Duration(seconds: 3));
+      await Future.delayed(const Duration(seconds: 2));
       Get.off(() => const DashboardView());
     } else {
-      await Future.delayed(const Duration(seconds: 3));
+      await Future.delayed(const Duration(seconds: 2));
       Get.off(() => LoginView());
     }
   }

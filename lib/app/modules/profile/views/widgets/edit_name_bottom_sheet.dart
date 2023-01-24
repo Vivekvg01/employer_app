@@ -3,7 +3,7 @@ import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
+// ignore: must_be_immutable
 class EditNameBottomSheet extends StatelessWidget {
   EditNameBottomSheet({super.key, required this.textFeildVal});
 
@@ -29,7 +29,6 @@ class EditNameBottomSheet extends StatelessWidget {
             ),
             TextField(
               controller: nameController.value,
-              autofocus: true,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,

@@ -19,9 +19,9 @@ class RechargeView extends GetView<RechargeController> {
         child: Column(
           children: [
             sizedheight(size.height * 0.05),
-            PackTileWidget(),
+            const PackTileWidget(),
             sizedheight(size.height * 0.03),
-            PackTileWidget(),
+            const PackTileWidget(),
           ],
         ),
       ),
