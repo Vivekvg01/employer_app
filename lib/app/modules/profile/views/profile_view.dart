@@ -1,5 +1,5 @@
+import 'package:employer_app/app/modules/profile/views/widgets/completed_jobs_bottom_sheet.dart';
 import 'package:employer_app/app/modules/profile/views/widgets/data_count_widgets.dart';
-import 'package:employer_app/app/modules/profile/views/widgets/diabled_profile_view.dart';
 import 'package:employer_app/app/modules/profile/views/widgets/edit_name_bottom_sheet.dart';
 import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:employer_app/app/utils/app_sizes.dart';
@@ -78,6 +78,28 @@ class ProfileView extends GetView<ProfileController> {
               title: Text(profileController.emailController!.value.text),
             ),
             kDivider1,
+            ListTile(
+              onTap: () {
+                Get.bottomSheet(
+                  JobHistoryBottomSheet(),
+                  isScrollControlled: true,
+                );
+              },
+              leading: Icon(
+                Icons.work_history,
+                color: AppColors.kDarkGreen,
+              ),
+              title: const Text('Job History'),
+            ),
+            kDivider1,
+            ListTile(
+              onTap: () {},
+              leading: Icon(
+                Icons.currency_rupee,
+                color: AppColors.kDarkGreen,
+              ),
+              title: const Text('Purchase History'),
+            ),
             sizedheight(size.height * 0.05),
           ],
         ),

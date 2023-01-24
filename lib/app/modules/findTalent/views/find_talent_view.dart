@@ -1,4 +1,5 @@
 import 'package:employer_app/app/modules/findTalent/views/widgets/employee_tile_widget.dart';
+import 'package:employer_app/app/modules/findTalent/views/widgets/shimmer_find_talend.dart';
 import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:employer_app/app/utils/app_sizes.dart';
 import 'package:employer_app/app/utils/const_values.dart';
@@ -49,9 +50,11 @@ class FindTalentView extends GetView<FindTalentController> {
           actions: findTalendController.isSearching.value
               ? <Widget>[
                   IconButton(
-                    icon: const Icon(Icons.close), 
+                    icon: const Icon(Icons.close),
                     onPressed: () {
                       findTalendController.searchController.value.clear();
+                      findTalendController.employeeSearchResultList?.value
+                          .clear();
                       findTalendController.isSearching.value = false;
                       findTalendController.searchFocusNode.unfocus();
                     },
@@ -68,9 +71,7 @@ class FindTalentView extends GetView<FindTalentController> {
                 ],
         ),
         body: findTalendController.isLoading.value
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
+            ? ShimmerFindTalend()
             : ListView(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 20,
