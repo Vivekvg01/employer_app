@@ -63,7 +63,7 @@ class PostJobApi {
         log(response.body);
         GetSnackBar(
           message: "Post added successfully",
-          backgroundColor: AppColors.primaryColor,
+          backgroundColor: AppColors.kGreenColor,
           duration: const Duration(seconds: 3),
           snackStyle: SnackStyle.FLOATING,
         );

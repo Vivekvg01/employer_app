@@ -29,7 +29,7 @@ class DashboardView extends GetView<DashboardController> {
           ),
           bottomNavigationBar: BottomNavigationBar(
             unselectedItemColor: AppColors.kWhiteColor,
-            selectedItemColor: AppColors.primaryColor,
+            selectedItemColor: AppColors.kGreenColor,
             onTap: controller.changeTabIndex,
             currentIndex: controller.tabIndex,
             showSelectedLabels: true,

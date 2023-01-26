@@ -42,7 +42,7 @@ class LoginView extends GetView {
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
-                        color: AppColors.primaryColor,
+                        color: AppColors.kGreenColor,
                       ),
                     ),
                     sizedheight(size.height * 0.05),

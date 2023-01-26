@@ -49,7 +49,7 @@ class EmployeeDetailsView extends GetView<EmployeeDetailsController> {
                       subtitle: Text(
                         'Freelancer',
                         style: TextStyle(
-                          color: AppColors.primaryColor,
+                          color: AppColors.kGreenColor,
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
                         ),

@@ -9,7 +9,7 @@ class ShowLoaderOverScreen {
     Get.dialog(
       Center(
         child: SpinKitChasingDots(
-          color: AppColors.primaryColor,
+          color: AppColors.kGreenColor,
         ),
       ),
     );

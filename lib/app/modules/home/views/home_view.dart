@@ -19,7 +19,7 @@ class HomeView extends GetView {
         title: Text(
           'GET WORKER',
           style: TextStyle(
-            color: AppColors.primaryColor,
+            color: AppColors.kGreenColor,
           ),
         ),
         backgroundColor: AppColors.kDarkGreen,
