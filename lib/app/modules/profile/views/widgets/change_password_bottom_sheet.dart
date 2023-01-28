@@ -85,7 +85,7 @@ class ChangePasswordBottmSheet extends GetView {
                         Get.find<ProfileController>().changePassword();
                       },
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

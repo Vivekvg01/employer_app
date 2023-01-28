@@ -1,16 +1,89 @@
+import 'dart:convert';
 import 'package:employer_app/app/modules/recharge/api/recharge_api.dart';
 import 'package:employer_app/app/modules/recharge/models/purchase_history_model.dart';
+import 'package:employer_app/app/modules/recharge/razorpay/razor_credentials.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../models/purchase_details_model.dart';
+import 'package:razorpay_flutter/razorpay_flutter.dart';
+import 'package:http/http.dart' as http;
 
 class RechargeController extends GetxController
     with GetTickerProviderStateMixin {
   @override
   void onInit() {
-    getPurchaseHistory();
     tabController = TabController(length: 2, vsync: this);
+    addRazorpayliteners();
+    getPurchaseHistory();
     super.onInit();
+  }
+
+  final razorPay = Razorpay();
+
+  void addRazorpayliteners() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      razorPay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+      razorPay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
+      razorPay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
+    });
+  }
+
+  void _handlePaymentSuccess(PaymentSuccessResponse response) {
+    // Do something when payment succeeds
+    print(response);
+    verifySignature() {}
+  }
+
+  void _handlePaymentError(PaymentFailureResponse response) {
+    // Do something when payment fails
+    print(response);
+  }
+
+  void _handleExternalWallet(ExternalWalletResponse response) {
+    // Do something when an external wallet is selected
+    print(response);
+  }
+
+  //create order
+  void createOrder() async {
+    String userName = RazorCredential.keyId;
+    String password = RazorCredential.keySecret;
+
+    String baseAuth = 'Base ${utf8.encode('$userName:$password')}';
+
+    Map<String, dynamic> body = {
+      "amount": 500,
+      "currency": "INR",
+      "receipt": "rcptid_11"
+    };
+
+    var res = await http.post(
+      Uri.https("api.razorpay.com", "v1/orders"),
+      headers: {
+        "Content-Type": "application/json",
+        "authorization": baseAuth,
+      },
+      body: jsonEncode(body),
+    );
+    if (res.statusCode == 200) {
+      openGateway(jsonDecode(res.body)['id']);
+    }
+  }
+
+  openGateway(String orderId) {
+    var options = {
+      'key': RazorCredential.keyId,
+      'amout': 100,
+      'name': 'Acme Corp.',
+      'order_id': orderId, // Generate order_id using Orders API
+      'description': 'Fine T-Shirt',
+      'timeout': 60 * 5, //In seconds // 5 minutes
+      'prefill': {
+        'contact': '8921923419',
+        'email': 'abs@exapmle.com',
+      }
+    };
+    razorPay.open(options);
   }
 
   late TabController tabController;
@@ -30,5 +103,11 @@ class RechargeController extends GetxController
         purchaseDetailsList?.value = response.details!;
       }
     }
+  }
+
+  @override
+  void dispose() {
+    razorPay.clear();
+    super.dispose();
   }
 }

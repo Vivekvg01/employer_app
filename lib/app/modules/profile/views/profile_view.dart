@@ -29,8 +29,9 @@ class ProfileView extends GetView<ProfileController> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           children: [
             sizedheight(size.height * 0.02),
-            const CircleAvatar(
+            CircleAvatar(
               radius: 48,
+              child: Image.network(defaultProfileImgae),
             ),
             sizedheight(size.height * 0.02),
             Center(
@@ -101,7 +102,7 @@ class ProfileView extends GetView<ProfileController> {
             ListTile(
               onTap: () {
                 Get.bottomSheet(
-                  JobHistoryBottomSheet(),
+                  const JobHistoryBottomSheet(),
                   isScrollControlled: true,
                 );
               },
