@@ -5,7 +5,7 @@ import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_sizes.dart';
 
 class MyJobsTileWidget extends StatelessWidget {
-  MyJobsTileWidget({
+  const MyJobsTileWidget({
     super.key,
     required this.title,
     required this.status,
@@ -22,15 +22,12 @@ class MyJobsTileWidget extends StatelessWidget {
   final String jobId;
   final String budget;
 
-  final homeController = Get.put(HomeController());
-
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return InkWell(
-      onTap: () => homeController.getJobDetailsPage(jobId),
+      onTap: () => Get.find<HomeController>().getJobDetailsPage(jobId),
       child: Container(
-       // height: size.height * 0.28,
+        width: double.infinity,
         decoration: BoxDecoration(
           color: AppColors.kLightGrey,
           borderRadius: BorderRadius.circular(10),

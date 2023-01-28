@@ -1,4 +1,5 @@
 import 'package:employer_app/app/modules/profile/api/profile_api.dart';
+import 'package:employer_app/app/modules/profile/model/my_prof_compled_jobs.dart';
 import 'package:employer_app/app/modules/profile/model/my_profile_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -23,6 +24,8 @@ class ProfileController extends GetxController {
       TextEditingController().obs;
   Rx<TextEditingController>? newPasswordController =
       TextEditingController().obs;
+
+  RxList<CompletedJob> completedJobList = <CompletedJob>[].obs;
 
   RxBool passwordVisibility = true.obs;
 
@@ -53,6 +56,9 @@ class ProfileController extends GetxController {
         if (response.owner!.email != null) {
           email.value = response.owner!.email!;
         }
+      }
+      if (response.completedJobs != null) {
+        completedJobList.value = response.completedJobs!;
       }
     }
   }

@@ -5,7 +5,6 @@ import 'package:employer_app/app/modules/home/models/job_model.dart';
 import 'package:employer_app/app/modules/jobDetails/views/job_details_view.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
-
 import '../../auth/login/views/login_view.dart';
 
 class HomeController extends GetxController {
@@ -31,7 +30,7 @@ class HomeController extends GetxController {
   RxBool isLoading = false.obs;
   String? jobIdVal;
 
-  List<JobModel> myJobsList = [];
+  RxList<JobModel> myJobsList = <JobModel>[].obs;
 
   //Api call on initilize page
   void jobDatas() async {
@@ -40,7 +39,7 @@ class HomeController extends GetxController {
     if (response != null) {
       if (response.jobModel != null) {
         //Add the reversed response list to show the frequently added list to the first.
-        myJobsList = response.jobModel!.reversed.toList();
+        myJobsList.value = response.jobModel!.reversed.toList();
       }
       isLoading(false);
     }

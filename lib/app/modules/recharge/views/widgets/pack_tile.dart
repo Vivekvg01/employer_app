@@ -2,7 +2,14 @@ import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class PackTileWidget extends StatelessWidget {
-  const PackTileWidget({super.key});
+  const PackTileWidget({
+    super.key,
+    required this.packTitle,
+    required this.packAmount,
+  });
+
+  final String packTitle;
+  final String packAmount;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +28,7 @@ class PackTileWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Basic Pack',
+              packTitle,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: AppColors.kWhiteColor,
@@ -29,7 +36,7 @@ class PackTileWidget extends StatelessWidget {
               ),
             ),
             Text(
-              'Recharge for Rs :500.00',
+              'Recharge for Rs :$packAmount',
               style: TextStyle(
                 color: AppColors.kWhiteColor,
                 fontWeight: FontWeight.w500,

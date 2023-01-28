@@ -15,7 +15,6 @@ class EmployeeTileWidget extends StatelessWidget {
   final String employeeTitle;
   final String imageUrl;
   final String emoployerId;
-  final findTalentController = Get.put(FindTalentController());
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +54,8 @@ class EmployeeTileWidget extends StatelessWidget {
               ),
             ),
             onTap: () {
-              findTalentController.gotoEmployerDetailsPage(emoployerId);
+              Get.find<FindTalentController>()
+                  .gotoEmployerDetailsPage(emoployerId);
             },
           ),
         ],
