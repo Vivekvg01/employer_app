@@ -24,6 +24,9 @@ class FindTalentController extends GetxController {
   //string values
   String? employeIdVal;
 
+  //tabswitching
+  RxInt tabIndex = 0.obs;
+
   //boolean values
   RxBool isSaved = false.obs;
   RxBool isLoading = false.obs;

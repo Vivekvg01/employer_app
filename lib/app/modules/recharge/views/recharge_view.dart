@@ -11,6 +11,7 @@ class RechargeView extends GetView<RechargeController> {
   const RechargeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    
     final rechargeController = Get.put(RechargeController());
 
     return Scaffold(

@@ -1,3 +1,5 @@
+import 'package:employer_app/app/common_widgets/rect_button.dart';
+import 'package:employer_app/app/modules/proposals/views/proposals_view.dart';
 import 'package:employer_app/app/utils/app_sizes.dart';
 import 'package:employer_app/app/utils/const_values.dart';
 import 'package:flutter/material.dart';
@@ -73,23 +75,19 @@ class JobDetailsView extends GetView<JobDetailsController> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            jobDetailsController.gotToViewPropsals();
+                        CustomRectButton(
+                          buttonLabel:
+                              'View Porposal  (${jobDetailsController.porposalList.length})',
+                          onButtonClicked: () {
+                            Get.to(() => const ProposalsView());
                           },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.green,
-                          ),
-                          child: const Text('View Proposals'),
                         ),
                         sizedWidth(size.width * 0.03),
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.red.shade400,
-                          ),
-                          child: const Text('Cance Job'),
-                        ),
+                        CustomRectButton(
+                          buttonLabel: 'Cancel Jobs',
+                          backgroundColor: AppColors.kredColor,
+                          onButtonClicked: () {},
+                        )
                       ],
                     ),
                   ],

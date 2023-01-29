@@ -14,6 +14,8 @@ class HomeController extends GetxController {
     super.onInit();
   }
 
+   RxInt tabIndex = 0.obs;
+
   final _loginController = Get.put(LoginController());
   //logout funcion clears the token
   Future<void> logout() async {
@@ -30,7 +32,19 @@ class HomeController extends GetxController {
   RxBool isLoading = false.obs;
   String? jobIdVal;
 
-  RxList<JobModel> myJobsList = <JobModel>[].obs;
+  RxList<JobModel> myAllJobsList = <JobModel>[].obs;
+
+  List<JobModel> get activeJobList =>
+      myAllJobsList.where((element) => element.status == 'active').toList();
+
+  List<JobModel> get completedJobList =>
+      myAllJobsList.where((element) => element.status == 'completed').toList();
+
+  List<JobModel> get onGoingJobList =>
+      myAllJobsList.where((element) => element.status == 'running').toList();
+
+  List<JobModel> get cancelledJobList =>
+      myAllJobsList.where((element) => element.status == 'cancelled').toList();
 
   //Api call on initilize page
   void jobDatas() async {
@@ -39,7 +53,7 @@ class HomeController extends GetxController {
     if (response != null) {
       if (response.jobModel != null) {
         //Add the reversed response list to show the frequently added list to the first.
-        myJobsList.value = response.jobModel!.reversed.toList();
+        myAllJobsList.value = response.jobModel!.reversed.toList();
       }
       isLoading(false);
     }

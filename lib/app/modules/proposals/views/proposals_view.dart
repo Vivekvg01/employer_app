@@ -1,15 +1,14 @@
 import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
 import '../controllers/proposals_controller.dart';
 
 class ProposalsView extends GetView<ProposalsController> {
   const ProposalsView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final proposalController = Get.put(ProposalsController());
     return DefaultTabController(
       length: 3,
       child: Scaffold(
@@ -21,15 +20,11 @@ class ProposalsView extends GetView<ProposalsController> {
             'Proposals',
             style: TextStyle(color: AppColors.kWhiteColor),
           ),
-          bottom: const TabBar(
-            tabs: [
-              Text('All proposals'),
-              Text('Shortlisted(1)'),
-              Text('Messaged'),
-            ],
+          bottom: TabBar(
+            tabs: proposalController.tabs,
           ),
         ),
-        body: const TabBarView(
+        body: TabBarView(
           children: [
             Center(
               child: Text("No Poposal found"),

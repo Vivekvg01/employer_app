@@ -1,14 +1,17 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 class CustomRectButton extends StatelessWidget {
   final String buttonLabel;
   final Function onButtonClicked;
+  Color? backgroundColor;
 
-  const CustomRectButton({
+   CustomRectButton({
     Key? key,
     required this.buttonLabel,
     required this.onButtonClicked,
-  }) : super(key: key);
+    this.backgroundColor,
+ }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +20,7 @@ class CustomRectButton extends StatelessWidget {
         onButtonClicked();
       },
       style: ElevatedButton.styleFrom(
+        backgroundColor: backgroundColor,
         padding: const EdgeInsets.symmetric(horizontal: 30),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),

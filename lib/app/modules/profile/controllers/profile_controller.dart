@@ -26,6 +26,7 @@ class ProfileController extends GetxController {
       TextEditingController().obs;
 
   RxList<CompletedJob> completedJobList = <CompletedJob>[].obs;
+  var savedJobs = [].obs;
 
   RxBool passwordVisibility = true.obs;
 
@@ -59,6 +60,9 @@ class ProfileController extends GetxController {
       }
       if (response.completedJobs != null) {
         completedJobList.value = response.completedJobs!;
+      }
+      if (response.savedTalents != null) {
+        savedJobs.value = response.savedTalents!;
       }
     }
   }

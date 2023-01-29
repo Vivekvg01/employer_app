@@ -23,6 +23,8 @@ class JobDetailsController extends GetxController {
   int? budget;
   int? deadline;
 
+  var porposalList = [].obs;
+
   void getJobDetails() async {
     isLoading(true);
     JobDetailsModel? response = await JobDetailsApi().getJobDetails(jobId);
@@ -42,6 +44,9 @@ class JobDetailsController extends GetxController {
       }
       if (response.level != null) {
         difficultyLevel = response.level;
+      }
+      if (response.proposals != null) {
+        porposalList.value = response.proposals!;
       }
     }
     isLoading(false);
