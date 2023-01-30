@@ -1,5 +1,4 @@
 import 'package:employer_app/app/common_widgets/rect_button.dart';
-import 'package:employer_app/app/modules/proposals/views/proposals_view.dart';
 import 'package:employer_app/app/utils/app_sizes.dart';
 import 'package:employer_app/app/utils/const_values.dart';
 import 'package:flutter/material.dart';
@@ -77,16 +76,18 @@ class JobDetailsView extends GetView<JobDetailsController> {
                       children: [
                         CustomRectButton(
                           buttonLabel:
-                              'View Porposal  (${jobDetailsController.porposalList.length})',
+                              'View Porposal (${jobDetailsController.porposalList.length})',
                           onButtonClicked: () {
-                            Get.to(() => const ProposalsView());
+                            jobDetailsController.gotToViewPropsals();
                           },
                         ),
                         sizedWidth(size.width * 0.03),
                         CustomRectButton(
                           buttonLabel: 'Cancel Jobs',
                           backgroundColor: AppColors.kredColor,
-                          onButtonClicked: () {},
+                          onButtonClicked: () {
+                            jobDetailsController.onCancelJobButtonClicked();
+                          },
                         )
                       ],
                     ),

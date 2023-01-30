@@ -14,7 +14,7 @@ class HomeController extends GetxController {
     super.onInit();
   }
 
-   RxInt tabIndex = 0.obs;
+  RxInt tabIndex = 0.obs;
 
   final _loginController = Get.put(LoginController());
   //logout funcion clears the token

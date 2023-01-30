@@ -1,5 +1,7 @@
+import 'package:employer_app/app/modules/recharge/controllers/recharge_controller.dart';
 import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class PackTileWidget extends StatelessWidget {
   const PackTileWidget({
@@ -46,7 +48,9 @@ class PackTileWidget extends StatelessWidget {
             SizedBox(
               width: size.width * 0.98,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.find<RechargeController>().createOrder();
+                },
                 child: const Text('Buy Now'),
               ),
             ),

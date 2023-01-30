@@ -1,4 +1,5 @@
 import 'package:employer_app/app/modules/addpost/api/post_job_api.dart';
+import 'package:employer_app/app/modules/home/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -24,5 +25,7 @@ class AddpostController extends GetxController {
       dropdownCurrentValue.toLowerCase(),
       searchTagController.text,
     );
+    Get.back();
+    Get.find<HomeController>().onInit();
   }
 }

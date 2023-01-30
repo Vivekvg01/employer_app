@@ -31,7 +31,6 @@ class RechargeController extends GetxController
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     // Do something when payment succeeds
     print(response);
-    verifySignature() {}
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
@@ -52,7 +51,7 @@ class RechargeController extends GetxController
     String baseAuth = 'Base ${utf8.encode('$userName:$password')}';
 
     Map<String, dynamic> body = {
-      "amount": 500,
+      "amount": 500 * 100,
       "currency": "INR",
       "receipt": "rcptid_11"
     };
@@ -73,14 +72,14 @@ class RechargeController extends GetxController
   openGateway(String orderId) {
     var options = {
       'key': RazorCredential.keyId,
-      'amout': 100,
-      'name': 'Acme Corp.',
+      'amount': 500 * 100,
+      'name': 'Ger worker',
       'order_id': orderId, // Generate order_id using Orders API
-      'description': 'Fine T-Shirt',
+      'description': 'Add credits',
       'timeout': 60 * 5, //In seconds // 5 minutes
       'prefill': {
         'contact': '8921923419',
-        'email': 'abs@exapmle.com',
+        'email': 'vivek@gmail.com',
       }
     };
     razorPay.open(options);

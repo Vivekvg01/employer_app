@@ -95,7 +95,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PROPOSALS,
-      page: () => const ProposalsView(),
+      page: () => ProposalsView(),
       binding: ProposalsBinding(),
     ),
     GetPage(

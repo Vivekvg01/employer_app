@@ -47,14 +47,14 @@ class AddpostView extends GetView<AddpostController> {
                 ),
               ),
               sizedheight(size.height * 0.03),
-              TextFormField(
-                controller: addPostController.searchTagController,
-                decoration: const InputDecoration(
-                  hintText: 'Add Search tags',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              sizedheight(size.height * 0.03),
+              // TextFormField(
+              //   controller: addPostController.searchTagController,
+              //   decoration: const InputDecoration(
+              //     hintText: 'Add Search tags',
+              //     border: OutlineInputBorder(),
+              //   ),
+              // ),
+              //sizedheight(size.height * 0.03),
               TextFormField(
                 keyboardType: TextInputType.number,
                 controller: addPostController.budgetController,

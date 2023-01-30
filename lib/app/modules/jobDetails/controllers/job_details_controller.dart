@@ -4,13 +4,14 @@ import 'package:employer_app/app/modules/jobDetails/model/job_details_model.dart
 import 'package:employer_app/app/modules/proposals/views/proposals_view.dart';
 import 'package:get/get.dart';
 
+import '../model/proposal_model.dart';
+
 class JobDetailsController extends GetxController {
-  final homeController = Get.put(HomeController());
   late String jobId;
 
   @override
   void onInit() {
-    jobId = homeController.jobIdVal!;
+    jobId = Get.find<HomeController>().jobIdVal!;
     getJobDetails();
     super.onInit();
   }
@@ -23,7 +24,7 @@ class JobDetailsController extends GetxController {
   int? budget;
   int? deadline;
 
-  var porposalList = [].obs;
+  RxList<Proposal> porposalList = <Proposal>[].obs;
 
   void getJobDetails() async {
     isLoading(true);
@@ -52,7 +53,13 @@ class JobDetailsController extends GetxController {
     isLoading(false);
   }
 
+  //Routing to view proposals
   void gotToViewPropsals() {
-    Get.to(() => const ProposalsView());
+    Get.to(() => ProposalsView());
+  }
+
+  //Cancel jobs
+  void onCancelJobButtonClicked() {
+    JobDetailsApi().cancelJob(jobId);
   }
 }

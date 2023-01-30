@@ -1,3 +1,5 @@
+import 'package:employer_app/app/modules/jobDetails/model/proposal_model.dart';
+
 class JobDetailsModel {
   JobDetailsModel({
     this.id,
@@ -21,8 +23,8 @@ class JobDetailsModel {
   List<dynamic>? tags;
   String? level;
   int? budget;
-  List<String?>? searchTag;
-  List<dynamic>? proposals;
+  List<String>? searchTag;
+  List<Proposal>? proposals;
   String? status;
   int? deadline;
   int? v;
@@ -33,19 +35,16 @@ class JobDetailsModel {
         owner: json["owner"],
         title: json["title"],
         description: json["description"],
-        tags: json["tags"] == null
-            ? []
-            : List<dynamic>.from(json["tags"]!.map((x) => x)),
+        tags: List<dynamic>.from(json["tags"].map((x) => x)),
         level: json["level"],
         budget: json["budget"],
-        searchTag: json["searchTag"] == null
-            ? []
-            : List<String?>.from(json["searchTag"]!.map((x) => x)),
-        proposals: json["proposals"] == null
-            ? []
-            : List<dynamic>.from(json["proposals"]!.map((x) => x)),
+        searchTag: List<String>.from(json["searchTag"].map((x) => x)),
+        proposals: List<Proposal>.from(
+            json["proposals"].map((x) => Proposal.fromJson(x))),
         status: json["status"],
         deadline: json["deadline"],
         v: json["__v"],
       );
 }
+
+

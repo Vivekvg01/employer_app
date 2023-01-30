@@ -1,14 +1,18 @@
+import 'package:employer_app/app/modules/proposals/views/active_proposals_list.dart';
+import 'package:employer_app/app/modules/proposals/views/messaged_proposal.dart';
+import 'package:employer_app/app/modules/proposals/views/short_listed_propsals.dart';
 import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/proposals_controller.dart';
 
 class ProposalsView extends GetView<ProposalsController> {
-  const ProposalsView({Key? key}) : super(key: key);
+  ProposalsView({Key? key}) : super(key: key);
+
+  final proposalController = Get.put(ProposalsController());
 
   @override
   Widget build(BuildContext context) {
-    final proposalController = Get.put(ProposalsController());
     return DefaultTabController(
       length: 3,
       child: Scaffold(
@@ -25,16 +29,11 @@ class ProposalsView extends GetView<ProposalsController> {
           ),
         ),
         body: TabBarView(
+          controller: proposalController.tabController,
           children: [
-            Center(
-              child: Text("No Poposal found"),
-            ),
-            Center(
-              child: Text("Shortlisted"),
-            ),
-            Center(
-              child: Text("Messaged"),
-            ),
+            ActivePropsals(),
+            ShortListedProposal(),
+            MessagedProposal(),
           ],
         ),
       ),
