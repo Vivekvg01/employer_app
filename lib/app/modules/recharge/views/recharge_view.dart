@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:employer_app/app/modules/recharge/views/widgets/buy_connects_view.dart';
 import 'package:employer_app/app/modules/recharge/views/widgets/recharge_history_view.dart';
 import 'package:employer_app/app/utils/app_colors.dart';
@@ -11,9 +9,7 @@ class RechargeView extends GetView<RechargeController> {
   const RechargeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    
     final rechargeController = Get.put(RechargeController());
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.kDarkGreen,
@@ -22,15 +18,15 @@ class RechargeView extends GetView<RechargeController> {
           controller: rechargeController.tabController,
           tabs: rechargeController.tabs,
         ),
-        actions: const [
+        actions: [
           Padding(
-            padding: EdgeInsets.only(
-              top: 12,
-              right: 12,
+            padding: const EdgeInsets.only(
+              top: 15.0,
+              right: 13.0,
             ),
             child: Text(
-              'Balance: 5000',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              'Balance: ₹${rechargeController.totalBalance}.00',
+              style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
             ),
           ),
         ],

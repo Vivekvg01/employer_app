@@ -61,10 +61,13 @@ class HomeView extends GetView {
                 ? const Center(child: CircularProgressIndicator())
                 : ListView(
                     children: [
-                      JobCategoryChip(),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 15),
+                        child: JobCategoryChip(),
+                      ),
                       homeController.tabIndex.value == 0
                           ? ListView.separated(
-                              physics: ClampingScrollPhysics(),
+                              physics: const ClampingScrollPhysics(),
                               shrinkWrap: true,
                               padding: const EdgeInsets.all(15),
                               itemBuilder: (context, index) {

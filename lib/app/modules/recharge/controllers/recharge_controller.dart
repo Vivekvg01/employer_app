@@ -4,15 +4,19 @@ import 'package:employer_app/app/modules/recharge/models/purchase_history_model.
 import 'package:employer_app/app/modules/recharge/razorpay/razor_credentials.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../profile/controllers/profile_controller.dart';
 import '../models/purchase_details_model.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:http/http.dart' as http;
 
 class RechargeController extends GetxController
     with GetTickerProviderStateMixin {
+  late int totalBalance;
+
   @override
   void onInit() {
     tabController = TabController(length: 2, vsync: this);
+    totalBalance = Get.find<ProfileController>().creditBalance ?? 0;
     addRazorpayliteners();
     getPurchaseHistory();
     super.onInit();
@@ -31,6 +35,12 @@ class RechargeController extends GetxController
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     // Do something when payment succeeds
     print(response);
+    RechargeApi().verifyPayment(
+      orderid: response.orderId,
+      paymentId: response.paymentId,
+      signature: response.signature,
+      amount: '500',
+    );
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
@@ -48,7 +58,8 @@ class RechargeController extends GetxController
     String userName = RazorCredential.keyId;
     String password = RazorCredential.keySecret;
 
-    String baseAuth = 'Base ${utf8.encode('$userName:$password')}';
+    String baseAuth =
+        'Basic ${base64Encode(utf8.encode('$userName:$password'))}';
 
     Map<String, dynamic> body = {
       "amount": 500 * 100,
@@ -94,7 +105,7 @@ class RechargeController extends GetxController
 
   RxList<Detail>? purchaseDetailsList = <Detail>[].obs;
 
-  getPurchaseHistory() async {
+  void getPurchaseHistory() async {
     PurchaseHistoryModel? response = await RechargeApi().getPurchaseHistory();
 
     if (response != null) {

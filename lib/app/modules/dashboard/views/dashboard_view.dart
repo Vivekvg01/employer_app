@@ -1,4 +1,4 @@
-import 'package:employer_app/app/modules/contracts/views/contracts_view.dart';
+import 'package:employer_app/app/modules/addpost/views/addpost_view.dart';
 import 'package:employer_app/app/modules/findTalent/views/find_talent_view.dart';
 import 'package:employer_app/app/modules/profile/views/profile_view.dart';
 import 'package:employer_app/app/modules/recharge/views/recharge_view.dart';
@@ -21,8 +21,8 @@ class DashboardView extends GetView<DashboardController> {
               children: [
                 HomeView(),
                 FindTalentView(),
+                AddpostView(),
                 RechargeView(),
-                ContractsView(),
                 ProfileView(),
               ],
             ),
@@ -49,12 +49,12 @@ class DashboardView extends GetView<DashboardController> {
                 label: 'FIND TALENT',
               ),
               bottomNavigationBarItem(
-                icon: Icons.currency_rupee,
-                label: 'RECHARGE',
+                icon: Icons.add,
+                label: '',
               ),
               bottomNavigationBarItem(
-                icon: Icons.library_books_outlined,
-                label: 'CONTRACT',
+                icon: Icons.currency_rupee,
+                label: 'RECHARGE',
               ),
               bottomNavigationBarItem(
                 icon: Icons.person,
@@ -62,6 +62,24 @@ class DashboardView extends GetView<DashboardController> {
               ),
             ],
           ),
+          floatingActionButton: Padding(
+            padding: const EdgeInsets.only(top: 25),
+            child: SizedBox(
+              height: 65.0,
+              width: 65.0,
+              child: FittedBox(
+                child: FloatingActionButton(
+                  onPressed: () {
+                    Get.to(() => AddpostView());
+                  },
+                  child: const Icon(Icons.add),
+                ),
+              ),
+            ),
+          ),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.miniCenterDocked,
+          resizeToAvoidBottomInset: false,
         );
       },
     );

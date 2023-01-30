@@ -125,7 +125,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.RECHARGE,
-      page: () => const RechargeView(),
+      page: () => RechargeView(),
       binding: RechargeBinding(),
     ),
     GetPage(

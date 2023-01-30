@@ -30,6 +30,8 @@ class ProfileController extends GetxController {
 
   RxBool passwordVisibility = true.obs;
 
+  int? creditBalance;
+
   void onProfileSaveButtonClicked(String name) async {
     ProfileApi().editProfileData(name: name);
     Get.back();
@@ -63,6 +65,9 @@ class ProfileController extends GetxController {
       }
       if (response.savedTalents != null) {
         savedJobs.value = response.savedTalents!;
+      }
+      if (response.balance != null) {
+        creditBalance = response.balance!;
       }
     }
   }
