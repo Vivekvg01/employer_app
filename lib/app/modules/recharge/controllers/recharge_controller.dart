@@ -4,19 +4,17 @@ import 'package:employer_app/app/modules/recharge/models/purchase_history_model.
 import 'package:employer_app/app/modules/recharge/razorpay/razor_credentials.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../profile/controllers/profile_controller.dart';
 import '../models/purchase_details_model.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:http/http.dart' as http;
 
 class RechargeController extends GetxController
     with GetTickerProviderStateMixin {
-  late int totalBalance;
+  RxInt totalBalance = 0.obs;
 
   @override
   void onInit() {
     tabController = TabController(length: 2, vsync: this);
-    totalBalance = Get.find<ProfileController>().creditBalance ?? 0;
     addRazorpayliteners();
     getPurchaseHistory();
     super.onInit();

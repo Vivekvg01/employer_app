@@ -1,7 +1,6 @@
+import 'package:employer_app/app/utils/const_values.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
 import '../controllers/chat_room_controller.dart';
 
 class ChatRoomView extends GetView<ChatRoomController> {
@@ -17,7 +16,7 @@ class ChatRoomView extends GetView<ChatRoomController> {
           child: Container(
             padding: const EdgeInsets.only(right: 16),
             child: Row(
-              children: <Widget>[
+              children: [
                 IconButton(
                   onPressed: () {
                     Get.back();
@@ -30,7 +29,8 @@ class ChatRoomView extends GetView<ChatRoomController> {
                 const SizedBox(width: 2),
                 const CircleAvatar(
                   backgroundImage: NetworkImage(
-                      "https://randomuser.me/api/portraits/men/5.jpg"),
+                    defaultProfileImgae,
+                  ),
                   maxRadius: 20,
                 ),
                 SizedBox(width: 12),
@@ -38,15 +38,13 @@ class ChatRoomView extends GetView<ChatRoomController> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
+                    children: [
                       Text(
-                        "Kriss Benwat",
+                        "Freelancer",
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.w600),
                       ),
-                      SizedBox(
-                        height: 6,
-                      ),
+                      SizedBox(height: 6),
                       Text(
                         "Online",
                         style: TextStyle(
@@ -65,16 +63,16 @@ class ChatRoomView extends GetView<ChatRoomController> {
         ),
       ),
       body: Stack(
-        children: <Widget>[
+        children: [
           Align(
             alignment: Alignment.bottomLeft,
             child: Container(
-              padding: EdgeInsets.only(left: 10, bottom: 10, top: 10),
+              padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
               height: 60,
               width: double.infinity,
               color: Colors.white,
               child: Row(
-                children: <Widget>[
+                children: [
                   GestureDetector(
                     onTap: () {},
                     child: Container(
@@ -85,7 +83,7 @@ class ChatRoomView extends GetView<ChatRoomController> {
                         borderRadius: BorderRadius.circular(30),
                       ),
                       child: Icon(
-                        Icons.add,
+                        Icons.add, 
                         color: Colors.white,
                         size: 20,
                       ),

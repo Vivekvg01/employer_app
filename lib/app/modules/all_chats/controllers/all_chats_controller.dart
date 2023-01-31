@@ -1,22 +1,10 @@
+import 'package:employer_app/app/modules/all_chats/api/all_chats_api.dart';
 import 'package:get/get.dart';
 
 class AllChatsController extends GetxController {
-  
-  final count = 0.obs;
   @override
   void onInit() {
+    AllChatsApi().getAllChats();
     super.onInit();
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }
