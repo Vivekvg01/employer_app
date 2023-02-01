@@ -13,19 +13,27 @@ class AddpostController extends GetxController {
   RxString dropdownCurrentValue = "Easy".obs;
   List<String> dropdownValues = ['Easy', 'Intermediate', 'Advanced'];
 
+  final addPostformKey = GlobalKey<FormState>();
+
   String? jobTitile;
   String? status;
 
-  void addPost() async {
-    await PostJobApi().postJob(
-      titleController.text,
-      descriptionController.text,
-      budgetController.text,
-      deadlineController.text,
-      dropdownCurrentValue.toLowerCase(),
-      searchTagController.text,
-    );
-    Get.back();
-    Get.find<HomeController>().onInit();
+  void onPostJobButtonClick() async {
+    if (addPostformKey.currentState!.validate()) {
+      await PostJobApi().postJob(
+        titleController.text,
+        descriptionController.text,
+        budgetController.text,
+        deadlineController.text,
+        dropdownCurrentValue.toLowerCase(),
+        searchTagController.text,
+      );
+      titleController.clear();
+      descriptionController.clear();
+      budgetController.clear();
+      deadlineController.clear();
+      Get.back();
+      Get.find<HomeController>().onInit();
+    }
   }
 }

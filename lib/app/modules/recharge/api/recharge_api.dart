@@ -12,7 +12,6 @@ class RechargeApi {
 
     final employerId = await storage.read(key: 'employerId');
     final token = await storage.read(key: 'token');
-
     final url = Uri.parse('${ApiEndPoints().kBaseUrl}/mypost/$employerId');
 
     var headers = {

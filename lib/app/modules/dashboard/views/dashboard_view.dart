@@ -15,6 +15,7 @@ class DashboardView extends GetView<DashboardController> {
     return GetBuilder<DashboardController>(
       builder: (controller) {
         return Scaffold(
+          resizeToAvoidBottomInset: false,
           body: SafeArea(
             child: IndexedStack(
               index: controller.tabIndex,
@@ -70,7 +71,7 @@ class DashboardView extends GetView<DashboardController> {
               child: FittedBox(
                 child: FloatingActionButton(
                   onPressed: () {
-                    Get.to(() => AddpostView());
+                    controller.gotoAddPost();
                   },
                   child: const Icon(Icons.add),
                 ),
@@ -79,7 +80,6 @@ class DashboardView extends GetView<DashboardController> {
           ),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.miniCenterDocked,
-          resizeToAvoidBottomInset: false,
         );
       },
     );

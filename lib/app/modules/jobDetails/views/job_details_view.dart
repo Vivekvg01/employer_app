@@ -7,13 +7,11 @@ import '../../../utils/app_colors.dart';
 import '../controllers/job_details_controller.dart';
 
 class JobDetailsView extends GetView<JobDetailsController> {
-  JobDetailsView({Key? key}) : super(key: key);
-
-  final jobDetailsController = Get.put(JobDetailsController());
+  const JobDetailsView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final jobDetailsController = Get.put(JobDetailsController());
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -38,14 +36,14 @@ class JobDetailsView extends GetView<JobDetailsController> {
                       ),
                     ),
                     kDivider1,
-                    sizedheight(size.height * 0.01),
+                    sizedheight(Get.height * 0.01),
                     Text(
                       jobDetailsController.jobDescription ?? "No description",
                       style: const TextStyle(fontSize: 17),
                     ),
-                    sizedheight(size.height * 0.01),
+                    sizedheight(Get.height * 0.01),
                     kDivider1,
-                    sizedheight(size.height * 0.01),
+                    sizedheight(Get.height * 0.01),
                     Text(
                       'Budget : \$${jobDetailsController.budget}',
                       style: const TextStyle(
@@ -53,7 +51,7 @@ class JobDetailsView extends GetView<JobDetailsController> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    sizedheight(size.height * 0.02),
+                    sizedheight(Get.height * 0.02),
                     Text(
                       'Deadline : ${jobDetailsController.deadline} days',
                       style: const TextStyle(
@@ -61,7 +59,7 @@ class JobDetailsView extends GetView<JobDetailsController> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    sizedheight(size.height * 0.02),
+                    sizedheight(Get.height * 0.02),
                     Text(
                       'Difficulty : ${jobDetailsController.difficultyLevel}',
                       style: const TextStyle(
@@ -69,7 +67,7 @@ class JobDetailsView extends GetView<JobDetailsController> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    sizedheight(size.height * 0.03),
+                    sizedheight(Get.height * 0.03),
                     kDivider1,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -81,7 +79,7 @@ class JobDetailsView extends GetView<JobDetailsController> {
                             jobDetailsController.gotToViewPropsals();
                           },
                         ),
-                        sizedWidth(size.width * 0.03),
+                        sizedWidth(Get.width * 0.03),
                         CustomRectButton(
                           buttonLabel: 'Cancel Jobs',
                           backgroundColor: AppColors.kredColor,
@@ -91,6 +89,8 @@ class JobDetailsView extends GetView<JobDetailsController> {
                         )
                       ],
                     ),
+                    sizedWidth(Get.width * 0.03),
+                    kDivider1,
                   ],
                 );
         },

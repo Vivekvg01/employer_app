@@ -1,12 +1,13 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:employer_app/app/modules/all_chats/models/my_chats_model.dart';
 import 'package:employer_app/app/utils/api_endpoints.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 
 class AllChatsApi {
-  void getAllChats() async {
+  Future<MyChatModel?> getAllChats() async {
     const FlutterSecureStorage storage = FlutterSecureStorage();
     final employerId = await storage.read(key: 'employerId');
 
@@ -21,9 +22,12 @@ class AllChatsApi {
     try {
       http.Response response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
-        final data = jsonEncode(response.body);
-        
+        final data = jsonDecode(response.body);
+        return MyChatModel.fromJson(data);
       }
-    } catch (e) {}
+    } catch (e) {
+      throw Exception(e);
+    }
+    return null;
   }
 }

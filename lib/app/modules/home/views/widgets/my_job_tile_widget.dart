@@ -30,6 +30,7 @@ class MyJobsTileWidget extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
           color: AppColors.kLightGrey,
+          border: Border.all(color: AppColors.kDarkGrey),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Padding(
@@ -47,33 +48,41 @@ class MyJobsTileWidget extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
               ),
               sizedheight(10),
-              Text(
-                description,
-                style: const TextStyle(
-                  fontSize: 16,
-                ),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 2,
+              Row(
+                children: [
+                  const Text(
+                    'STATUS : ',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  Text(
+                    status.toUpperCase(),
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: status == 'cancelled'
+                          ? AppColors.kredColor
+                          : AppColors.kGreenColor,
+                    ),
+                  ),
+                  sizedWidth(Get.width * 0.08),
+                  Text(
+                    'BUDGET: \$$budget',
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
               ),
-              sizedheight(10),
+              sizedheight(Get.height * 0.01),
               Text(
-                'status: $status',
+                'PROPOSAL: $proposalLength',
                 style: const TextStyle(
                   fontSize: 16,
-                ),
-              ),
-              sizedheight(10),
-              Text(
-                'budget: \$$budget',
-                style: const TextStyle(
-                  fontSize: 16,
-                ),
-              ),
-              sizedheight(10),
-              Text(
-                'Proposals: $proposalLength',
-                style: const TextStyle(
-                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             ],

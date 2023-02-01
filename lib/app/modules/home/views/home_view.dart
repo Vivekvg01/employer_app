@@ -25,21 +25,6 @@ class HomeView extends GetView {
         backgroundColor: AppColors.kDarkGreen,
         actions: [
           IconButton(
-            tooltip: "Add post",
-            onPressed: () {
-              Get.to(() => AddpostView());
-            },
-            icon: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(
-                  color: AppColors.kWhiteColor,
-                ),
-              ),
-              child: const Icon(Icons.add),
-            ),
-          ),
-          IconButton(
             onPressed: () {
               homeController.gotToChat();
             },

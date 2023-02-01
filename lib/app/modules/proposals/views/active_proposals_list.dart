@@ -5,12 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ActivePropsals extends GetView {
-  ActivePropsals({super.key});
-
-  final proposalController = Get.put(ProposalsController());
+  const ActivePropsals({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final proposalController = Get.put(ProposalsController());
     return ListView.separated(
       padding: const EdgeInsets.all(20),
       itemBuilder: (ctx, index) {
@@ -20,6 +19,7 @@ class ActivePropsals extends GetView {
             borderRadius: BorderRadius.circular(17),
           ),
           child: ListTile(
+            onTap: () {},
             title: Padding(
               padding: const EdgeInsets.only(bottom: 9.0),
               child: Text(

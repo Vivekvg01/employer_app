@@ -24,9 +24,12 @@ class RechargeView extends GetView<RechargeController> {
               top: 15.0,
               right: 13.0,
             ),
-            child: Text(
-              'Balance: ₹${rechargeController.totalBalance}.00',
-              style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+            child: Obx(
+              () => Text(
+                'Balance: ₹${rechargeController.totalBalance}.00',
+                style:
+                    const TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+              ),
             ),
           ),
         ],

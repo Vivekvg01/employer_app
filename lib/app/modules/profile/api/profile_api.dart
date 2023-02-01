@@ -74,7 +74,6 @@ class ProfileApi {
         body: jsonEncode(requestbody),
         headers: headers,
       );
-      log(response.body);
 
       ///if it is success respnse then show snackbar if it is required,
       /// if the snackbar is not required then nothig will shows to the ui.

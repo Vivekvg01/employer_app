@@ -1,6 +1,7 @@
 import 'package:employer_app/app/modules/profile/api/profile_api.dart';
 import 'package:employer_app/app/modules/profile/model/my_prof_compled_jobs.dart';
 import 'package:employer_app/app/modules/profile/model/my_profile_model.dart';
+import 'package:employer_app/app/modules/recharge/controllers/recharge_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -29,8 +30,6 @@ class ProfileController extends GetxController {
   var savedJobs = [].obs;
 
   RxBool passwordVisibility = true.obs;
-
-  int? creditBalance;
 
   void onProfileSaveButtonClicked(String name) async {
     ProfileApi().editProfileData(name: name);
@@ -67,7 +66,7 @@ class ProfileController extends GetxController {
         savedJobs.value = response.savedTalents!;
       }
       if (response.balance != null) {
-        creditBalance = response.balance!;
+        Get.find<RechargeController>().totalBalance.value = response.balance!;
       }
     }
   }

@@ -5,7 +5,6 @@ import 'package:employer_app/app/modules/profile/controllers/profile_controller.
 import 'package:employer_app/app/modules/proposals/controllers/proposals_controller.dart';
 import 'package:employer_app/app/modules/recharge/controllers/recharge_controller.dart';
 import 'package:get/get.dart';
-
 import '../../addpost/controllers/addpost_controller.dart';
 import '../controllers/dashboard_controller.dart';
 
@@ -15,7 +14,6 @@ class DashboardBinding extends Bindings {
     Get.lazyPut<DashboardController>(() => DashboardController());
     Get.lazyPut<HomeController>(() => HomeController());
     Get.lazyPut<FindTalentController>(() => FindTalentController());
-    Get.lazyPut<AddpostController>(() => AddpostController());
     Get.lazyPut<ProposalsController>(() => ProposalsController());
     Get.lazyPut<ContractsController>(() => ContractsController());
     Get.lazyPut<ProfileController>(() => ProfileController());

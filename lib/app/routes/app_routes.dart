@@ -25,6 +25,7 @@ abstract class Routes {
   static const RECHARGE = _Paths.RECHARGE;
   static const CHAT_ROOM = _Paths.CHAT_ROOM;
   static const TALEND_SEARCH_RESULT = _Paths.TALEND_SEARCH_RESULT;
+  static const PROPOSAL_DETAILS = _Paths.PROPOSAL_DETAILS;
 }
 
 abstract class _Paths {
@@ -49,4 +50,5 @@ abstract class _Paths {
   static const RECHARGE = '/recharge';
   static const CHAT_ROOM = '/chat-room';
   static const TALEND_SEARCH_RESULT = '/talend-search-result';
+  static const PROPOSAL_DETAILS = '/proposal-details';
 }

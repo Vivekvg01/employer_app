@@ -62,7 +62,9 @@ class HomeController extends GetxController {
   void getJobDetailsPage(String? jobId) async {
     if (jobId != null) {
       jobIdVal = jobId;
-      Get.to(() => JobDetailsView());
+      Get.to(
+        () => const JobDetailsView(),
+      );
     }
   }
 }

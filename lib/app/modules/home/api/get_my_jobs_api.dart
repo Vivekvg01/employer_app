@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'package:employer_app/app/modules/home/models/get_myjobs_model.dart';
 import 'package:employer_app/app/modules/home/models/job_model.dart';
 import 'package:employer_app/app/utils/api_endpoints.dart';
@@ -31,7 +30,7 @@ class GetMyJobsApi {
         return MyJobs(list);
       }
     } catch (e) {
-      log(e.toString());
+      throw Exception(e);
     }
     return null;
   }

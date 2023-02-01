@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+
 import '../modules/addpost/bindings/addpost_binding.dart';
 import '../modules/addpost/views/addpost_view.dart';
 import '../modules/all_chats/bindings/all_chats_binding.dart';
@@ -29,12 +30,15 @@ import '../modules/jobDetails/bindings/job_details_binding.dart';
 import '../modules/jobDetails/views/job_details_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
+import '../modules/proposal_details/bindings/proposal_details_binding.dart';
+import '../modules/proposal_details/views/proposal_details_view.dart';
 import '../modules/proposals/bindings/proposals_binding.dart';
 import '../modules/proposals/views/proposals_view.dart';
 import '../modules/recharge/bindings/recharge_binding.dart';
 import '../modules/recharge/views/recharge_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
+
 part 'app_routes.dart';
 
 class AppPages {
@@ -132,6 +136,11 @@ class AppPages {
       name: _Paths.CHAT_ROOM,
       page: () => const ChatRoomView(),
       binding: ChatRoomBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROPOSAL_DETAILS,
+      page: () => const ProposalDetailsView(),
+      binding: ProposalDetailsBinding(),
     ),
   ];
 }
