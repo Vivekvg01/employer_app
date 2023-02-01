@@ -4,14 +4,16 @@ import 'package:flutter/material.dart';
 class CustomRectButton extends StatelessWidget {
   final String buttonLabel;
   final Function onButtonClicked;
+  double borderRadius;
   Color? backgroundColor;
 
-   CustomRectButton({
+  CustomRectButton({
     Key? key,
     required this.buttonLabel,
     required this.onButtonClicked,
     this.backgroundColor,
- }) : super(key: key);
+    this.borderRadius = 10,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class CustomRectButton extends StatelessWidget {
         backgroundColor: backgroundColor,
         padding: const EdgeInsets.symmetric(horizontal: 30),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(borderRadius),
         ),
         elevation: 0,
       ),

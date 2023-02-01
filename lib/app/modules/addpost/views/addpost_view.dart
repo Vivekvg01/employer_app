@@ -47,12 +47,6 @@ class AddpostView extends GetView<AddpostController> {
                 maxLines: 6,
               ),
               sizedheight(Get.height * 0.03),
-              Row(
-                children: [
-                  
-                ],
-              ),
-              sizedheight(Get.height * 0.03),
               //Input budget
               AddPostTextFeild(
                 addPostTextController: addPostController.budgetController,

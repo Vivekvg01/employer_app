@@ -30,8 +30,8 @@ class ProposalsView extends GetView<ProposalsController> {
         ),
         body: TabBarView(
           controller: proposalController.tabController,
-          children: [
-            ActivePropsals(),
+          children: const [
+            AllPropsals(),
             ShortListedProposal(),
             MessagedProposal(),
           ],

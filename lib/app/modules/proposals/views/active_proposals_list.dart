@@ -1,11 +1,12 @@
+import 'package:employer_app/app/modules/proposal_details/views/proposal_details_view.dart';
 import 'package:employer_app/app/modules/proposals/controllers/proposals_controller.dart';
 import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:employer_app/app/utils/app_sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ActivePropsals extends GetView {
-  const ActivePropsals({super.key});
+class AllPropsals extends GetView {
+  const AllPropsals({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,9 @@ class ActivePropsals extends GetView {
             borderRadius: BorderRadius.circular(17),
           ),
           child: ListTile(
-            onTap: () {},
+            onTap: () {
+              Get.to(ProposalDetailsView());
+            },
             title: Padding(
               padding: const EdgeInsets.only(bottom: 9.0),
               child: Text(
