@@ -13,10 +13,11 @@ class AddpostController extends GetxController {
   RxString dropdownCurrentValue = "Easy".obs;
   List<String> dropdownValues = ['Easy', 'Intermediate', 'Advanced'];
 
-  final addPostformKey = GlobalKey<FormState>();
-
   String? jobTitile;
   String? status;
+
+  GlobalKey<FormState> addPostformKey =
+      GlobalKey<FormState>(); //formkey for validation
 
   void onPostJobButtonClick() async {
     if (addPostformKey.currentState!.validate()) {

@@ -15,6 +15,7 @@ class DashboardBinding extends Bindings {
     Get.lazyPut<HomeController>(() => HomeController());
     Get.lazyPut<FindTalentController>(() => FindTalentController());
     Get.lazyPut<ProposalsController>(() => ProposalsController());
+    Get.lazyPut<AddpostController>(() => AddpostController());
     Get.lazyPut<ContractsController>(() => ContractsController());
     Get.lazyPut<ProfileController>(() => ProfileController());
     Get.lazyPut<RechargeController>(() => RechargeController());

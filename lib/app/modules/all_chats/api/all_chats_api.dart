@@ -1,13 +1,12 @@
 import 'dart:convert';
-import 'dart:developer';
-
+import 'package:employer_app/app/modules/all_chats/models/my_chat_list_model.dart';
 import 'package:employer_app/app/modules/all_chats/models/my_chats_model.dart';
 import 'package:employer_app/app/utils/api_endpoints.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 
 class AllChatsApi {
-  Future<MyChatModel?> getAllChats() async {
+  Future<MyChatsListModel?> getAllChats() async {
     const FlutterSecureStorage storage = FlutterSecureStorage();
     final employerId = await storage.read(key: 'employerId');
 
@@ -22,8 +21,10 @@ class AllChatsApi {
     try {
       http.Response response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
-        return MyChatModel.fromJson(data);
+        List<dynamic> res = jsonDecode(response.body);
+        List<MyChatModel> list =
+            res.map((item) => MyChatModel.fromJson(item)).toList();
+        return MyChatsListModel(list);
       }
     } catch (e) {
       throw Exception(e);

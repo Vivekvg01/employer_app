@@ -18,18 +18,22 @@ class AllChatsView extends GetView<AllChatsController> {
         backgroundColor: AppColors.kDarkGreen,
         title: const Text('Messages'),
       ),
-      body: ListView.separated(
-        itemBuilder: (ctx, index) => ListTile(
-          onTap: () => Get.to(() => ChatRoomView()),
-          leading: CircleAvatar(
-            radius: 25,
-            backgroundImage: NetworkImage(defaultProfileImgae),
+      body: Obx(
+        () => ListView.separated(
+          itemBuilder: (ctx, index) => ListTile(
+            onTap: () => Get.to(() => ChatRoomView()),
+            leading: const CircleAvatar(
+              radius: 25,
+              backgroundImage: NetworkImage(defaultProfileImgae),
+            ),
+            title: Text(
+              allChatsController.myChatList![index].employee?.name ?? '',
+            ),
+            subtitle: const Text('Hey'),
           ),
-          title: const Text("Freelancer"),
-          subtitle: const Text('Hey'),
+          separatorBuilder: (_, __) => const Divider(),
+          itemCount: allChatsController.myChatList?.length ?? 0,
         ),
-        separatorBuilder: (_, __) => const Divider(),
-        itemCount: 20,
       ),
     );
   }

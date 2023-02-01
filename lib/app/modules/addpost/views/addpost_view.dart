@@ -6,14 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/addpost_controller.dart';
 
+// ignore: must_be_immutable
 class AddpostView extends GetView<AddpostController> {
-  AddpostView({Key? key}) : super(key: key);
-
-  final addPostController = Get.put(AddpostController());
+  const AddpostView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
@@ -30,26 +28,25 @@ class AddpostView extends GetView<AddpostController> {
         padding: const EdgeInsets.all(15.0),
         child: SingleChildScrollView(
           child: Form(
-            key: addPostController.addPostformKey,
+            key: controller.addPostformKey,
             child: Column(
               children: [
                 AddPostTextFeild(
                   validateText: "Title cant't be empty",
-                  addPostTextController: addPostController.titleController,
+                  addPostTextController: controller.titleController,
                   hintText: 'Title for your job',
                 ),
-                sizedheight(size.height * 0.03),
+                sizedheight(Get.height * 0.03),
                 //Input description
                 AddPostTextFeild(
                   validateText: "Description cant't be empty",
-                  addPostTextController:
-                      addPostController.descriptionController,
+                  addPostTextController: controller.descriptionController,
                   hintText: 'Add your detailed description of your job',
                   maxLines: 6,
                 ),
-                sizedheight(size.height * 0.03),
+                sizedheight(Get.height * 0.03),
                 // TextFormField(
-                //   controller: addPostController.searchTagController,
+                //   controller: controller.searchTagController,
                 //   decoration: const InputDecoration(
                 //     hintText: 'Add Search tags',
                 //     border: OutlineInputBorder(),
@@ -59,51 +56,49 @@ class AddpostView extends GetView<AddpostController> {
 
                 //Input budget
                 AddPostTextFeild(
-                  addPostTextController: addPostController.budgetController,
+                  addPostTextController: controller.budgetController,
                   hintText: ' \$\t Budget',
                   validateText: "Budget can't be empty",
                 ),
-                sizedheight(size.height * 0.03),
+                sizedheight(Get.height * 0.03),
                 //Input deadline
                 AddPostTextFeild(
-                  addPostTextController: addPostController.deadlineController,
+                  addPostTextController: controller.deadlineController,
                   hintText: 'Number of days to finish',
                   validateText: "Deadline is required",
                 ),
-                sizedheight(size.height * 0.03),
+                sizedheight(Get.height * 0.03),
                 Obx(
                   () => Container(
-                    width: size.width * 0.5,
+                    width: Get.width * 0.5,
                     decoration: BoxDecoration(
                       color: AppColors.kLightGrey,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Center(
                       child: DropdownButton<String>(
-                        value: addPostController.dropdownCurrentValue.value,
-                        items: addPostController.dropdownValues
-                            .map((String value) {
+                        value: controller.dropdownCurrentValue.value,
+                        items: controller.dropdownValues.map((String value) {
                           return DropdownMenuItem<String>(
                             value: value,
                             child: Text(value),
                           );
                         }).toList(),
                         onChanged: (String? newValue) {
-                          addPostController.dropdownCurrentValue.value =
-                              newValue!;
+                          controller.dropdownCurrentValue.value = newValue!;
                         },
                       ),
                     ),
                   ),
                 ),
-                sizedheight(size.height * 0.03),
+                sizedheight(Get.height * 0.03),
                 SizedBox(
                   width: double.infinity,
-                  height: size.height * 0.06,
+                  height: Get.height * 0.06,
                   child: CustomRectButton(
                     buttonLabel: 'Post Jobs',
                     onButtonClicked: () {
-                      addPostController.onPostJobButtonClick();
+                      controller.onPostJobButtonClick();
                     },
                   ),
                 ),

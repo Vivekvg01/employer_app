@@ -34,6 +34,8 @@ class HomeController extends GetxController {
 
   RxList<JobModel> myAllJobsList = <JobModel>[].obs;
 
+  ///Filtering the jobs jobs according to the status
+
   List<JobModel> get activeJobList =>
       myAllJobsList.where((element) => element.status == 'active').toList();
 
