@@ -9,6 +9,5 @@ class AddpostBinding extends Bindings {
     Get.lazyPut<AddpostController>(
       () => AddpostController(),
     );
-    Get.lazyPut<DashboardController>(() => DashboardController());
   }
 }

@@ -6,12 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/addpost_controller.dart';
 
-// ignore: must_be_immutable
 class AddpostView extends GetView<AddpostController> {
-  const AddpostView({Key? key}) : super(key: key);
+  AddpostView({Key? key}) : super(key: key);
+
+  final addPostformKey = GlobalKey<FormState>(); //formkey for validation
 
   @override
   Widget build(BuildContext context) {
+    final addPostController = Get.put(AddpostController());
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
@@ -26,50 +28,48 @@ class AddpostView extends GetView<AddpostController> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
-        child: SingleChildScrollView(
-          child: Form(
-            key: controller.addPostformKey,
-            child: Column(
-              children: [
-                AddPostTextFeild(
-                  validateText: "Title cant't be empty",
-                  addPostTextController: controller.titleController,
-                  hintText: 'Title for your job',
-                ),
-                sizedheight(Get.height * 0.03),
-                //Input description
-                AddPostTextFeild(
-                  validateText: "Description cant't be empty",
-                  addPostTextController: controller.descriptionController,
-                  hintText: 'Add your detailed description of your job',
-                  maxLines: 6,
-                ),
-                sizedheight(Get.height * 0.03),
-                // TextFormField(
-                //   controller: controller.searchTagController,
-                //   decoration: const InputDecoration(
-                //     hintText: 'Add Search tags',
-                //     border: OutlineInputBorder(),
-                //   ),
-                // ),
-                //sizedheight(size.height * 0.03),
-
-                //Input budget
-                AddPostTextFeild(
-                  addPostTextController: controller.budgetController,
-                  hintText: ' \$\t Budget',
-                  validateText: "Budget can't be empty",
-                ),
-                sizedheight(Get.height * 0.03),
-                //Input deadline
-                AddPostTextFeild(
-                  addPostTextController: controller.deadlineController,
-                  hintText: 'Number of days to finish',
-                  validateText: "Deadline is required",
-                ),
-                sizedheight(Get.height * 0.03),
-                Obx(
-                  () => Container(
+        child: Form(
+          key: addPostformKey,
+          child: ListView(
+            shrinkWrap: true,
+            children: [
+              AddPostTextFeild(
+                validateText: "Title cant't be empty",
+                addPostTextController: addPostController.titleController,
+                hintText: 'Title for your job',
+              ),
+              sizedheight(Get.height * 0.03),
+              //Input description
+              AddPostTextFeild(
+                validateText: "Description cant't be empty",
+                addPostTextController: addPostController.descriptionController,
+                hintText: 'Add your detailed description of your job',
+                maxLines: 6,
+              ),
+              sizedheight(Get.height * 0.03),
+              Row(
+                children: [
+                  
+                ],
+              ),
+              sizedheight(Get.height * 0.03),
+              //Input budget
+              AddPostTextFeild(
+                addPostTextController: addPostController.budgetController,
+                hintText: ' \$\t Budget',
+                validateText: "Budget can't be empty",
+              ),
+              sizedheight(Get.height * 0.03),
+              //Input deadline
+              AddPostTextFeild(
+                addPostTextController: addPostController.deadlineController,
+                hintText: 'Number of days to finish',
+                validateText: "Deadline is required",
+              ),
+              sizedheight(Get.height * 0.03),
+              Obx(
+                () => UnconstrainedBox(
+                  child: Container(
                     width: Get.width * 0.5,
                     decoration: BoxDecoration(
                       color: AppColors.kLightGrey,
@@ -77,33 +77,35 @@ class AddpostView extends GetView<AddpostController> {
                     ),
                     child: Center(
                       child: DropdownButton<String>(
-                        value: controller.dropdownCurrentValue.value,
-                        items: controller.dropdownValues.map((String value) {
+                        value: addPostController.dropdownCurrentValue.value,
+                        items: addPostController.dropdownValues
+                            .map((String value) {
                           return DropdownMenuItem<String>(
                             value: value,
                             child: Text(value),
                           );
                         }).toList(),
                         onChanged: (String? newValue) {
-                          controller.dropdownCurrentValue.value = newValue!;
+                          addPostController.dropdownCurrentValue.value =
+                              newValue!;
                         },
                       ),
                     ),
                   ),
                 ),
-                sizedheight(Get.height * 0.03),
-                SizedBox(
-                  width: double.infinity,
-                  height: Get.height * 0.06,
-                  child: CustomRectButton(
-                    buttonLabel: 'Post Jobs',
-                    onButtonClicked: () {
-                      controller.onPostJobButtonClick();
-                    },
-                  ),
+              ),
+              sizedheight(Get.height * 0.03),
+              SizedBox(
+                width: double.infinity,
+                height: Get.height * 0.06,
+                child: CustomRectButton(
+                  buttonLabel: 'Post Jobs',
+                  onButtonClicked: () {
+                    controller.onPostJobButtonClick(addPostformKey);
+                  },
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

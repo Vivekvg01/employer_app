@@ -16,11 +16,8 @@ class AddpostController extends GetxController {
   String? jobTitile;
   String? status;
 
-  GlobalKey<FormState> addPostformKey =
-      GlobalKey<FormState>(); //formkey for validation
-
-  void onPostJobButtonClick() async {
-    if (addPostformKey.currentState!.validate()) {
+  void onPostJobButtonClick(GlobalKey<FormState> formKey) async {
+    if (formKey.currentState!.validate()) {
       await PostJobApi().postJob(
         titleController.text,
         descriptionController.text,
