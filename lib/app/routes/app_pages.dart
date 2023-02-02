@@ -114,12 +114,12 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PROFILE,
-      page: () => const ProfileView(),
+      page: () => ProfileView(),
       binding: ProfileBinding(),
     ),
     GetPage(
       name: _Paths.JOB_DETAILS,
-      page: () => JobDetailsView(),
+      page: () => const JobDetailsView(),
       binding: JobDetailsBinding(),
     ),
     GetPage(
@@ -129,7 +129,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.RECHARGE,
-      page: () => RechargeView(),
+      page: () => const RechargeView(),
       binding: RechargeBinding(),
     ),
     GetPage(

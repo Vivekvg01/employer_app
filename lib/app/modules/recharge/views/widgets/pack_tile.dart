@@ -11,7 +11,7 @@ class PackTileWidget extends StatelessWidget {
   });
 
   final String packTitle;
-  final String packAmount;
+  final double packAmount;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class PackTileWidget extends StatelessWidget {
               width: size.width * 0.98,
               child: ElevatedButton(
                 onPressed: () {
-                  Get.find<RechargeController>().createOrder();
+                  Get.find<RechargeController>().createOrder(packAmount);
                 },
                 child: const Text('Buy Now'),
               ),

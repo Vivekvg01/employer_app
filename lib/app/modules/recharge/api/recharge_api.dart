@@ -51,15 +51,18 @@ class RechargeApi {
     final employerId = await storage.read(key: 'employerId');
 
     final url = Uri.parse(
-        '${ApiEndPoints().kBaseUrl}/credit/paymentVerification?userId=$employerId&amount=$amount&user=$userType');
+      '${ApiEndPoints().kBaseUrl}/credit/paymentVerification?userId=$employerId&amount=$amount&user=$userType',
+    );
+
     try {
       http.Response response = await http.post(
         url,
         body: reqBody,
       );
-      print(response.statusCode);
       if (response.statusCode == 200) {
-        print('payment verified');
+        log(response.body);
+      } else {
+        log(response.body);
       }
     } catch (e) {
       log(e.toString());

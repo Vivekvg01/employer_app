@@ -1,3 +1,5 @@
+import 'package:employer_app/app/utils/app_colors.dart';
+import 'package:employer_app/app/utils/app_sizes.dart';
 import 'package:employer_app/app/utils/const_values.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -33,22 +35,26 @@ class ChatRoomView extends GetView<ChatRoomController> {
                   ),
                   maxRadius: 20,
                 ),
-                SizedBox(width: 12),
+                const SizedBox(width: 12),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         "Freelancer",
                         style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w600),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
-                      SizedBox(height: 6),
+                      const SizedBox(height: 6),
                       Text(
                         "Online",
                         style: TextStyle(
-                            color: Colors.grey.shade600, fontSize: 13),
+                          color: Colors.grey.shade600,
+                          fontSize: 13,
+                        ),
                       ),
                     ],
                   ),
@@ -70,42 +76,31 @@ class ChatRoomView extends GetView<ChatRoomController> {
               padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
               height: 60,
               width: double.infinity,
-              color: Colors.white,
+              color: Colors.transparent,
               child: Row(
                 children: [
-                  GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(
-                        color: Colors.lightBlue,
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: Icon(
-                        Icons.add, 
-                        color: Colors.white,
-                        size: 20,
-                      ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.image,
+                      color: AppColors.kDarkGrey,
+                      size: 20,
                     ),
                   ),
-                  SizedBox(width: 15),
-                  Expanded(
+                  const SizedBox(width: 15),
+                  const Expanded(
                     child: TextField(
                       decoration: InputDecoration(
-                          hintText: "Write message...",
+                          hintText: "Write your message...",
                           hintStyle: TextStyle(color: Colors.black54),
                           border: InputBorder.none),
                     ),
                   ),
-                  SizedBox(
-                    width: 15,
-                  ),
+                  sizedheight(Get.width * 0.01),
                   FloatingActionButton(
                     onPressed: () {},
-                    backgroundColor: Colors.blue,
                     elevation: 0,
-                    child: Icon(
+                    child: const Icon(
                       Icons.send,
                       color: Colors.white,
                       size: 18,

@@ -89,7 +89,7 @@ class ProfileController extends GetxController {
     }
   }
 
-  //Values will be cleared when changepassword bottomsheet closed is closed.
+  //values will be cleared when changepassword bottomsheet closed is closed.
   void onChangepasswordBottomSheetClose() {
     oldPasswordController?.value.clear();
     newPasswordController?.value.clear();

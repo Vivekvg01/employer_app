@@ -13,11 +13,11 @@ import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
   const ProfileView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final profileController = Get.put(ProfileController());
     profileController.onInit();
-    final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -28,12 +28,12 @@ class ProfileView extends GetView<ProfileController> {
         child: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           children: [
-            sizedheight(size.height * 0.02),
+            sizedheight(Get.height * 0.02),
             CircleAvatar(
               radius: 48,
               child: Image.network(defaultProfileImgae),
             ),
-            sizedheight(size.height * 0.02),
+            sizedheight(Get.height * 0.02),
             Center(
               child: RichText(
                 text: TextSpan(
@@ -53,50 +53,56 @@ class ProfileView extends GetView<ProfileController> {
                 ),
               ),
             ),
-            sizedheight(size.height * 0.03),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                DataCountWidget(
-                  title: 'TOTAL HIRES',
-                  count: profileController.totalHires!.value,
-                ),
-                sizedWidth(size.width * 0.08),
-                DataCountWidget(
-                  title: 'TOTAL SPENDS',
-                  count: profileController.totalSpends!.value,
-                ),
-              ],
+            sizedheight(Get.height * 0.03),
+            Obx(
+              () => Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  DataCountWidget(
+                    title: 'TOTAL HIRES',
+                    count: profileController.totalHires!.value,
+                  ),
+                  sizedWidth(Get.width * 0.08),
+                  DataCountWidget(
+                    title: 'TOTAL SPENDS',
+                    count: profileController.totalSpends!.value,
+                  ),
+                ],
+              ),
             ),
-            sizedheight(size.height * 0.04),
-            ListTile(
-              onTap: () {
-                Get.bottomSheet(
-                  EditNameBottomSheet(
-                    textFeildVal:
-                        profileController.nameController?.value.text ?? '',
-                  ),
-                );
-              },
-              leading: Icon(Icons.person, color: AppColors.kDarkGreen),
-              title: Text(profileController.nameController!.value.text),
-              subtitle: const Padding(
-                  padding: EdgeInsets.only(
-                    top: 5.0,
-                  ),
-                  child: Text(
-                    'This is not your username or pin.This name will be vibile to the employes.',
-                    style: TextStyle(fontSize: 13),
-                  )),
-              trailing: Icon(Icons.edit, color: AppColors.kDarkGreen),
+            sizedheight(Get.height * 0.04),
+            Obx(
+              () => ListTile(
+                onTap: () {
+                  Get.bottomSheet(
+                    EditNameBottomSheet(
+                      textFeildVal:
+                          profileController.nameController?.value.text ?? '',
+                    ),
+                  );
+                },
+                leading: Icon(Icons.person, color: AppColors.kDarkGreen),
+                title: Text(profileController.nameController!.value.text),
+                subtitle: const Padding(
+                    padding: EdgeInsets.only(
+                      top: 5.0,
+                    ),
+                    child: Text(
+                      'This is not your username or pin.This name will be vibile to the employes.',
+                      style: TextStyle(fontSize: 13),
+                    )),
+                trailing: Icon(Icons.edit, color: AppColors.kDarkGreen),
+              ),
             ),
             kDivider1,
-            ListTile(
-              leading: Icon(
-                Icons.email,
-                color: AppColors.kDarkGreen,
+            Obx(
+              () => ListTile(
+                leading: Icon(
+                  Icons.email,
+                  color: AppColors.kDarkGreen,
+                ),
+                title: Text(profileController.emailController!.value.text),
               ),
-              title: Text(profileController.emailController!.value.text),
             ),
             kDivider1,
             ListTile(
@@ -125,7 +131,7 @@ class ProfileView extends GetView<ProfileController> {
               ),
               title: const Text('Purchase History'),
             ),
-            sizedheight(size.height * 0.05),
+            sizedheight(Get.height * 0.05),
           ],
         ),
       ),

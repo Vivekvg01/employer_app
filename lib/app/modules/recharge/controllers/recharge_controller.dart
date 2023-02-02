@@ -32,12 +32,11 @@ class RechargeController extends GetxController
 
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     // Do something when payment succeeds
-    print(response);
     RechargeApi().verifyPayment(
       orderid: response.orderId,
       paymentId: response.paymentId,
       signature: response.signature,
-      amount: '500',
+      amount: '500000',
     );
   }
 
@@ -52,7 +51,7 @@ class RechargeController extends GetxController
   }
 
   //create order
-  void createOrder() async {
+  void createOrder(double amount) async {
     String userName = RazorCredential.keyId;
     String password = RazorCredential.keySecret;
 
@@ -60,7 +59,7 @@ class RechargeController extends GetxController
         'Basic ${base64Encode(utf8.encode('$userName:$password'))}';
 
     Map<String, dynamic> body = {
-      "amount": 500 * 100,
+      "amount": amount * 100,
       "currency": "INR",
       "receipt": "rcptid_11"
     };
@@ -74,14 +73,14 @@ class RechargeController extends GetxController
       body: jsonEncode(body),
     );
     if (res.statusCode == 200) {
-      openGateway(jsonDecode(res.body)['id']);
+      openGateway(jsonDecode(res.body)['id'], amount);
     }
   }
 
-  openGateway(String orderId) {
+  openGateway(String orderId, double amount) {
     var options = {
       'key': RazorCredential.keyId,
-      'amount': 500 * 100,
+      'amount': amount * 100,
       'name': 'Ger worker',
       'order_id': orderId, // Generate order_id using Orders API
       'description': 'Add credits',
