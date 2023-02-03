@@ -14,41 +14,44 @@ class EditNameBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     nameController.value.text = textFeildVal;
     final size = MediaQuery.of(context).size;
-    return Container(
-      height: size.height * 0.2,
-      width: double.infinity,
-      color: AppColors.kWhiteColor,
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Enter your name ',
-              style: TextStyle(fontSize: 16),
-            ),
-            TextField(
-              controller: nameController.value,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                TextButton(
-                  onPressed: () {
-                    Get.back();
-                  },
-                  child: const Text('Cancel'),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Get.find<ProfileController>()
-                        .onProfileSaveButtonClicked(nameController.value.text);
-                  },
-                  child: const Text('Save'),
-                ),
-              ],
-            )
-          ],
+    return Obx(
+      () => Container(
+        height: size.height * 0.2,
+        width: double.infinity,
+        color: AppColors.kWhiteColor,
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Enter your name ',
+                style: TextStyle(fontSize: 16),
+              ),
+              TextField(
+                controller: nameController.value,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    child: const Text('Cancel'),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Get.find<ProfileController>().onProfileSaveButtonClicked(
+                        nameController.value.text,
+                      );
+                    },
+                    child: const Text('Save'),
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

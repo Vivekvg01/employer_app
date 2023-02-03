@@ -3,7 +3,10 @@ import 'package:employer_app/app/modules/profile/model/my_prof_compled_jobs.dart
 import 'package:employer_app/app/modules/profile/model/my_profile_model.dart';
 import 'package:employer_app/app/modules/recharge/controllers/recharge_controller.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
+import '../../auth/login/controllers/login_controller.dart';
+import '../../auth/login/views/login_view.dart';
 
 class ProfileController extends GetxController {
   @override
@@ -17,6 +20,17 @@ class ProfileController extends GetxController {
   RxInt? totalSpends = 0.obs;
   RxString name = ''.obs;
   RxString email = ''.obs;
+
+  final loginController = Get.put(
+      LoginController()); //initializing login controller for logout function
+
+  //logout funcion clears the token
+  Future<void> signOut() async {
+    const storage = FlutterSecureStorage();
+    await storage.delete(key: 'token');
+    loginController.setIsLoggedIn(false);
+    Get.offAll(() => LoginView());
+  }
 
   //Profile text controllers.
   Rx<TextEditingController>? nameController = TextEditingController().obs;

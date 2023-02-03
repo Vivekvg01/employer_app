@@ -32,7 +32,7 @@ class HomeView extends GetView {
           ),
           IconButton(
             onPressed: () {
-              homeController.logout();
+              // homeController.logout();
             },
             icon: const Icon(Icons.logout),
           ),

@@ -75,6 +75,7 @@ class JobHistoryBottomSheet extends StatelessWidget {
               },
             ),
           ),
+          sizedheight(Get.height * 0.02)
         ],
       ),
     );

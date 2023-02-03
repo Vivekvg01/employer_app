@@ -16,15 +16,6 @@ class HomeController extends GetxController {
 
   RxInt tabIndex = 0.obs;
 
-  final _loginController = Get.put(LoginController());
-  //logout funcion clears the token
-  Future<void> logout() async {
-    const storage = FlutterSecureStorage();
-    await storage.delete(key: 'token');
-    _loginController.setIsLoggedIn(false);
-    Get.offAll(() => LoginView());
-  }
-
   void gotToChat() {
     Get.to(() => const AllChatsView());
   }

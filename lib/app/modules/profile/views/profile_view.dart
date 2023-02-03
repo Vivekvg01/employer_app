@@ -2,7 +2,7 @@ import 'package:employer_app/app/modules/profile/views/widgets/change_password_b
 import 'package:employer_app/app/modules/profile/views/widgets/completed_jobs_bottom_sheet.dart';
 import 'package:employer_app/app/modules/profile/views/widgets/data_count_widgets.dart';
 import 'package:employer_app/app/modules/profile/views/widgets/edit_name_bottom_sheet.dart';
-import 'package:employer_app/app/modules/profile/views/widgets/purchase_history_bottom_sheet.dart';
+import 'package:employer_app/app/modules/profile/views/widgets/sign_out_popup.dart';
 import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:employer_app/app/utils/app_sizes.dart';
 import 'package:employer_app/app/utils/const_values.dart';
@@ -81,7 +81,15 @@ class ProfileView extends GetView<ProfileController> {
                     ),
                   );
                 },
-                leading: Icon(Icons.person, color: AppColors.kDarkGreen),
+                leading: CircleAvatar(
+                  backgroundColor: AppColors.kDarkGreen,
+                  radius: 17,
+                  child: Icon(
+                    Icons.person,
+                    color: AppColors.kWhiteColor,
+                    size: 17,
+                  ),
+                ),
                 title: Text(profileController.nameController!.value.text),
                 subtitle: const Padding(
                     padding: EdgeInsets.only(
@@ -97,9 +105,14 @@ class ProfileView extends GetView<ProfileController> {
             kDivider1,
             Obx(
               () => ListTile(
-                leading: Icon(
-                  Icons.email,
-                  color: AppColors.kDarkGreen,
+                leading: CircleAvatar(
+                  backgroundColor: AppColors.kDarkGreen,
+                  radius: 17,
+                  child: Icon(
+                    Icons.email,
+                    color: AppColors.kWhiteColor,
+                    size: 17,
+                  ),
                 ),
                 title: Text(profileController.emailController!.value.text),
               ),
@@ -112,26 +125,33 @@ class ProfileView extends GetView<ProfileController> {
                   isScrollControlled: true,
                 );
               },
-              leading: Icon(
-                Icons.work_history,
-                color: AppColors.kDarkGreen,
+              leading: CircleAvatar(
+                backgroundColor: AppColors.kDarkGreen,
+                radius: 17,
+                child: Icon(
+                  Icons.work_history,
+                  color: AppColors.kWhiteColor,
+                  size: 17,
+                ),
               ),
-              title: const Text('Job History'),
+              title: const Text('Completed Jobs'),
             ),
             kDivider1,
             ListTile(
               onTap: () {
-                Get.bottomSheet(
-                  const PurchaseHistryBottomSheet(),
-                );
+                Get.dialog(SignOutPopUp());
               },
-              leading: Icon(
-                Icons.currency_rupee,
-                color: AppColors.kDarkGreen,
+              leading: CircleAvatar(
+                backgroundColor: AppColors.kDarkGreen,
+                radius: 17,
+                child: Icon(
+                  Icons.logout,
+                  color: AppColors.kWhiteColor,
+                  size: 17,
+                ),
               ),
-              title: const Text('Purchase History'),
+              title: const Text('Sign out'),
             ),
-            sizedheight(Get.height * 0.05),
           ],
         ),
       ),
