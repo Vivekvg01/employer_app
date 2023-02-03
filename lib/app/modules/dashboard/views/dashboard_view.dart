@@ -64,10 +64,10 @@ class DashboardView extends GetView<DashboardController> {
             ],
           ),
           floatingActionButton: Padding(
-            padding: const EdgeInsets.only(top: 25),
+            padding: const EdgeInsets.only(top: 30),
             child: SizedBox(
-              height: 65.0,
-              width: 65.0,
+              height: 70.0,
+              width: 70.0,
               child: FittedBox(
                 child: FloatingActionButton(
                   onPressed: () {

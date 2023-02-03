@@ -100,14 +100,27 @@ class RechargeController extends GetxController
     const Tab(text: "RECHARGE HISTORY"),
   ];
 
-  RxList<Detail>? purchaseDetailsList = <Detail>[].obs;
+  RxList<Detail?> purchaseDetailsList = <Detail>[].obs;
+  RxList<DataRow> dataRows = <DataRow>[].obs;
 
   void getPurchaseHistory() async {
     PurchaseHistoryModel? response = await RechargeApi().getPurchaseHistory();
 
     if (response != null) {
       if (response.details != null) {
-        purchaseDetailsList?.value = response.details!;
+        purchaseDetailsList.value = response.details!;
+        for (int i = 0; i < purchaseDetailsList.length; i++) {
+          dataRows.add(
+            DataRow(
+              cells: [
+                DataCell(Text((i+1).toString())), 
+                DataCell(Text(purchaseDetailsList[i]!.orderId.toString())),
+                DataCell(Text(purchaseDetailsList[i]!.paymentId.toString())),
+                DataCell(Text(purchaseDetailsList[i]!.amount.toString())),
+              ],
+            ),
+          );
+        }
       }
     }
   }

@@ -7,12 +7,13 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../../../utils/api_endpoints.dart';
 
 class RechargeApi {
+  //get purchase history api.
   Future<PurchaseHistoryModel?> getPurchaseHistory() async {
     const storage = FlutterSecureStorage();
 
     final employerId = await storage.read(key: 'employerId');
     final token = await storage.read(key: 'token');
-    final url = Uri.parse('${ApiEndPoints().kBaseUrl}/mypost/$employerId');
+    final url = Uri.parse('${ApiEndPoints().kBaseUrl}/credit/history/$employerId');
 
     var headers = {
       'Content-Type': 'application/json',
@@ -26,6 +27,7 @@ class RechargeApi {
       );
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
+        log(response.body);
         PurchaseHistoryModel respModel = PurchaseHistoryModel.fromJson(data);
         return respModel;
       }
@@ -35,6 +37,7 @@ class RechargeApi {
     return null;
   }
 
+  //verify payment api calling.
   void verifyPayment({
     String? orderid,
     String? paymentId,
