@@ -113,9 +113,8 @@ class RechargeController extends GetxController
           dataRows.add(
             DataRow(
               cells: [
-                DataCell(Text((i+1).toString())), 
+                DataCell(Text((i + 1).toString())),
                 DataCell(Text(purchaseDetailsList[i]!.orderId.toString())),
-                DataCell(Text(purchaseDetailsList[i]!.paymentId.toString())),
                 DataCell(Text(purchaseDetailsList[i]!.amount.toString())),
               ],
             ),

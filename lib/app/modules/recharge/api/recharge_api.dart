@@ -13,7 +13,8 @@ class RechargeApi {
 
     final employerId = await storage.read(key: 'employerId');
     final token = await storage.read(key: 'token');
-    final url = Uri.parse('${ApiEndPoints().kBaseUrl}/credit/history/$employerId');
+    final url =
+        Uri.parse('${ApiEndPoints().kBaseUrl}/credit/history/$employerId');
 
     var headers = {
       'Content-Type': 'application/json',
@@ -27,7 +28,6 @@ class RechargeApi {
       );
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
-        log(response.body);
         PurchaseHistoryModel respModel = PurchaseHistoryModel.fromJson(data);
         return respModel;
       }

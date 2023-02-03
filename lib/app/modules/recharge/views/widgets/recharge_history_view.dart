@@ -2,7 +2,7 @@ import 'package:employer_app/app/modules/recharge/controllers/recharge_controlle
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class RechargeHistory extends StatelessWidget {
+class RechargeHistory extends GetView {
   const RechargeHistory({super.key});
 
   @override
@@ -10,27 +10,25 @@ class RechargeHistory extends StatelessWidget {
     return ListView(
       children: [
         Obx(
-          () => SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: DataTable(
-              columns: const [
-                DataColumn(label: Text('No.')),
-                DataColumn(
-                  label: Center(
-                    widthFactor: 3.0,
-                    child: Text('Order Id'),
+          () => DataTable(
+            columns: const [
+              DataColumn(label: Text('No.')),
+              DataColumn(
+                label: Center(
+                  widthFactor: 3.0,
+                  child: Text('Order Id'),
+                ),
+              ),
+              DataColumn(
+                label: Center(
+                  widthFactor: 1.0,
+                  child: Text(
+                    'Amount',
                   ),
                 ),
-                DataColumn(
-                  label: Center(
-                    widthFactor: 1.7,
-                    child: Text('Payement Id'),
-                  ),
-                ),
-                DataColumn(label: Text('Amount')),
-              ],
-              rows: Get.find<RechargeController>().dataRows,
-            ),
+              ),
+            ],
+            rows: Get.find<RechargeController>().dataRows,
           ),
         ),
       ],
