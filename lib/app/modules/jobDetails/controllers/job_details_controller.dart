@@ -1,9 +1,8 @@
 import 'package:employer_app/app/modules/home/controllers/home_controller.dart';
 import 'package:employer_app/app/modules/jobDetails/api/job_details_api.dart';
 import 'package:employer_app/app/modules/jobDetails/model/job_details_model.dart';
-import 'package:employer_app/app/modules/proposals/views/proposals_view.dart';
+import 'package:employer_app/app/modules/proposal_details/views/proposal_details_view.dart';
 import 'package:get/get.dart';
-
 import '../model/proposal_model.dart';
 
 class JobDetailsController extends GetxController {
@@ -11,6 +10,7 @@ class JobDetailsController extends GetxController {
 
   @override
   void onInit() {
+    //assigning job id from the previous page controller.
     jobId = Get.find<HomeController>().jobIdVal!;
     getJobDetails();
     super.onInit();
@@ -18,11 +18,15 @@ class JobDetailsController extends GetxController {
 
   RxBool isLoading = false.obs;
 
+  RxInt tabIndex = 0.obs;
+
   String? jobTitle;
   String? jobDescription;
   String? difficultyLevel;
   int? budget;
   int? deadline;
+
+  String? prpslId;
 
   RxList<Proposal> porposalList = <Proposal>[].obs;
 
@@ -53,9 +57,14 @@ class JobDetailsController extends GetxController {
     isLoading(false);
   }
 
-  //Routing to view proposals
-  void gotToViewPropsals() {
-    Get.to(() => ProposalsView());
+  void goToProposalDetails(String? proposalId) {
+    if (proposalId != null) {
+      prpslId = proposalId;
+      Get.to(
+        () => const ProposalDetailsView(),
+        arguments: proposalId,
+      );
+    }
   }
 
   //Cancel jobs

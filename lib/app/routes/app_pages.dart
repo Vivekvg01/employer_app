@@ -98,11 +98,6 @@ class AppPages {
       binding: AddpostBinding(),
     ),
     GetPage(
-      name: _Paths.PROPOSALS,
-      page: () => ProposalsView(),
-      binding: ProposalsBinding(),
-    ),
-    GetPage(
       name: _Paths.CONTRACTS,
       page: () => const ContractsView(),
       binding: ContractsBinding(),

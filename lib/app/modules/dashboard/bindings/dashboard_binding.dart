@@ -2,7 +2,6 @@ import 'package:employer_app/app/modules/contracts/controllers/contracts_control
 import 'package:employer_app/app/modules/findTalent/controllers/find_talent_controller.dart';
 import 'package:employer_app/app/modules/home/controllers/home_controller.dart';
 import 'package:employer_app/app/modules/profile/controllers/profile_controller.dart';
-import 'package:employer_app/app/modules/proposals/controllers/proposals_controller.dart';
 import 'package:employer_app/app/modules/recharge/controllers/recharge_controller.dart';
 import 'package:get/get.dart';
 import '../../addpost/controllers/addpost_controller.dart';
@@ -14,7 +13,6 @@ class DashboardBinding extends Bindings {
     Get.lazyPut<DashboardController>(() => DashboardController());
     Get.lazyPut<HomeController>(() => HomeController());
     Get.lazyPut<FindTalentController>(() => FindTalentController());
-    Get.lazyPut<ProposalsController>(() => ProposalsController());
     Get.lazyPut<AddpostController>(() => AddpostController());
     Get.lazyPut<ContractsController>(() => ContractsController());
     Get.lazyPut<ProfileController>(() => ProfileController());

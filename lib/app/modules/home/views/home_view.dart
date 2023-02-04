@@ -1,4 +1,3 @@
-import 'package:employer_app/app/modules/addpost/views/addpost_view.dart';
 import 'package:employer_app/app/modules/home/views/widgets/job_category_chip.dart';
 import 'package:employer_app/app/modules/home/views/widgets/my_job_tile_widget.dart';
 import 'package:employer_app/app/utils/app_colors.dart';
@@ -29,12 +28,6 @@ class HomeView extends GetView {
               homeController.gotToChat();
             },
             icon: const Icon(Icons.message),
-          ),
-          IconButton(
-            onPressed: () {
-              // homeController.logout();
-            },
-            icon: const Icon(Icons.logout),
           ),
         ],
       ),
@@ -197,7 +190,7 @@ class HomeView extends GetView {
                                           sizedheight(Get.height * 0.02),
                                       itemCount: homeController
                                           .cancelledJobList.length,
-                                    )
+                                    ),
                     ],
                   ),
           );

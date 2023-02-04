@@ -50,8 +50,6 @@ class SignUpApi {
             snackStyle: SnackStyle.FLOATING,
           ),
         );
-      } else {
-        print('error occured');
       }
     } catch (e) {
       log(e.toString());

@@ -48,7 +48,7 @@ class FindTalentView extends GetView<FindTalentController> {
                   child: const Text('Find Talent'),
                 ),
           actions: findTalendController.isSearching.value
-              ? <Widget>[
+              ? [
                   IconButton(
                     icon: const Icon(Icons.close),
                     onPressed: () {
@@ -60,7 +60,7 @@ class FindTalentView extends GetView<FindTalentController> {
                     },
                   ),
                 ]
-              : <Widget>[
+              : [
                   IconButton(
                     icon: const Icon(Icons.search),
                     onPressed: () {
