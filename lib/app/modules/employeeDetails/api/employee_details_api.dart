@@ -12,9 +12,8 @@ class EmployeeDetailsApi {
     const storage = FlutterSecureStorage();
     final token = await storage.read(key: 'token');
 
-    final url = Uri.parse(
-      '${ApiEndPoints().kBaseUrl}/employee/profile/$employeeId',
-    );
+    final url =
+        Uri.parse('${ApiEndPoints().kBaseUrl}/employee/profile/$employeeId');
 
     var headers = {
       'Content-Type': 'application/json',

@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:employer_app/app/modules/employeeDetails/views/employee_details_view.dart';
 import 'package:employer_app/app/modules/findTalent/api/get_all_employee_api.dart';
 import 'package:employer_app/app/modules/findTalent/models/all_employees/all_employees_model.dart';
@@ -12,6 +11,7 @@ class FindTalentController extends GetxController {
   @override
   void onInit() {
     getEmployeeDatas();
+
     super.onInit();
   }
 
@@ -47,6 +47,11 @@ class FindTalentController extends GetxController {
       }
     }
     isLoading(false);
+  }
+
+  //on save talend button clicked.
+  void onSaveTalendButtonClick(String employeeId) async {
+    GetAllEmployeeApi().saveTalends(employeeId); 
   }
 
   void searchTalends(query) async {

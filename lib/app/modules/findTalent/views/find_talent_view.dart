@@ -1,5 +1,4 @@
 import 'package:employer_app/app/modules/findTalent/views/widgets/employee_tile_widget.dart';
-import 'package:employer_app/app/modules/findTalent/views/widgets/find_talend_switch.dart';
 import 'package:employer_app/app/modules/findTalent/views/widgets/shimmer_find_talend.dart';
 import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:employer_app/app/utils/app_sizes.dart';
@@ -96,7 +95,7 @@ class FindTalentView extends GetView<FindTalentController> {
                               imageUrl: findTalendController
                                       .employeeList?[index]?.image ??
                                   defaultProfileImgae,
-                              emoployerId: findTalendController
+                              employeeId: findTalendController
                                       .employeeList![index]?.owner?.id ??
                                   '',
                             );
@@ -126,7 +125,7 @@ class FindTalentView extends GetView<FindTalentController> {
                                       .employeeSearchResultList?[index]?.image
                                       .toString() ??
                                   '',
-                              emoployerId: findTalendController
+                              employeeId: findTalendController
                                       .employeeSearchResultList?[index]
                                       ?.owner
                                       ?.id

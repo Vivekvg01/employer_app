@@ -2,6 +2,7 @@ import 'package:employer_app/app/modules/recharge/controllers/recharge_controlle
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+
 class RechargeHistory extends GetView {
   const RechargeHistory({super.key});
 
@@ -21,7 +22,7 @@ class RechargeHistory extends GetView {
               ),
               DataColumn(
                 label: Center(
-                  widthFactor: 1.0,
+                  widthFactor: 0.7,
                   child: Text(
                     'Amount',
                   ),

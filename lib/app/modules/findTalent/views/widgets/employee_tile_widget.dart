@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../controllers/find_talent_controller.dart';
 
-class EmployeeTileWidget extends StatelessWidget {
+class EmployeeTileWidget extends GetView {
   EmployeeTileWidget({
     Key? key,
     required this.employeeName,
     required this.employeeTitle,
     required this.imageUrl,
-    required this.emoployerId,
+    required this.employeeId,
   }) : super(key: key);
 
   final String employeeName;
   final String employeeTitle;
   final String imageUrl;
-  final String emoployerId;
+  final String employeeId;
 
   @override
   Widget build(BuildContext context) {
@@ -46,16 +46,21 @@ class EmployeeTileWidget extends StatelessWidget {
             subtitle: Text(
               employeeTitle,
             ),
-            trailing: const CircleAvatar(
-              radius: 20,
-              child: Icon(
-                Icons.bookmark_outline,
-                size: 20,
+            trailing: IconButton(
+              onPressed: () {
+               Get.find<FindTalentController>().onSaveTalendButtonClick(employeeId);
+              },
+              icon: const CircleAvatar(
+                radius: 20,
+                child: Icon(
+                  Icons.bookmark_outline,
+                  size: 20,
+                ),
               ),
             ),
             onTap: () {
               Get.find<FindTalentController>()
-                  .gotoEmployerDetailsPage(emoployerId);
+                  .gotoEmployerDetailsPage(employeeId);
             },
           ),
         ],

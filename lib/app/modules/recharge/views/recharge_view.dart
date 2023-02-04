@@ -36,7 +36,7 @@ class RechargeView extends GetView<RechargeController> {
       ),
       body: TabBarView(
         controller: rechargeController.tabController,
-        children:  [
+        children:  const [
           BuyConnects(),
           RechargeHistory(),
         ],

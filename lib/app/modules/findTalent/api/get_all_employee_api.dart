@@ -46,6 +46,7 @@ class GetAllEmployeeApi {
     try {
       http.Response response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
+        log(response.body);
         final data = json.decode(response.body);
         return GetAllEmployee.fromJson(data);
       }
@@ -53,5 +54,33 @@ class GetAllEmployeeApi {
       throw Exception("Failed to Load data");
     }
     return null;
+  }
+
+  void saveTalends(String employeeId) async {
+    const storage = FlutterSecureStorage();
+    final token = await storage.read(key: 'token');
+
+    final url = Uri.parse(
+        '${ApiEndPoints().kBaseUrl}/saveTalents/639809f2a527d75011eb2c03');
+
+    var headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer $token'
+    };
+
+    Map<String, dynamic> requestBody = {
+      "id": employeeId,
+    };
+
+    final jsonReq = jsonEncode(requestBody);
+
+    try {
+      http.Response response =
+          await http.patch(url, headers: headers, body: jsonReq);
+      log(response.body);
+    } catch (e) {
+      throw Exception(e);
+    }
   }
 }
