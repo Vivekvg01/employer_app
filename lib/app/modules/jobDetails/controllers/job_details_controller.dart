@@ -68,7 +68,10 @@ class JobDetailsController extends GetxController {
   }
 
   //Cancel jobs
-  void onCancelJobButtonClicked() {
-    JobDetailsApi().cancelJob(jobId);
+  void onCancelJobButtonClicked() async {
+    final statuscode = await JobDetailsApi().cancelJob(jobId);
+    if (statuscode == 201) {
+      Get.back();
+    }
   }
 }

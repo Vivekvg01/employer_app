@@ -119,11 +119,13 @@ class EmployeeDetailsView extends GetView<EmployeeDetailsController> {
                       employeeDetailsController.userInfo ?? '',
                     ),
                     sizedheight(size.height * 0.02),
-                    const Text(
-                      'Skills',
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                    ),
+                    (employeeDetailsController.skillsList.isEmpty)
+                        ? const SizedBox()
+                        : const Text(
+                            'Skills',
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: List.generate(
@@ -143,11 +145,13 @@ class EmployeeDetailsView extends GetView<EmployeeDetailsController> {
                       ),
                     ),
                     sizedheight(size.height * 0.01),
-                    const Text(
-                      'Language',
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                    ),
+                    (employeeDetailsController.languageList.isEmpty)
+                        ? const SizedBox()
+                        : const Text(
+                            'Language',
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: List.generate(
@@ -169,11 +173,15 @@ class EmployeeDetailsView extends GetView<EmployeeDetailsController> {
                     ),
                     //third section ends
                     sizedheight(size.height * 0.02),
-                    const Text(
-                      'Education',
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                    ),
+                    (employeeDetailsController.educationList.isEmpty ||
+                            employeeDetailsController.portFolios?.length ==
+                                null)
+                        ? const SizedBox()
+                        : const Text(
+                            'Education',
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
                     sizedheight(size.height * 0.01),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -201,7 +209,7 @@ class EmployeeDetailsView extends GetView<EmployeeDetailsController> {
                     ),
                     sizedheight(size.height * 0.02),
                     kDivider1,
-                    (employeeDetailsController.portFolios?.length == 0 ||
+                    (employeeDetailsController.portFolios!.isEmpty ||
                             employeeDetailsController.portFolios?.length ==
                                 null)
                         ? const SizedBox()
@@ -238,7 +246,7 @@ class EmployeeDetailsView extends GetView<EmployeeDetailsController> {
                           );
                         },
                       ),
-                    )
+                    ),
                     //third section ends
                   ],
                 );

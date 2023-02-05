@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import '../../controllers/find_talent_controller.dart';
 
 class EmployeeTileWidget extends GetView {
-  EmployeeTileWidget({
+  const EmployeeTileWidget({
     Key? key,
     required this.employeeName,
     required this.employeeTitle,
@@ -46,18 +46,18 @@ class EmployeeTileWidget extends GetView {
             subtitle: Text(
               employeeTitle,
             ),
-            trailing: IconButton(
-              onPressed: () {
-               Get.find<FindTalentController>().onSaveTalendButtonClick(employeeId);
-              },
-              icon: const CircleAvatar(
-                radius: 20,
-                child: Icon(
-                  Icons.bookmark_outline,
-                  size: 20,
-                ),
-              ),
-            ),
+            // trailing: IconButton(
+            //   onPressed: () {
+            //    Get.find<FindTalentController>().onSaveTalendButtonClick(employeeId);
+            //   },
+            //   icon: const CircleAvatar(
+            //     radius: 20,
+            //     child: Icon(
+            //       Icons.bookmark_outline,
+            //       size: 20,
+            //     ),
+            //   ),
+            // ),
             onTap: () {
               Get.find<FindTalentController>()
                   .gotoEmployerDetailsPage(employeeId);

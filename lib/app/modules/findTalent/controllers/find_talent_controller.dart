@@ -49,9 +49,9 @@ class FindTalentController extends GetxController {
   }
 
   //on save talend button clicked.
-  void onSaveTalendButtonClick(String employeeId) async {
-    GetAllEmployeeApi().saveTalends(employeeId); 
-  }
+  // void onSaveTalendButtonClick(String employeeId) async {
+  //   GetAllEmployeeApi().saveTalends(employeeId);
+  // }
 
   void searchTalends(query) async {
     GetAllEmployee? response = await GetAllEmployeeApi().searchEmployee(query);

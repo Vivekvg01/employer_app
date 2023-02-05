@@ -12,6 +12,7 @@ class ProposalDetailsController extends GetxController {
   void onInit() {
     if (Get.find<JobDetailsController>().prpslId != null) {
       propsalId = Get.find<JobDetailsController>().prpslId!;
+      print(propsalId);
       getProposalDetails(propsalId);
     }
     super.onInit();
@@ -45,5 +46,7 @@ class ProposalDetailsController extends GetxController {
     isLoading(false);
   }
 
-  void acceptProposal() {}
+  void acceptProposal() async {
+    ProposalDetailsApi().acceptProposal(propsalId);
+  }
 }
