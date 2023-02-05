@@ -11,7 +11,6 @@ class FindTalentController extends GetxController {
   @override
   void onInit() {
     getEmployeeDatas();
-
     super.onInit();
   }
 

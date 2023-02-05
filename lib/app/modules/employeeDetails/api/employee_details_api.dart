@@ -8,7 +8,7 @@ import '../../../utils/api_endpoints.dart';
 import 'package:http/http.dart' as http;
 
 class EmployeeDetailsApi {
-  Future<GetEmployeeDetails?> getAllEmpolyee(String employeeId) async {
+  Future<GetEmployeeDetails?> getEmployeeDetails(String employeeId) async {
     const storage = FlutterSecureStorage();
     final token = await storage.read(key: 'token');
 

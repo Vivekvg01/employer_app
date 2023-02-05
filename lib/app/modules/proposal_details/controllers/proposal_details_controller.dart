@@ -6,13 +6,14 @@ import 'package:get/get.dart';
 class ProposalDetailsController extends GetxController {
   late String propsalId;
 
+  RxBool isLoading = false.obs;
+
   @override
   void onInit() {
     if (Get.find<JobDetailsController>().prpslId != null) {
       propsalId = Get.find<JobDetailsController>().prpslId!;
       getProposalDetails(propsalId);
     }
-
     super.onInit();
   }
 
@@ -21,8 +22,8 @@ class ProposalDetailsController extends GetxController {
   RxInt deadline = 0.obs;
   RxInt budget = 0.obs;
 
-
   void getProposalDetails(String propsalId) async {
+    isLoading(true);
     ProposalDetailsModel? response =
         await ProposalDetailsApi().getProfileDetails(propsalId);
     if (response != null) {
@@ -41,6 +42,7 @@ class ProposalDetailsController extends GetxController {
         deadline.value = response.deadline!;
       }
     }
+    isLoading(false);
   }
 
   void acceptProposal() {}

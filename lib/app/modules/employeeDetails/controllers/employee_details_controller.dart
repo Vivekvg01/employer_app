@@ -33,7 +33,7 @@ class EmployeeDetailsController extends GetxController {
   void getEmployeeDetails() async {
     isLoading(true);
     GetEmployeeDetails? response =
-        await EmployeeDetailsApi().getAllEmpolyee(empoloyeeId);
+        await EmployeeDetailsApi().getEmployeeDetails(empoloyeeId);
     if (response != null) {
       if (response.owner != null) {
         if (response.owner?.name != null) {
