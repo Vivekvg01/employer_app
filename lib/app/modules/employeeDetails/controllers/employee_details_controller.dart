@@ -22,7 +22,7 @@ class EmployeeDetailsController extends GetxController {
   String? userInfo;
   String? userTitle;
   String? imageUrl;
-  dynamic totalEarnings;
+  num? totalEarnings;
   RxList<dynamic>? completedJobs = [].obs;
 
   RxList<Skill?> skillsList = <Skill?>[].obs;

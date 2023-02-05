@@ -201,12 +201,21 @@ class EmployeeDetailsView extends GetView<EmployeeDetailsController> {
                     ),
                     sizedheight(size.height * 0.02),
                     kDivider1,
+                    (employeeDetailsController.portFolios?.length == 0 ||
+                            employeeDetailsController.portFolios?.length ==
+                                null)
+                        ? const SizedBox()
+                        : const Text(
+                            'Portfolios',
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
                     GridView.count(
                       shrinkWrap: true,
                       childAspectRatio: 3 / 2,
                       crossAxisCount: 2,
                       children: List.generate(
-                        employeeDetailsController.portFolios?.length ?? 1,
+                        employeeDetailsController.portFolios?.length ?? 0,
                         (index) {
                           return UnconstrainedBox(
                             child: ClipRRect(

@@ -121,7 +121,9 @@ class ProposalDetailsView extends GetView<ProposalDetailsController> {
                     children: [
                       CustomRectButton(
                         buttonLabel: 'Accept',
-                        onButtonClicked: () {},
+                        onButtonClicked: () {
+                          
+                        },
                         borderRadius: 15,
                       ),
                       CustomRectButton(

@@ -27,7 +27,7 @@ class GetEmployeeDetails {
 
   String? id;
   Owner? owner;
-  dynamic totalEarned;
+  num? totalEarned;
   List<Language?>? languages;
   List<Education?>? educations;
   List<Skill?>? skills;
@@ -39,10 +39,10 @@ class GetEmployeeDetails {
   List<dynamic>? completedJobs;
   String? kycApproved;
   bool? isBlocked;
-  int? reported;
+  num? reported;
   List<dynamic>? activeContracts;
   List<dynamic>? myProposals;
-  int? pendingWithdraw;
+  num? pendingWithdraw;
   List<dynamic>? savedJobs;
   List<dynamic>? notification;
   int? v;
