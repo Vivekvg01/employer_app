@@ -58,7 +58,6 @@ class PostJobApi {
             snackStyle: SnackStyle.FLOATING,
           ),
         );
-
         return postJobRespModel;
       } else {
         Get.showSnackbar(

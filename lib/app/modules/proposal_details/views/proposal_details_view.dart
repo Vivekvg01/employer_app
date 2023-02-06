@@ -129,11 +129,15 @@ class ProposalDetailsView extends GetView<ProposalDetailsController> {
                         CustomRectButton(
                           buttonLabel: 'Reject',
                           backgroundColor: AppColors.kredColor,
-                          onButtonClicked: () {},
+                          onButtonClicked: () {
+                            proposalDetailsController.rejectProposal();
+                          },
                         ),
                         CustomRectButton(
                           buttonLabel: 'Shortlist',
-                          onButtonClicked: () {},
+                          onButtonClicked: () {
+                            proposalDetailsController.shortlistPropsal();
+                          },
                           backgroundColor: AppColors.klightblueColor,
                         ),
                       ],

@@ -4,7 +4,7 @@ import 'package:employer_app/app/modules/proposal_details/model/proposal_model.d
 import 'package:get/get.dart';
 
 class ProposalDetailsController extends GetxController {
-  late String propsalId;
+  String? propsalId;
 
   RxBool isLoading = false.obs;
 
@@ -13,7 +13,7 @@ class ProposalDetailsController extends GetxController {
     if (Get.find<JobDetailsController>().prpslId != null) {
       propsalId = Get.find<JobDetailsController>().prpslId!;
       print(propsalId);
-      getProposalDetails(propsalId);
+      getProposalDetails(propsalId!);
     }
     super.onInit();
   }
@@ -47,6 +47,14 @@ class ProposalDetailsController extends GetxController {
   }
 
   void acceptProposal() async {
-    ProposalDetailsApi().acceptProposal(propsalId);
+    ProposalDetailsApi().acceptProposal(propsalId!);
+  }
+
+  void rejectProposal() async {
+    ProposalDetailsApi().rejectedProsal(propsalId);
+  }
+
+  void shortlistPropsal() async {
+    ProposalDetailsApi().shortlistProposal(propsalId);
   }
 }

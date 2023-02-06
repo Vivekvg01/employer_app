@@ -29,7 +29,7 @@ class AddpostController extends GetxController {
       titleController.clear();
       descriptionController.clear();
       budgetController.clear();
-      deadlineController.clear();
+      deadlineController.clear(); 
       Get.back();
       Get.find<HomeController>().onInit();
     }

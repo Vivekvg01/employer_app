@@ -139,7 +139,7 @@ class ProfileView extends GetView<ProfileController> {
             kDivider1,
             ListTile(
               onTap: () {
-                Get.dialog(SignOutPopUp());
+                Get.dialog(const SignOutPopUp());
               },
               leading: CircleAvatar(
                 backgroundColor: AppColors.kDarkGreen,

@@ -83,7 +83,14 @@ class JobDetailsApi {
       http.Response response = await http.get(url, headers: headers);
 
       if (response.statusCode == 200) {
-        log(response.body);
+        Get.showSnackbar(
+          GetSnackBar(
+            message: 'Proposal Approved',
+            backgroundColor: AppColors.kredColor,
+            duration: const Duration(seconds: 3),
+            snackStyle: SnackStyle.FLOATING,
+          ),
+        );
       }
     } catch (e) {
       log(e.toString());

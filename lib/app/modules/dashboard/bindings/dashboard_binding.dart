@@ -10,12 +10,26 @@ import '../controllers/dashboard_controller.dart';
 class DashboardBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<DashboardController>(() => DashboardController());
-    Get.lazyPut<HomeController>(() => HomeController());
-    Get.lazyPut<FindTalentController>(() => FindTalentController());
-    Get.lazyPut<AddpostController>(() => AddpostController());
-    Get.lazyPut<ContractsController>(() => ContractsController());
-    Get.lazyPut<ProfileController>(() => ProfileController());
-    Get.lazyPut<RechargeController>(() => RechargeController());
+    Get.lazyPut<DashboardController>(
+      () => DashboardController(),
+    );
+    Get.lazyPut<HomeController>(
+      () => HomeController(),
+    );
+    Get.lazyPut<FindTalentController>(
+      () => FindTalentController(),
+    );
+    Get.lazyPut<AddpostController>(
+      () => AddpostController(),
+    );
+    Get.lazyPut<ContractsController>(
+      () => ContractsController(),
+    );
+    Get.lazyPut<ProfileController>(
+      () => ProfileController(),
+    );
+    Get.lazyPut<RechargeController>(
+      () => RechargeController(),
+    );
   }
 }

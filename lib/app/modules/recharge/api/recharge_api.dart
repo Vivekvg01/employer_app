@@ -74,7 +74,7 @@ class RechargeApi {
       );
       log(response.body);
       if (response.statusCode == 302) {
-       Get.showSnackbar(
+        Get.showSnackbar(
           GetSnackBar(
             message: "Payment successful",
             backgroundColor: AppColors.kGreenColor,

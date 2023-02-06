@@ -50,7 +50,7 @@ class ProposalDetailsApi {
         Get.showSnackbar(
           GetSnackBar(
             message: 'Proposal Accepted',
-            backgroundColor: AppColors.kredColor,
+            backgroundColor: AppColors.kGreenColor,
             duration: const Duration(seconds: 3),
             snackStyle: SnackStyle.FLOATING,
           ),
@@ -67,6 +67,49 @@ class ProposalDetailsApi {
           ),
         );
       }
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  //shortlisted proposal
+  void shortlistProposal(String? propsalId) async {
+    const storage = FlutterSecureStorage();
+    final token = await storage.read(key: 'token');
+    final employerId = await storage.read(key: 'employerId');
+    var headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer $token'
+    };
+    final url = Uri.parse(
+        '${ApiEndPoints().kBaseUrl}/updateProposal/$employerId/$propsalId');
+
+    try {
+      http.Response response = await http.patch(url, headers: headers);
+      log(response.body);
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  //rejected proposal
+  void rejectedProsal(String? propsalId) async {
+    const storage = FlutterSecureStorage();
+    final token = await storage.read(key: 'token');
+    final employerId = await storage.read(key: 'employerId');
+    var headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer $token'
+    };
+
+    final url = Uri.parse(
+        '${ApiEndPoints().kBaseUrl}/updateProposal/$employerId/$propsalId');
+
+    try {
+      http.Response response = await http.patch(url, headers: headers);
+      log(response.body);
     } catch (e) {
       throw Exception(e);
     }

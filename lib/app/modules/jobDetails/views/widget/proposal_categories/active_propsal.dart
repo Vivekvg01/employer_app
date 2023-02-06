@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../utils/app_colors.dart';
 import '../../../../../utils/app_sizes.dart';
-import '../../../../proposal_details/views/proposal_details_view.dart';
 
 class ActivePropsal extends GetView {
   const ActivePropsal({super.key});

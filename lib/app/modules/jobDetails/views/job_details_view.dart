@@ -2,6 +2,7 @@ import 'package:employer_app/app/common_widgets/rect_button.dart';
 import 'package:employer_app/app/modules/jobDetails/views/widget/chip/propsal_category_chip.dart';
 import 'package:employer_app/app/modules/jobDetails/views/widget/job_categories.dart/active_job_details.dart';
 import 'package:employer_app/app/modules/jobDetails/views/widget/job_categories.dart/on_going_job_details.dart';
+import 'package:employer_app/app/modules/jobDetails/views/widget/job_categories.dart/only_job_details.dart';
 import 'package:employer_app/app/modules/jobDetails/views/widget/proposal_categories/active_propsal.dart';
 import 'package:employer_app/app/utils/app_sizes.dart';
 import 'package:employer_app/app/utils/const_values.dart';
@@ -30,10 +31,10 @@ class JobDetailsView extends GetView<JobDetailsController> {
           return jobDetailsController.isLoading.value
               ? const Center(child: CircularProgressIndicator())
               : jobDetailsController.jobStatus.value == "active"
-                  ?  const ActiveJobDetails()
+                  ? const ActiveJobDetails()
                   : jobDetailsController.jobStatus.value == "running"
                       ? const OnGoingJobDetials()
-                      : Container();
+                      : const OnlyJobDetails();
         },
       ),
     );

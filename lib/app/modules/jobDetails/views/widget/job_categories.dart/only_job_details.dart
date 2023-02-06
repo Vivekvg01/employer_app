@@ -1,12 +1,13 @@
-import 'package:employer_app/app/common_widgets/rect_button.dart';
 import 'package:employer_app/app/modules/jobDetails/controllers/job_details_controller.dart';
+import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../../common_widgets/rect_button.dart';
 import '../../../../../utils/app_sizes.dart';
 import '../../../../../utils/const_values.dart';
 
-class OnGoingJobDetials extends StatelessWidget {
-  const OnGoingJobDetials({super.key});
+class OnlyJobDetails extends GetView {
+  const OnlyJobDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -62,13 +63,6 @@ class OnGoingJobDetials extends StatelessWidget {
           ),
         ),
         sizedheight(Get.height * 0.03),
-        kDivider1,
-        CustomRectButton(
-          buttonLabel: 'Approve Job',
-          onButtonClicked: () {
-            jobDetailsController.onApproveJobButtonClick();
-          },
-        ),
         sizedWidth(Get.width * 0.03),
       ],
     );
