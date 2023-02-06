@@ -12,18 +12,18 @@ class BuyConnects extends GetView {
       padding: const EdgeInsets.all(20),
       children: [
         const PackTileWidget(
-          packAmount: 500.00,
+          packAmount: 500,
           packTitle: 'Basic Pack',
         ),
         sizedheight(Get.height * 0.02),
         const PackTileWidget(
-          packAmount: 1000.00,
+          packAmount: 1000,
           packTitle: 'Value Pack',
         ),
         sizedheight(Get.height * 0.02),
         const PackTileWidget(
           packTitle: 'Premium Pack',
-          packAmount: 5000.00,
+          packAmount: 5000,
         ),
       ],
     );

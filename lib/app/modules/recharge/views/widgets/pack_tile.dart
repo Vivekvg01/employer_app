@@ -11,7 +11,7 @@ class PackTileWidget extends StatelessWidget {
   });
 
   final String packTitle;
-  final double packAmount;
+  final int packAmount;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class PackTileWidget extends StatelessWidget {
               ),
             ),
             Text(
-              'Recharge for Rs :$packAmount',
+              'Recharge for Rs : ₹ $packAmount',
               style: TextStyle(
                 color: AppColors.kWhiteColor,
                 fontWeight: FontWeight.w500,

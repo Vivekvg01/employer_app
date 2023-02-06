@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:employer_app/app/modules/profile/controllers/profile_controller.dart';
 import 'package:employer_app/app/modules/recharge/api/recharge_api.dart';
 import 'package:employer_app/app/modules/recharge/models/purchase_history_model.dart';
 import 'package:employer_app/app/modules/recharge/razorpay/razor_credentials.dart';
@@ -13,8 +14,13 @@ class RechargeController extends GetxController
     with GetTickerProviderStateMixin {
   RxInt totalBalance = 0.obs;
 
+  String? email;
+  String? username;
+
   @override
   void onInit() {
+    username = Get.find<ProfileController>().name.value;
+    email = Get.find<ProfileController>().email.value;
     tabController = TabController(length: 2, vsync: this);
     addRazorpayliteners();
     getPurchaseHistory();
@@ -31,17 +37,21 @@ class RechargeController extends GetxController
     });
   }
 
-  double? purchaseAmount;
+  int? purchaseAmount;
 
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     // Do something when payment succeeds
-    print(response);
-    RechargeApi().verifyPayment(
-      orderid: response.orderId,
-      paymentId: response.paymentId,
-      signature: response.signature,
-      amount: purchaseAmount.toString(),
-    );
+    if (response.orderId != null &&
+        response.paymentId != null &&
+        response.signature != null &&
+        purchaseAmount != null) {
+      RechargeApi().verifyPayment(
+        orderid: response.orderId!,
+        paymentId: response.paymentId!,
+        signature: response.signature!,
+        amount: (purchaseAmount! * 100).toString(),
+      );
+    }
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
@@ -62,7 +72,7 @@ class RechargeController extends GetxController
   }
 
   //create order
-  void createOrder(double amount) async {
+  void createOrder(int amount) async {
     String userName = RazorCredential.keyId;
     String password = RazorCredential.keySecret;
 
@@ -88,19 +98,24 @@ class RechargeController extends GetxController
     }
   }
 
-  openGateway(String orderId, double amount) {
+  openGateway(String orderId, int amount) {
     purchaseAmount = amount;
     var options = {
       'key': RazorCredential.keyId,
       'amount': amount * 100,
-      'name': 'Ger worker',
+      'name': 'Get worker',
       'order_id': orderId, // Generate order_id using Orders API
       'description': 'Add credits',
+      'image':
+          'https://res.cloudinary.com/dpiah7oyh/image/upload/v1666255506/GetworkerProfileImg/ezhbbjrlmfvbefegcfq2.png',
       'timeout': 60 * 5, //In seconds // 5 minutes
       'prefill': {
-        'contact': '8921923419',
-        'email': 'vivek@gmail.com',
-      }
+        'name': username,
+        'email': email,
+      },
+      'notes': {
+        'address': "Razorpay Corporate Office",
+      },
     };
     razorPay.open(options);
   }

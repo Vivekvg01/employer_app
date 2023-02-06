@@ -50,15 +50,25 @@ class PostJobApi {
       if (response.statusCode >= 200 && response.statusCode <= 299) {
         final jsonResp = jsonDecode(response.body);
         PostJobResModel postJobRespModel = PostJobResModel.fromJson(jsonResp);
-        GetSnackBar(
-          message: "Something went wrong!",
-          backgroundColor: AppColors.kredColor,
-          duration: const Duration(seconds: 3),
-          snackStyle: SnackStyle.FLOATING,
+        Get.showSnackbar(
+          GetSnackBar(
+            message: "Something went wrong!",
+            backgroundColor: AppColors.kredColor,
+            duration: const Duration(seconds: 3),
+            snackStyle: SnackStyle.FLOATING,
+          ),
         );
+
         return postJobRespModel;
       } else {
-        log(response.body);
+        Get.showSnackbar(
+          GetSnackBar(
+            message: "Post added successfully",
+            backgroundColor: AppColors.kGreenColor,
+            duration: const Duration(seconds: 3),
+            snackStyle: SnackStyle.FLOATING,
+          ),
+        );
         GetSnackBar(
           message: "Post added successfully",
           backgroundColor: AppColors.kGreenColor,
