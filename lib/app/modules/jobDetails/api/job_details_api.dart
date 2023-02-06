@@ -22,7 +22,6 @@ class JobDetailsApi {
     try {
       http.Response response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
-        log(response.body);
         final data = jsonDecode(response.body);
         JobDetailsModel respModel = JobDetailsModel.fromJson(data);
         return respModel;

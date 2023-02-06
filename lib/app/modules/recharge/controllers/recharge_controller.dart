@@ -17,10 +17,12 @@ class RechargeController extends GetxController
   String? email;
   String? username;
 
+  final profileController = Get.put(ProfileController());
+
   @override
   void onInit() {
-    username = Get.find<ProfileController>().name.value;
-    email = Get.find<ProfileController>().email.value;
+    username = profileController.name.value;
+    email = profileController.email.value;
     tabController = TabController(length: 2, vsync: this);
     addRazorpayliteners();
     getPurchaseHistory();

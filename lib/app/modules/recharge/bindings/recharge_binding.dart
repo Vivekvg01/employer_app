@@ -7,5 +7,6 @@ class RechargeBinding extends Bindings {
   void dependencies() {
     Get.lazyPut<RechargeController>(() => RechargeController());
     Get.lazyPut<ProfileController>(() => ProfileController());
+    Get.put(ProfileController());
   }
 }
