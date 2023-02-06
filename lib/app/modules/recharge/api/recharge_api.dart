@@ -46,7 +46,7 @@ class RechargeApi {
   }) async {
     Map<String, dynamic> reqBody = {
       'razorpay_order_id': orderid,
-      'razorpay_paymemt_id': paymentId,
+      'razorpay_payment_id': paymentId,
       'razorpay_signature': signature,
     };
 
@@ -60,11 +60,9 @@ class RechargeApi {
     try {
       http.Response response = await http.post(
         url,
-        body: reqBody,
+        body: jsonEncode(reqBody),
       );
       if (response.statusCode == 200) {
-        log(response.body);
-      } else {
         log(response.body);
       }
     } catch (e) {

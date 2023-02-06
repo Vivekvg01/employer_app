@@ -23,6 +23,8 @@ class JobDetailsController extends GetxController {
   String? jobTitle;
   String? jobDescription;
   String? difficultyLevel;
+  RxString jobStatus = ''.obs;
+
   int? budget;
   int? deadline;
 
@@ -53,8 +55,17 @@ class JobDetailsController extends GetxController {
       if (response.proposals != null) {
         porposalList.value = response.proposals!;
       }
+      if (response.status != null) {
+        jobStatus.value = response.status!;
+      }
     }
     isLoading(false);
+  }
+
+  //on approveJob
+
+  void onApproveJobButtonClick() {
+    JobDetailsApi().approveJob(jobId);
   }
 
   void goToProposalDetails(String? proposalId) {

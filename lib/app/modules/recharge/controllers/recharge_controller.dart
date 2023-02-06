@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:employer_app/app/modules/recharge/api/recharge_api.dart';
 import 'package:employer_app/app/modules/recharge/models/purchase_history_model.dart';
 import 'package:employer_app/app/modules/recharge/razorpay/razor_credentials.dart';
+import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../models/purchase_details_model.dart';
@@ -30,19 +31,29 @@ class RechargeController extends GetxController
     });
   }
 
+  double? purchaseAmount;
+
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     // Do something when payment succeeds
+    print(response);
     RechargeApi().verifyPayment(
       orderid: response.orderId,
       paymentId: response.paymentId,
       signature: response.signature,
-      amount: '500000',
+      amount: purchaseAmount.toString(),
     );
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
     // Do something when payment fails
-    print(response);
+    Get.showSnackbar(
+      GetSnackBar(
+        message: response.message,
+        backgroundColor: AppColors.kredColor,
+        duration: const Duration(seconds: 3),
+        snackStyle: SnackStyle.FLOATING,
+      ),
+    );
   }
 
   void _handleExternalWallet(ExternalWalletResponse response) {
@@ -78,6 +89,7 @@ class RechargeController extends GetxController
   }
 
   openGateway(String orderId, double amount) {
+    purchaseAmount = amount;
     var options = {
       'key': RazorCredential.keyId,
       'amount': amount * 100,

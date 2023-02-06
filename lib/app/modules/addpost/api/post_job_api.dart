@@ -50,7 +50,6 @@ class PostJobApi {
       if (response.statusCode >= 200 && response.statusCode <= 299) {
         final jsonResp = jsonDecode(response.body);
         PostJobResModel postJobRespModel = PostJobResModel.fromJson(jsonResp);
-        log(postJobRespModel.job!.description.toString());
         GetSnackBar(
           message: "Something went wrong!",
           backgroundColor: AppColors.kredColor,
