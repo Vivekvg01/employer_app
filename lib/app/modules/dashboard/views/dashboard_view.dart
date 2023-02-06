@@ -71,7 +71,7 @@ class DashboardView extends GetView<DashboardController> {
               child: FittedBox(
                 child: FloatingActionButton(
                   onPressed: () {
-                    controller.gotoAddPost();
+                    Get.to(() => AddpostView());
                   },
                   child: const Icon(Icons.add),
                 ),

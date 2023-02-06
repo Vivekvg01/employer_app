@@ -29,8 +29,8 @@ class AddpostController extends GetxController {
       titleController.clear();
       descriptionController.clear();
       budgetController.clear();
-      deadlineController.clear(); 
-      Get.back();
+      deadlineController.clear();
+      Get.back(closeOverlays: true);
       Get.find<HomeController>().onInit();
     }
   }

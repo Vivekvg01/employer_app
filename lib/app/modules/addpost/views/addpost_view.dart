@@ -52,6 +52,7 @@ class AddpostView extends GetView<AddpostController> {
                 addPostTextController: addPostController.budgetController,
                 hintText: ' \$\t Budget',
                 validateText: "Budget can't be empty",
+                inputType: TextInputType.number,
               ),
               sizedheight(Get.height * 0.03),
               //Input deadline
@@ -59,6 +60,7 @@ class AddpostView extends GetView<AddpostController> {
                 addPostTextController: addPostController.deadlineController,
                 hintText: 'Number of days to finish',
                 validateText: "Deadline is required",
+                inputType: TextInputType.number,
               ),
               sizedheight(Get.height * 0.03),
               Obx(

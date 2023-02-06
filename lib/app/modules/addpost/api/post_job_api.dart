@@ -52,8 +52,8 @@ class PostJobApi {
         PostJobResModel postJobRespModel = PostJobResModel.fromJson(jsonResp);
         Get.showSnackbar(
           GetSnackBar(
-            message: "Something went wrong!",
-            backgroundColor: AppColors.kredColor,
+            message: "Post added successfully",
+            backgroundColor: AppColors.kGreenColor,
             duration: const Duration(seconds: 3),
             snackStyle: SnackStyle.FLOATING,
           ),
@@ -62,17 +62,11 @@ class PostJobApi {
       } else {
         Get.showSnackbar(
           GetSnackBar(
-            message: "Post added successfully",
-            backgroundColor: AppColors.kGreenColor,
+            message: "Something went wrong!",
+            backgroundColor: AppColors.kredColor,
             duration: const Duration(seconds: 3),
             snackStyle: SnackStyle.FLOATING,
           ),
-        );
-        GetSnackBar(
-          message: "Post added successfully",
-          backgroundColor: AppColors.kGreenColor,
-          duration: const Duration(seconds: 3),
-          snackStyle: SnackStyle.FLOATING,
         );
       }
     } catch (e) {
