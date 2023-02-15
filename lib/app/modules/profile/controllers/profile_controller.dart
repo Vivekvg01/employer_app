@@ -53,7 +53,6 @@ class ProfileController extends GetxController {
     if (response?.name != null) {
       nameController.text = response!.name!;
       update();
-      getProfileDatas();
       Get.back();
     }
   }

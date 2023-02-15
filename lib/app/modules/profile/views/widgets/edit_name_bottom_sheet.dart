@@ -22,8 +22,11 @@ class EditNameBottomSheet extends GetView {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'Enter your name ',
-              style: TextStyle(fontSize: 16),
+              'ENTER YOUR NAME',
+              style: TextStyle(
+                fontSize: 17,
+                fontWeight: FontWeight.w500,
+              ),
             ),
             TextField(
               controller: nameController,
