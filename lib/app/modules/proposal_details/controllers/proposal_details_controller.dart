@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 class ProposalDetailsController extends GetxController {
   String? propsalId;
+  int? totalAmount;
 
   RxBool isLoading = false.obs;
 
@@ -12,7 +13,6 @@ class ProposalDetailsController extends GetxController {
   void onInit() {
     if (Get.find<JobDetailsController>().prpslId != null) {
       propsalId = Get.find<JobDetailsController>().prpslId!;
-      print(propsalId);
       getProposalDetails(propsalId!);
     }
     super.onInit();
@@ -42,16 +42,19 @@ class ProposalDetailsController extends GetxController {
       if (response.deadline != null) {
         deadline.value = response.deadline!;
       }
+      if (response.bid != null) {
+        totalAmount = response.bid;
+      }
     }
     isLoading(false);
   }
 
   void acceptProposal() async {
-    ProposalDetailsApi().acceptProposal(propsalId!);
+    ProposalDetailsApi().acceptProposal(propsalId!, totalAmount!);
   }
 
   void rejectProposal() async {
-    ProposalDetailsApi().rejectedProsal(propsalId);
+    ProposalDetailsApi().rejectedProsal(propsalId, totalAmount!);
   }
 
   void shortlistPropsal() async {

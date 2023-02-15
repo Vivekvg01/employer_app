@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:employer_app/app/modules/profile/model/my_prof_owner.dart';
 import 'package:employer_app/app/modules/profile/model/my_profile_model.dart';
 import 'package:employer_app/app/utils/api_endpoints.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -40,7 +41,7 @@ class ProfileApi {
     return null;
   }
 
-  void editProfileData({
+  Future<Owner?> editProfileData({
     String? name,
     String? password,
     String? image,
@@ -88,6 +89,8 @@ class ProfileApi {
             ),
           );
         }
+        final data = jsonDecode(response.body);
+        return Owner.fromJson(data);
       }
       if (response.statusCode == 404) {
         //show error message from the response showed to the ui.

@@ -1,5 +1,6 @@
 import 'package:employer_app/app/modules/profile/api/profile_api.dart';
 import 'package:employer_app/app/modules/profile/model/my_prof_compled_jobs.dart';
+import 'package:employer_app/app/modules/profile/model/my_prof_owner.dart';
 import 'package:employer_app/app/modules/profile/model/my_profile_model.dart';
 import 'package:employer_app/app/modules/recharge/controllers/recharge_controller.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,7 +12,7 @@ import '../../auth/login/views/login_view.dart';
 class ProfileController extends GetxController {
   @override
   void onInit() {
-    callApi();
+    getProfileDatas();
     assigningvalues();
     super.onInit();
   }
@@ -20,6 +21,8 @@ class ProfileController extends GetxController {
   RxInt? totalSpends = 0.obs;
   RxString name = ''.obs;
   RxString email = ''.obs;
+
+  RxBool isLoading = false.obs;
 
   final loginController = Get.put(
       LoginController()); //initializing login controller for logout function
@@ -46,16 +49,19 @@ class ProfileController extends GetxController {
   RxBool passwordVisibility = true.obs;
 
   void onProfileSaveButtonClicked(String name) async {
-    ProfileApi().editProfileData(name: name);
-    Get.back();
+    Owner? response = await ProfileApi().editProfileData(name: name);
+    if (response?.name != null) {
+      nameController?.value.text = response!.name!;
+      Get.back();
+    }
   }
 
   final formkey = GlobalKey<FormState>();
 
   //Getting profile details while loading screen
-  void callApi() async {
+  void getProfileDatas() async {
+    isLoading(true);
     MyProfileModel? response = await ProfileApi().getProfileData();
-
     //If the response and its instances are  not null then assigning values to the variables.
     if (response != null) {
       if (response.totalSpend != null) {
@@ -83,6 +89,7 @@ class ProfileController extends GetxController {
         Get.find<RechargeController>().totalBalance.value = response.balance!;
       }
     }
+    isLoading(false);
   }
 
 //assigning values to the textfeild.

@@ -1,3 +1,3 @@
 class ApiEndPoints {
-  final String kBaseUrl = 'http://10.0.2.2:3001/api';
+  final String kBaseUrl = 'http://43.206.120.40/api';
 }

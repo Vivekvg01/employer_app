@@ -54,68 +54,64 @@ class ProfileView extends GetView<ProfileController> {
               ),
             ),
             sizedheight(Get.height * 0.03),
-            Obx(
-              () => Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  DataCountWidget(
-                    title: 'TOTAL HIRES',
-                    count: profileController.totalHires!.value,
-                  ),
-                  sizedWidth(Get.width * 0.08),
-                  DataCountWidget(
-                    title: 'TOTAL SPENDS',
-                    count: profileController.totalSpends!.value,
-                  ),
-                ],
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                DataCountWidget(
+                  title: 'TOTAL HIRES',
+                  count: profileController.totalHires!.value,
+                ),
+                sizedWidth(Get.width * 0.08),
+                DataCountWidget(
+                  title: 'TOTAL SPENDS',
+                  count: profileController.totalSpends!.value,
+                ),
+              ],
             ),
             sizedheight(Get.height * 0.04),
-            Obx(
-              () => ListTile(
-                onTap: () {
-                  Get.bottomSheet(
-                    EditNameBottomSheet(
-                      textFeildVal:
-                          profileController.nameController?.value.text ?? '',
-                    ),
-                  );
-                },
-                leading: CircleAvatar(
-                  backgroundColor: AppColors.kDarkGreen,
-                  radius: 17,
-                  child: Icon(
-                    Icons.person,
-                    color: AppColors.kWhiteColor,
-                    size: 17,
+            ListTile(
+              onTap: () {
+                Get.bottomSheet(
+                  EditNameBottomSheet(
+                    textFeildVal: profileController.nameController!.value.text,
                   ),
+                );
+              },
+              leading: CircleAvatar(
+                backgroundColor: AppColors.kDarkGreen,
+                radius: 17,
+                child: Icon(
+                  Icons.person,
+                  color: AppColors.kWhiteColor,
+                  size: 17,
                 ),
-                title: Text(profileController.nameController!.value.text),
-                subtitle: const Padding(
-                    padding: EdgeInsets.only(
-                      top: 5.0,
-                    ),
-                    child: Text(
-                      'This is not your username or pin.This name will be vibile to the employes.',
-                      style: TextStyle(fontSize: 13),
-                    )),
-                trailing: Icon(Icons.edit, color: AppColors.kDarkGreen),
               ),
+              title: Obx(
+                () => Text(profileController.nameController!.value.text),
+              ),
+              subtitle: const Padding(
+                padding: EdgeInsets.only(
+                  top: 5.0,
+                ),
+                child: Text(
+                  'This is not your username or pin.This name will be vibile to the employes.',
+                  style: TextStyle(fontSize: 13),
+                ),
+              ),
+              trailing: Icon(Icons.edit, color: AppColors.kDarkGreen),
             ),
             kDivider1,
-            Obx(
-              () => ListTile(
-                leading: CircleAvatar(
-                  backgroundColor: AppColors.kDarkGreen,
-                  radius: 17,
-                  child: Icon(
-                    Icons.email,
-                    color: AppColors.kWhiteColor,
-                    size: 17,
-                  ),
+            ListTile(
+              leading: CircleAvatar(
+                backgroundColor: AppColors.kDarkGreen,
+                radius: 17,
+                child: Icon(
+                  Icons.email,
+                  color: AppColors.kWhiteColor,
+                  size: 17,
                 ),
-                title: Text(profileController.emailController!.value.text),
               ),
+              title: Text(profileController.emailController!.value.text),
             ),
             kDivider1,
             ListTile(

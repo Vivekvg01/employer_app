@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 // ignore: must_be_immutable
-class EditNameBottomSheet extends StatelessWidget {
+class EditNameBottomSheet extends GetView {
   EditNameBottomSheet({super.key, required this.textFeildVal});
 
   Rx<TextEditingController> nameController = TextEditingController().obs;
