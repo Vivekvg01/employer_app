@@ -36,7 +36,7 @@ class ProfileController extends GetxController {
   }
 
   //Profile text controllers.
-  Rx<TextEditingController>? nameController = TextEditingController().obs;
+  TextEditingController nameController = TextEditingController();
   Rx<TextEditingController>? emailController = TextEditingController().obs;
   Rx<TextEditingController>? oldPasswordController =
       TextEditingController().obs;
@@ -51,7 +51,9 @@ class ProfileController extends GetxController {
   void onProfileSaveButtonClicked(String name) async {
     Owner? response = await ProfileApi().editProfileData(name: name);
     if (response?.name != null) {
-      nameController?.value.text = response!.name!;
+      nameController.text = response!.name!;
+      update();
+      getProfileDatas();
       Get.back();
     }
   }
@@ -94,7 +96,7 @@ class ProfileController extends GetxController {
 
 //assigning values to the textfeild.
   void assigningvalues() {
-    nameController?.value.text = name.value;
+    nameController.text = name.value;
     emailController?.value.text = email.value;
   }
 

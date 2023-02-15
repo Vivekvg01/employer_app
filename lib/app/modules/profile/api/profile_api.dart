@@ -41,6 +41,9 @@ class ProfileApi {
     return null;
   }
 
+  ///This function is used to edit the profile datas.
+  ///ALl of this parameters are optional.So no need of changing all values on api calls
+  ///It changes only the values needed.
   Future<Owner?> editProfileData({
     String? name,
     String? password,
@@ -108,5 +111,6 @@ class ProfileApi {
     } catch (e) {
       log(e.toString());
     }
+    return null;
   }
 }

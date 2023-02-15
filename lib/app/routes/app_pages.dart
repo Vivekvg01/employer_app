@@ -41,6 +41,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
+  // ignore: constant_identifier_names
   static const INITIAL = Routes.SPLASH;
 
   static final routes = [
@@ -121,7 +122,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.RECHARGE,
-      page: () =>  RechargeView(),
+      page: () =>  const RechargeView(),
       binding: RechargeBinding(),
     ),
     GetPage(

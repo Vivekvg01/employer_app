@@ -53,8 +53,7 @@ class FindTalentView extends GetView<FindTalentController> {
                     icon: const Icon(Icons.close),
                     onPressed: () {
                       findTalendController.searchController.value.clear();
-                      findTalendController.employeeSearchResultList?.value
-                          .clear();
+                      findTalendController.employeeSearchResultList!.clear();
                       findTalendController.isSearching.value = false;
                       findTalendController.searchFocusNode.unfocus();
                     },
