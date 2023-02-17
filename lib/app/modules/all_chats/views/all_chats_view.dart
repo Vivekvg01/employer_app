@@ -21,7 +21,7 @@ class AllChatsView extends GetView<AllChatsController> {
       body: Obx(
         () => ListView.separated(
           itemBuilder: (ctx, index) => ListTile(
-            onTap: () => Get.to(() => ChatRoomView()),
+            onTap: () => Get.to(() => const ChatRoomView()),
             leading: const CircleAvatar(
               radius: 25,
               backgroundImage: NetworkImage(defaultProfileImgae),

@@ -8,7 +8,7 @@ import '../../../utils/api_endpoints.dart';
 import 'package:http/http.dart' as http;
 
 class ProposalDetailsApi {
-  Future<ProposalDetailsModel?> getProfileDetails(String proposalId) async {
+  Future<ProposalDetailsModel?> getProposalDetails(String proposalId) async {
     const storage = FlutterSecureStorage();
     final token = await storage.read(key: 'token');
     var headers = {
@@ -55,25 +55,25 @@ class ProposalDetailsApi {
         body: jsonEncode(reqBody),
       );
       if (response.statusCode == 200) {
-        // Get.showSnackbar(
-        //   GetSnackBar(
-        //     message: 'Proposal Accepted',
-        //     backgroundColor: AppColors.kGreenColor,
-        //     duration: const Duration(seconds: 3),
-        //     snackStyle: SnackStyle.FLOATING,
-        //   ),
-        // );
+        Get.showSnackbar(
+          GetSnackBar(
+            message: 'Proposal Accepted',
+            backgroundColor: AppColors.kGreenColor,
+            duration: const Duration(seconds: 3),
+            snackStyle: SnackStyle.FLOATING,
+          ),
+        );
       } else if (response.statusCode == 404) {
         final data = jsonDecode(response.body);
         final errorMessage = data['message'];
-        // Get.showSnackbar(
-        //   GetSnackBar(
-        //     message: errorMessage,
-        //     backgroundColor: AppColors.kredColor,
-        //     duration: const Duration(seconds: 3),
-        //     snackStyle: SnackStyle.FLOATING,
-        //   ),
-        // );
+        Get.showSnackbar(
+          GetSnackBar(
+            message: errorMessage,
+            backgroundColor: AppColors.kredColor,
+            duration: const Duration(seconds: 3),
+            snackStyle: SnackStyle.FLOATING,
+          ),
+        );
       }
     } catch (e) {
       log(e.toString());

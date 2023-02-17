@@ -108,7 +108,9 @@ class ProposalDetailsView extends GetView<ProposalDetailsController> {
                             () => CustomRectButton(
                               buttonLabel:
                                   'Proposed By : ${proposalDetailsController.employeeName}',
-                              onButtonClicked: () {},
+                              onButtonClicked: () {
+                                proposalDetailsController.gotoProposalOwner();
+                              },
                               borderRadius: 20,
                             ),
                           ),

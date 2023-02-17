@@ -30,7 +30,7 @@ class EmployeeDetailsController extends GetxController {
   RxList<Language?> languageList = <Language?>[].obs;
   RxList<Portfolio?>? portFolios = <Portfolio?>[].obs;
 
-  void getEmployeeDetails() async {
+  Future<void> getEmployeeDetails() async {
     isLoading(true);
     GetEmployeeDetails? response =
         await EmployeeDetailsApi().getEmployeeDetails(empoloyeeId);

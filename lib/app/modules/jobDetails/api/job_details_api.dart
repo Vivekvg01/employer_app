@@ -33,7 +33,7 @@ class JobDetailsApi {
   }
 
   // cancel jobs
-  Future<int> cancelJob(String jobid) async {
+  Future<void> cancelJob(String jobid) async {
     const storage = FlutterSecureStorage();
     final token = await storage.read(key: 'token');
     final empolyerId = await storage.read(key: 'employerId');
@@ -58,11 +58,9 @@ class JobDetailsApi {
           ),
         );
       }
-      return response.statusCode;
     } catch (e) {
       log(e.toString());
     }
-    return 0;
   }
 
   Future<void> approveJob(String jobid) async {
