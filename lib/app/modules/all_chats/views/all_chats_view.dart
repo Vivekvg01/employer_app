@@ -19,21 +19,27 @@ class AllChatsView extends GetView<AllChatsController> {
         title: const Text('Messages'),
       ),
       body: Obx(
-        () => ListView.separated(
-          itemBuilder: (ctx, index) => ListTile(
-            onTap: () => Get.to(() => const ChatRoomView()),
-            leading: const CircleAvatar(
-              radius: 25,
-              backgroundImage: NetworkImage(defaultProfileImgae),
-            ),
-            title: Text(
-              allChatsController.myChatList![index].employee?.name ?? '',
-            ),
-            subtitle: const Text('Hey'),
-          ),
-          separatorBuilder: (_, __) => const Divider(),
-          itemCount: allChatsController.myChatList?.length ?? 0,
-        ),
+        () => allChatsController.isLoading.value
+            ? const Center(child: CircularProgressIndicator())
+            : ListView.separated(
+                itemBuilder: (ctx, index) => ListTile(
+                  onTap: () => Get.to(
+                    () => const ChatRoomView(),
+                    arguments:
+                        allChatsController.myChatList![index].employee!.name,
+                  ),
+                  leading: const CircleAvatar(
+                    radius: 25,
+                    backgroundImage: NetworkImage(defaultProfileImgae),
+                  ),
+                  title: Text(
+                    allChatsController.myChatList![index].employee?.name ?? '',
+                  ),
+                  subtitle: const Text('Hey'),
+                ),
+                separatorBuilder: (_, __) => const Divider(),
+                itemCount: allChatsController.myChatList?.length ?? 0,
+              ),
       ),
     );
   }

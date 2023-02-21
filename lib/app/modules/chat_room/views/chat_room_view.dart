@@ -9,6 +9,7 @@ class ChatRoomView extends GetView<ChatRoomController> {
   const ChatRoomView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final chatRoomController = Get.put(ChatRoomController());
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -37,26 +38,12 @@ class ChatRoomView extends GetView<ChatRoomController> {
                 ),
                 const SizedBox(width: 12),
                 Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        "Freelancer",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      const SizedBox(height: 6),
-                      Text(
-                        "Online",
-                        style: TextStyle(
-                          color: Colors.grey.shade600,
-                          fontSize: 13,
-                        ),
-                      ),
-                    ],
+                  child: Text(
+                    chatRoomController.username,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
                 const Icon(
@@ -91,14 +78,17 @@ class ChatRoomView extends GetView<ChatRoomController> {
                   const Expanded(
                     child: TextField(
                       decoration: InputDecoration(
-                          hintText: "Write your message...",
-                          hintStyle: TextStyle(color: Colors.black54),
-                          border: InputBorder.none),
+                        hintText: "Write your message...",
+                        hintStyle: TextStyle(color: Colors.black54),
+                        border: InputBorder.none,
+                      ),
                     ),
                   ),
                   sizedheight(Get.width * 0.01),
                   FloatingActionButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      chatRoomController.sendMessage();
+                    },
                     elevation: 0,
                     child: const Icon(
                       Icons.send,

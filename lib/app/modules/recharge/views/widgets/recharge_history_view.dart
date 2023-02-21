@@ -12,7 +12,9 @@ class RechargeHistory extends GetView {
         Obx(
           () => DataTable(
             columns: const [
-              DataColumn(label: Text('No.')),
+              DataColumn(
+                label: Text('No.'),
+              ),
               DataColumn(
                 label: Center(
                   widthFactor: 2.6,

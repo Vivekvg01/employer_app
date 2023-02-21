@@ -7,40 +7,40 @@ import '../controllers/recharge_controller.dart';
 
 class RechargeView extends GetView<RechargeController> {
   const RechargeView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final rechargeController = Get.put(RechargeController());
-    return GetX<RechargeController>(
-      init: rechargeController..onInit(),
-      builder: (context) => Scaffold(
-        appBar: AppBar(
-          backgroundColor: AppColors.kDarkGreen,
-          title: const Text('Recharge'),
-          bottom: TabBar(
-            controller: rechargeController.tabController,
-            tabs: rechargeController.tabs,
-          ),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 15.0,
-                right: 13.0,
-              ),
-              child: Text(
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.kDarkGreen,
+        title: const Text('Recharge'),
+        bottom: TabBar(
+          controller: rechargeController.tabController,
+          tabs: rechargeController.tabs,
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(
+              top: 15.0,
+              right: 13.0,
+            ),
+            child: Obx(
+              () => Text(
                 'Balance: ₹${rechargeController.totalBalance}.00',
                 style:
                     const TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
               ),
             ),
-          ],
-        ),
-        body: TabBarView(
-          controller: rechargeController.tabController,
-          children: const [
-            BuyConnects(),
-            RechargeHistory(),
-          ],
-        ),
+          ),
+        ],
+      ),
+      body: TabBarView(
+        controller: rechargeController.tabController,
+        children: const [
+          BuyConnects(),
+          RechargeHistory(),
+        ],
       ),
     );
   }

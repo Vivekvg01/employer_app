@@ -64,9 +64,9 @@ class FindTalentController extends GetxController {
 
   void gotoEmployerDetailsPage(String? employeeId) {
     if (employeeId != null) {
-      employeIdVal = employeeId;
       Get.to(
         () => EmployeeDetailsView(),
+        arguments: employeeId,
       );
     }
   }

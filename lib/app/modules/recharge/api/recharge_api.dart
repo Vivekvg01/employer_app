@@ -39,7 +39,7 @@ class RechargeApi {
     return null;
   }
 
-  //verify payment api calling.
+  //function for verifying the payment on the razorpay by getworker.
   void verifyPayment({
     required String orderid,
     required String paymentId,
@@ -72,16 +72,16 @@ class RechargeApi {
         headers: headers,
         body: jsonEncode(reqBody),
       );
-      log(response.body);
       if (response.statusCode == 302) {
-        Get.showSnackbar(
-          GetSnackBar(
-            message: "Payment successful",
-            backgroundColor: AppColors.kGreenColor,
-            duration: const Duration(seconds: 3),
-            snackStyle: SnackStyle.FLOATING,
-          ),
-        );
+        log(response.body);
+        // Get.showSnackbar(
+        //   GetSnackBar(
+        //     message: "Payment successful",
+        //     backgroundColor: AppColors.kGreenColor,
+        //     duration: const Duration(seconds: 3),
+        //     snackStyle: SnackStyle.FLOATING,
+        //   ),
+        // );
       }
     } catch (e) {
       log(e.toString());

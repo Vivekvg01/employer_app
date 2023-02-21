@@ -1,5 +1,5 @@
 import 'package:employer_app/app/modules/employeeDetails/controllers/employee_details_controller.dart';
-import 'package:employer_app/app/modules/findTalent/controllers/find_talent_controller.dart';
+import 'package:employer_app/app/modules/employeeDetails/views/employee_details_view.dart';
 import 'package:employer_app/app/modules/jobDetails/controllers/job_details_controller.dart';
 import 'package:employer_app/app/modules/proposal_details/api/proposal_details_api.dart';
 import 'package:employer_app/app/modules/proposal_details/model/proposal_model.dart';
@@ -54,11 +54,10 @@ class ProposalDetailsController extends GetxController {
     isLoading(false);
   }
 
-  Future<void> gotoProposalOwner() async {
-    final findTalentController = Get.put(FindTalentController());
-    final employeeDetailsController = Get.put(EmployeeDetailsController());
-    findTalentController.employeIdVal = proposalOwnerId;
-    await employeeDetailsController.getEmployeeDetails();
+  Future<void> gotoProposalOwner(String? employeeId) async {
+    if (employeeId != null) {
+      Get.to(EmployeeDetailsView(), arguments: employeeId);
+    }
   }
 
   Future<void> acceptProposal() async {

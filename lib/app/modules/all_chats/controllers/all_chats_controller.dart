@@ -10,14 +10,18 @@ class AllChatsController extends GetxController {
     super.onInit();
   }
 
+  RxBool isLoading = false.obs;
+
   RxList<MyChatModel>? myChatList = <MyChatModel>[].obs;
 
   void getMyChats() async {
+    isLoading(true);
     MyChatsListModel? response = await AllChatsApi().getAllChats();
     if (response?.myChatList != null) {
       if (response!.myChatList != null) {
         myChatList?.value = response.myChatList!;
       }
     }
+    isLoading(false);
   }
 }

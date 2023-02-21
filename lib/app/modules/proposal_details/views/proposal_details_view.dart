@@ -109,7 +109,9 @@ class ProposalDetailsView extends GetView<ProposalDetailsController> {
                               buttonLabel:
                                   'Proposed By : ${proposalDetailsController.employeeName}',
                               onButtonClicked: () {
-                                proposalDetailsController.gotoProposalOwner();
+                                proposalDetailsController.gotoProposalOwner(
+                                  controller.proposalOwnerId,
+                                );
                               },
                               borderRadius: 20,
                             ),

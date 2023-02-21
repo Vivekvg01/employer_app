@@ -1,11 +1,6 @@
-import 'package:employer_app/app/common_widgets/rect_button.dart';
-import 'package:employer_app/app/modules/jobDetails/views/widget/chip/propsal_category_chip.dart';
 import 'package:employer_app/app/modules/jobDetails/views/widget/job_categories.dart/active_job_details.dart';
 import 'package:employer_app/app/modules/jobDetails/views/widget/job_categories.dart/on_going_job_details.dart';
 import 'package:employer_app/app/modules/jobDetails/views/widget/job_categories.dart/only_job_details.dart';
-import 'package:employer_app/app/modules/jobDetails/views/widget/proposal_categories/active_propsal.dart';
-import 'package:employer_app/app/utils/app_sizes.dart';
-import 'package:employer_app/app/utils/const_values.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../utils/app_colors.dart';

@@ -26,6 +26,7 @@ class RechargeController extends GetxController
     tabController = TabController(length: 2, vsync: this);
     addRazorpayliteners();
     getPurchaseHistory();
+    update();
     super.onInit();
   }
 
@@ -70,7 +71,7 @@ class RechargeController extends GetxController
 
   void _handleExternalWallet(ExternalWalletResponse response) {
     // Do something when an external wallet is selected
-    print(response);
+    // print(response);
   }
 
   //create order

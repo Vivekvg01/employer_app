@@ -1,16 +1,14 @@
 import 'package:get/get.dart';
 import 'package:employer_app/app/modules/employeeDetails/models/employee_details_api.dart';
-import 'package:employer_app/app/modules/findTalent/controllers/find_talent_controller.dart';
 import '../api/employee_details_api.dart';
 
 class EmployeeDetailsController extends GetxController {
-  final findTalentController = Get.put(FindTalentController());
-
-  late String empoloyeeId;
+ 
+ String employeeId = Get.arguments;
 
   @override
   void onInit() {
-    empoloyeeId = findTalentController.employeIdVal!;
+    print(employeeId);
     getEmployeeDetails();
     super.onInit();
   }
@@ -33,7 +31,7 @@ class EmployeeDetailsController extends GetxController {
   Future<void> getEmployeeDetails() async {
     isLoading(true);
     GetEmployeeDetails? response =
-        await EmployeeDetailsApi().getEmployeeDetails(empoloyeeId);
+        await EmployeeDetailsApi().getEmployeeDetails(employeeId);
     if (response != null) {
       if (response.owner != null) {
         if (response.owner?.name != null) {

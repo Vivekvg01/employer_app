@@ -46,18 +46,18 @@ class EmployeeTileWidget extends GetView {
             subtitle: Text(
               employeeTitle,
             ),
-            // trailing: IconButton(
-            //   onPressed: () {
-            //    Get.find<FindTalentController>().onSaveTalendButtonClick(employeeId);
-            //   },
-            //   icon: const CircleAvatar(
-            //     radius: 20,
-            //     child: Icon(
-            //       Icons.bookmark_outline,
-            //       size: 20,
-            //     ),
-            //   ),
-            // ),
+            trailing: IconButton(
+              onPressed: () {
+             //  Get.find<FindTalentController>().onSaveTalendButtonClick(employeeId);
+              },
+              icon: const CircleAvatar(
+                radius: 20,
+                child: Icon(
+                  Icons.bookmark_outline,
+                  size: 20,
+                ),
+              ),
+            ),
             onTap: () {
               Get.find<FindTalentController>()
                   .gotoEmployerDetailsPage(employeeId);
