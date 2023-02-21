@@ -83,7 +83,7 @@ class JobDetailsApi {
         Get.showSnackbar(
           GetSnackBar(
             message: 'Proposal Approved',
-            backgroundColor: AppColors.kredColor,
+            backgroundColor: AppColors.kGreenColor,
             duration: const Duration(seconds: 3),
             snackStyle: SnackStyle.FLOATING,
           ),

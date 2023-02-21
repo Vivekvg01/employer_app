@@ -5,12 +5,11 @@ import '../../../../utils/app_colors.dart';
 import '../../../../utils/app_sizes.dart';
 
 class JobCategoryChip extends StatelessWidget {
-  JobCategoryChip({super.key});
-
-  final homeController = Get.put(HomeController());
+  const JobCategoryChip({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final homeController = Get.put(HomeController());
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Obx(
@@ -21,7 +20,11 @@ class JobCategoryChip extends StatelessWidget {
               ChoiceChip(
                 label: Text(
                   'Active Jobs',
-                  style: TextStyle(color: AppColors.kWhiteColor),
+                  style: TextStyle(
+                    color: homeController.tabIndex.value == 0
+                        ? AppColors.kWhiteColor
+                        : AppColors.kBlackColor,
+                  ),
                 ),
                 selected: homeController.tabIndex.value == 0,
                 onSelected: (vale) {
@@ -33,7 +36,11 @@ class JobCategoryChip extends StatelessWidget {
               ChoiceChip(
                 label: Text(
                   'On going Jobs',
-                  style: TextStyle(color: AppColors.kWhiteColor),
+                  style: TextStyle(
+                    color: homeController.tabIndex.value == 1
+                        ? AppColors.kWhiteColor
+                        : AppColors.kBlackColor,
+                  ),
                 ),
                 selected: homeController.tabIndex.value == 1,
                 onSelected: (vale) {
@@ -45,7 +52,11 @@ class JobCategoryChip extends StatelessWidget {
               ChoiceChip(
                 label: Text(
                   'Completed Jobs',
-                  style: TextStyle(color: AppColors.kWhiteColor),
+                  style: TextStyle(
+                    color: homeController.tabIndex.value == 2
+                        ? AppColors.kWhiteColor
+                        : AppColors.kBlackColor,
+                  ),
                 ),
                 selected: homeController.tabIndex.value == 2,
                 onSelected: (vale) {
@@ -57,7 +68,11 @@ class JobCategoryChip extends StatelessWidget {
               ChoiceChip(
                 label: Text(
                   'Cancelled',
-                  style: TextStyle(color: AppColors.kWhiteColor),
+                  style: TextStyle(
+                    color: homeController.tabIndex.value == 3
+                        ? AppColors.kWhiteColor
+                        : AppColors.kBlackColor,
+                  ),
                 ),
                 selected: homeController.tabIndex.value == 3,
                 onSelected: (vale) {

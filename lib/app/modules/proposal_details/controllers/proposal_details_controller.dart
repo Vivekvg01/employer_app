@@ -1,4 +1,3 @@
-import 'package:employer_app/app/modules/employeeDetails/controllers/employee_details_controller.dart';
 import 'package:employer_app/app/modules/employeeDetails/views/employee_details_view.dart';
 import 'package:employer_app/app/modules/jobDetails/controllers/job_details_controller.dart';
 import 'package:employer_app/app/modules/proposal_details/api/proposal_details_api.dart';

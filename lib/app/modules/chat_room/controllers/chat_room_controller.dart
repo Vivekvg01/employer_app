@@ -1,12 +1,12 @@
 import 'package:employer_app/app/utils/api_endpoints.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:socket_io_client/socket_io_client.dart' as IO;
+import 'package:socket_io_client/socket_io_client.dart' as iO;
 
 class ChatRoomController extends GetxController {
   TextEditingController chatTextController = TextEditingController();
 
-  late IO.Socket socket;
+  late iO.Socket socket;
 
   late String username;
   @override
@@ -17,7 +17,7 @@ class ChatRoomController extends GetxController {
   }
 
   initSocket() {
-    socket = IO.io(ApiEndPoints().kBaseUrl, <String, dynamic>{
+    socket = iO.io(ApiEndPoints().kBaseUrl, <String, dynamic>{
       'autoConnect': false,
       'transports': ['websocket'],
     });

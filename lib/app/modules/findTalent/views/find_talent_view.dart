@@ -8,12 +8,11 @@ import 'package:get/get.dart';
 import '../controllers/find_talent_controller.dart';
 
 class FindTalentView extends GetView<FindTalentController> {
-  FindTalentView({Key? key}) : super(key: key);
-
-  final findTalendController = Get.put(FindTalentController());
+  const FindTalentView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final findTalendController = Get.put(FindTalentController());
     return Obx(
       () => Scaffold(
         appBar: AppBar(
