@@ -1,8 +1,6 @@
 import 'package:employer_app/app/modules/jobDetails/controllers/job_details_controller.dart';
-import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../../common_widgets/rect_button.dart';
 import '../../../../../utils/app_sizes.dart';
 import '../../../../../utils/const_values.dart';
 

@@ -95,7 +95,14 @@ class ProposalDetailsApi {
 
     try {
       http.Response response = await http.patch(url, headers: headers);
-      log(response.body);
+      Get.showSnackbar(
+        GetSnackBar(
+          backgroundColor: AppColors.kGreenColor,
+          title: 'Proposal rejected',
+          snackStyle: SnackStyle.FLOATING,
+          duration: const Duration(seconds: 3),
+        ),
+      );
     } catch (e) {
       throw Exception(e);
     }
@@ -118,6 +125,14 @@ class ProposalDetailsApi {
 
     try {
       http.Response response = await http.patch(url, headers: headers);
+      Get.showSnackbar(
+        GetSnackBar(
+          backgroundColor: AppColors.kGreenColor,
+          title: 'Proposal rejected',
+          snackStyle: SnackStyle.FLOATING,
+          duration: const Duration(seconds: 3),
+        ),
+      );
     } catch (e) {
       throw Exception(e);
     }

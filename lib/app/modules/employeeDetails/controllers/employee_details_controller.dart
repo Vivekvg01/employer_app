@@ -3,12 +3,10 @@ import 'package:employer_app/app/modules/employeeDetails/models/employee_details
 import '../api/employee_details_api.dart';
 
 class EmployeeDetailsController extends GetxController {
- 
- String employeeId = Get.arguments;
+  String employeeId = Get.arguments;
 
   @override
   void onInit() {
-    print(employeeId);
     getEmployeeDetails();
     super.onInit();
   }

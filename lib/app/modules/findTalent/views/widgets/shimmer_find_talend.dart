@@ -44,7 +44,6 @@ class ShimmerFindTalend extends StatelessWidget {
               ),
             ],
           );
-          ;
         },
         separatorBuilder: (_, __) => sizedheight(size.height * 0.02),
         itemCount: 10,

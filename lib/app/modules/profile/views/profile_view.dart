@@ -145,7 +145,10 @@ class ProfileView extends GetView<ProfileController> {
                     size: 17,
                   ),
                 ),
-                title: const Text('Sign out'),
+                title: Text(
+                  'Sign out',
+                  style: TextStyle(color: AppColors.kredColor),
+                ),
               ),
             ],
           ),

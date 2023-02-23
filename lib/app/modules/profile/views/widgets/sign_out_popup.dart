@@ -19,13 +19,13 @@ class SignOutPopUp extends GetView {
           children: [
             CustomRectButton(
               buttonLabel: 'Yes',
+              backgroundColor: AppColors.kredColor,
               onButtonClicked: () async {
                 Get.find<ProfileController>().signOut();
               },
             ),
             sizedWidth(Get.width * 0.02),
             CustomRectButton(
-              backgroundColor: AppColors.kredColor,
               buttonLabel: 'No',
               onButtonClicked: () {
                 Get.back();

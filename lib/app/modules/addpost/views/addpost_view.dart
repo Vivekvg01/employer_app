@@ -64,51 +64,26 @@ class AddpostView extends GetView<AddpostController> {
               ),
               sizedheight(Get.height * 0.03),
               DropdownButtonFormField(
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Select difficulty level',
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please select the difficulty level';
-                    }
-                    return null;
-                  },
-                  items: addPostController.dropdownValues
-                      .map((e) => DropdownMenuItem(
-                            value: e,
-                            child: Text(e),
-                          ))
-                      .toList(),
-                  onChanged: (String? newValue) {
-                    addPostController.dropdownCurrentValue.value = newValue!;
-                  }),
-              // () => UnconstrainedBox(
-              //   child: Container(
-              //     width: Get.width * 0.5,
-              //     decoration: BoxDecoration(
-              //       color: AppColors.kLightGrey,
-              //       borderRadius: BorderRadius.circular(10),
-              //     ),
-              //     child: Center(
-              //       child: DropdownButton<String>(
-              //         value: addPostController.dropdownCurrentValue.value,
-              //         items: addPostController.dropdownValues
-              //             .map((String value) {
-              //           return DropdownMenuItem<String>(
-              //             value: value,
-              //             child: Text(value),
-              //           );
-              //         }).toList(),
-              //         onChanged: (String? newValue) {
-              //           addPostController.dropdownCurrentValue.value =
-              //               newValue!;
-              //         },
-              //       ),
-              //     ),
-              //   ),
-              // ),
-
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Select difficulty level',
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please select the difficulty level';
+                  }
+                  return null;
+                },
+                items: addPostController.dropdownValues
+                    .map((e) => DropdownMenuItem(
+                          value: e,
+                          child: Text(e),
+                        ))
+                    .toList(),
+                onChanged: (String? newValue) {
+                  addPostController.dropdownCurrentValue.value = newValue!;
+                },
+              ),
               sizedheight(Get.height * 0.03),
               SizedBox(
                 width: double.infinity,

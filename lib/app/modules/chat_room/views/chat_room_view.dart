@@ -87,7 +87,7 @@ class ChatRoomView extends GetView<ChatRoomController> {
                   sizedheight(Get.width * 0.01),
                   FloatingActionButton(
                     onPressed: () {
-                      chatRoomController.sendMessage();
+                      // chatRoomController.sendMessage();
                     },
                     elevation: 0,
                     child: const Icon(

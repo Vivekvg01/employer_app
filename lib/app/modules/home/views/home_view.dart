@@ -39,8 +39,8 @@ class HomeView extends GetView {
                 ? const Center(child: CircularProgressIndicator())
                 : ListView(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 15),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 15),
                         child: JobCategoryChip(),
                       ),
                       homeController.tabIndex.value == 0

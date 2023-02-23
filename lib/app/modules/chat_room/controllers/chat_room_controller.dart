@@ -1,3 +1,4 @@
+import 'package:employer_app/app/modules/employeeDetails/controllers/employee_details_controller.dart';
 import 'package:employer_app/app/utils/api_endpoints.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,11 +9,18 @@ class ChatRoomController extends GetxController {
 
   late iO.Socket socket;
 
+  String? employeeId;
+
+  RxList messageList = [].obs;
+
   late String username;
   @override
   void onInit() {
     username = Get.arguments;
     initSocket();
+    socket.on('new-room-created', (room) {
+      messageList.add(room);
+    });
     super.onInit();
   }
 
@@ -23,15 +31,19 @@ class ChatRoomController extends GetxController {
     });
     socket.connect();
     socket.onConnect((_) {
-      print('Connection established');
+     // print('Connection established');
     });
-    // socket.onDisconnect((_) => print('Connection Disconnected'));
-    // socket.onConnectError((err) => print(err));
-    // socket.onError((err) => print(err));
   }
 
-  void sendMessage() {
-    print(chatTextController.value.text);
-    chatTextController.value.text;
+  sendMessage() {
+    String message = chatTextController.text.trim();
+    if (message.isEmpty) return;
+    Map messageMap = {
+      'message': message,
+      'senderId': Get.find<EmployeeDetailsController>().employerId,
+      'receiverId': employeeId,
+      'time': DateTime.now().millisecondsSinceEpoch,
+    };
+    socket.emit('sendNewMessage', messageMap);
   }
 }

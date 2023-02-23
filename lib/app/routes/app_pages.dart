@@ -87,7 +87,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.FIND_TALENT,
-      page: () => FindTalentView(),
+      page: () => const FindTalentView(),
       binding: FindTalentBinding(),
     ),
     GetPage(
