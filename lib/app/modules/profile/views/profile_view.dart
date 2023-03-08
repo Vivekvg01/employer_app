@@ -17,140 +17,139 @@ class ProfileView extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     final profileController = Get.put(ProfileController());
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: AppColors.kDarkGreen,
-        title: const Text('My Profile'),
-      ),
-      body: GetBuilder<ProfileController>(
-        init: profileController..onInit(),
-        builder: (context) => SafeArea(
-          child: ListView(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            children: [
-              sizedheight(Get.height * 0.02),
-              CircleAvatar(
-                radius: 48,
-                child: Image.network(defaultProfileImgae),
-              ),
-              sizedheight(Get.height * 0.02),
-              Center(
-                child: RichText(
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: 'Change Password?',
-                        style: TextStyle(
-                          color: AppColors.kDarkGreen,
-                          fontWeight: FontWeight.w500,
+    return Obx(
+      () => Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: AppColors.kDarkGreen,
+          title: const Text('My Profile'),
+        ),
+        body: GetBuilder<ProfileController>(
+          init: profileController..onInit(),
+          builder: (context) => SafeArea(
+            child: ListView(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              children: [
+                sizedheight(Get.height * 0.02),
+                CircleAvatar(
+                  radius: 48,
+                  child: Image.network(defaultProfileImgae),
+                ),
+                sizedheight(Get.height * 0.02),
+                Center(
+                  child: RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'Change Password?',
+                          style: TextStyle(
+                            color: AppColors.kDarkGreen,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              Get.bottomSheet(const ChangePasswordBottmSheet());
+                            },
                         ),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            Get.bottomSheet(const ChangePasswordBottmSheet());
-                          },
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              sizedheight(Get.height * 0.03),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  DataCountWidget(
-                    title: 'TOTAL HIRES',
-                    count: profileController.totalHires,
-                  ),
-                  sizedWidth(Get.width * 0.08),
-                  DataCountWidget(
-                    title: 'TOTAL SPENDS',
-                    count: profileController.totalSpends,
-                  ),
-                ],
-              ),
-              sizedheight(Get.height * 0.04),
-              ListTile(
-                onTap: () {
-                  Get.bottomSheet(
-                    EditNameBottomSheet(
-                      nameController: profileController.nameController,
+                      ],
                     ),
-                  );
-                },
-                leading: CircleAvatar(
-                  backgroundColor: AppColors.kDarkGreen,
-                  radius: 17,
-                  child: Icon(
-                    Icons.person,
-                    color: AppColors.kWhiteColor,
-                    size: 17,
                   ),
                 ),
-                title: Text(profileController.nameController.text),
-                subtitle: const Padding(
-                  padding: EdgeInsets.only(
-                    top: 5.0,
-                  ),
-                  child: Text(
-                    'This is not your username or pin.This name will be vibile to the employes.',
-                    style: TextStyle(fontSize: 13),
-                  ),
+                sizedheight(Get.height * 0.03),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    DataCountWidget(
+                      title: 'TOTAL HIRES',
+                      count: profileController.totalHires!.value,
+                    ),
+                    sizedWidth(Get.width * 0.08),
+                    DataCountWidget(
+                      title: 'TOTAL SPENDS',
+                      count: profileController.totalSpends!.value,
+                    ),
+                  ],
                 ),
-                trailing: Icon(Icons.edit, color: AppColors.kDarkGreen),
-              ),
-              kDivider1,
-              ListTile(
-                leading: CircleAvatar(
-                  backgroundColor: AppColors.kDarkGreen,
-                  radius: 17,
-                  child: Icon(
-                    Icons.email,
-                    color: AppColors.kWhiteColor,
-                    size: 17,
+                sizedheight(Get.height * 0.04),
+                ListTile(
+                  onTap: () {
+                    Get.bottomSheet(
+                      EditNameBottomSheet(
+                        nameController: profileController.nameController,
+                      ),
+                    );
+                  },
+                  leading: CircleAvatar(
+                    backgroundColor: AppColors.kDarkGreen,
+                    radius: 17,
+                    child: Icon(
+                      Icons.person,
+                      color: AppColors.kWhiteColor,
+                      size: 17,
+                    ),
                   ),
-                ),
-                title: Text(profileController.emailController!.value.text),
-              ),
-              kDivider1,
-              ListTile(
-                onTap: () {
-                  Get.bottomSheet(
-                    const JobHistoryBottomSheet(),
-                    isScrollControlled: true,
-                  );
-                },
-                leading: CircleAvatar(
-                  backgroundColor: AppColors.kDarkGreen,
-                  radius: 17,
-                  child: Icon(
-                    Icons.work_history,
-                    color: AppColors.kWhiteColor,
-                    size: 17,
+                  title: Text(profileController.nameController.text),
+                  subtitle: const Padding(
+                    padding: EdgeInsets.only(
+                      top: 5.0,
+                    ),
+                    child: Text(
+                      'This is not your username or pin.This name will be vibile to the employes.',
+                      style: TextStyle(fontSize: 13),
+                    ),
                   ),
+                  trailing: Icon(Icons.edit, color: AppColors.kDarkGreen),
                 ),
-                title: const Text('Completed Jobs'),
-              ),
-              kDivider1,
-              ListTile(
-                onTap: () {
-                  Get.dialog(const SignOutPopUp());
-                },
-                leading: CircleAvatar(
-                  backgroundColor: AppColors.kDarkGreen,
-                  radius: 17,
-                  child: Icon(
-                    Icons.logout,
-                    color: AppColors.kWhiteColor,
-                    size: 17,
+                kDivider1,
+                ListTile(
+                  leading: CircleAvatar(
+                    backgroundColor: AppColors.kDarkGreen,
+                    radius: 17,
+                    child: Icon(
+                      Icons.email,
+                      color: AppColors.kWhiteColor,
+                      size: 17,
+                    ),
                   ),
+                  title: Text(profileController.emailController!.value.text),
                 ),
-                title: Text(
-                  'Sign out',
-                  style: TextStyle(color: AppColors.kredColor),
+                kDivider1,
+                ListTile(
+                  onTap: () {
+                    Get.bottomSheet(
+                      const JobHistoryBottomSheet(),
+                      isScrollControlled: true,
+                    );
+                  },
+                  leading: CircleAvatar(
+                    backgroundColor: AppColors.kDarkGreen,
+                    radius: 17,
+                    child: Icon(
+                      Icons.work_history,
+                      color: AppColors.kWhiteColor,
+                      size: 17,
+                    ),
+                  ),
+                  title: const Text('Completed Jobs'),
                 ),
-              ),
-            ],
+                kDivider1,
+                ListTile(
+                  onTap: () {
+                    Get.dialog(const SignOutPopUp());
+                  },
+                  leading: CircleAvatar(
+                    backgroundColor: AppColors.kDarkGreen,
+                    radius: 17,
+                    child: Icon(
+                      Icons.logout,
+                      color: AppColors.kWhiteColor,
+                      size: 17,
+                    ),
+                  ),
+                  title: const Text('Sign out'),
+                ),
+              ],
+            ),
           ),
         ),
       ),

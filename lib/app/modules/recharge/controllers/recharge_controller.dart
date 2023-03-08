@@ -21,8 +21,8 @@ class RechargeController extends GetxController
 
   @override
   void onInit() {
-    username = profileController.name;
-    email = profileController.email;
+    username = profileController.name.value;
+    email = profileController.email.value;
     tabController = TabController(length: 2, vsync: this);
     addRazorpayliteners();
     getPurchaseHistory();
