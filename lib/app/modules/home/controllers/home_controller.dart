@@ -1,4 +1,3 @@
-import 'package:employer_app/app/modules/all_chats/views/all_chats_view.dart';
 import 'package:employer_app/app/modules/home/api/get_my_jobs_api.dart';
 import 'package:employer_app/app/modules/home/models/job_model.dart';
 import 'package:employer_app/app/modules/jobDetails/views/job_details_view.dart';
@@ -14,7 +13,7 @@ class HomeController extends GetxController {
   RxInt tabIndex = 0.obs;
 
   void gotToChat() {
-    Get.to(() => const AllChatsView());
+   // Get.to(() => const AllChatsView());
   }
 
   RxBool isLoading = false.obs;

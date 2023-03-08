@@ -11,9 +11,8 @@ class EditNameBottomSheet extends GetView {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Container(
-      height: size.height * 0.2,
+      height: Get.height * 0.2,
       width: double.infinity,
       color: AppColors.kWhiteColor,
       child: Padding(

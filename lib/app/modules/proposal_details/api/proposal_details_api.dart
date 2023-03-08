@@ -94,7 +94,7 @@ class ProposalDetailsApi {
         '${ApiEndPoints().kBaseUrl}/updateProposal/$employerId/$propsalId');
 
     try {
-      http.Response response = await http.patch(url, headers: headers);
+      await http.patch(url, headers: headers);
       Get.showSnackbar(
         GetSnackBar(
           backgroundColor: AppColors.kGreenColor,

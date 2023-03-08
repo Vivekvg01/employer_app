@@ -60,12 +60,12 @@ class ProfileView extends GetView<ProfileController> {
                 children: [
                   DataCountWidget(
                     title: 'TOTAL HIRES',
-                    count: profileController.totalHires!.value,
+                    count: profileController.totalHires,
                   ),
                   sizedWidth(Get.width * 0.08),
                   DataCountWidget(
                     title: 'TOTAL SPENDS',
-                    count: profileController.totalSpends!.value,
+                    count: profileController.totalSpends,
                   ),
                 ],
               ),

@@ -100,11 +100,11 @@ class AppPages {
       page: () => const ContractsView(),
       binding: ContractsBinding(),
     ),
-    GetPage(
-      name: _Paths.ALL_CHATS,
-      page: () => const AllChatsView(),
-      binding: AllChatsBinding(),
-    ),
+    // GetPage(
+    //   name: _Paths.ALL_CHATS,
+    //   page: () => const AllChatsView(),
+    //   binding: AllChatsBinding(),
+    // ),
     GetPage(
       name: _Paths.PROFILE,
       page: () => const ProfileView(),
@@ -125,11 +125,11 @@ class AppPages {
       page: () => const RechargeView(),
       binding: RechargeBinding(),
     ),
-    GetPage(
-      name: _Paths.CHAT_ROOM,
-      page: () => const ChatRoomView(),
-      binding: ChatRoomBinding(),
-    ),
+    // GetPage(
+    //   name: _Paths.CHAT_ROOM,
+    //   page: () => const ChatRoomView(),
+    //   binding: ChatRoomBinding(),
+    // ),
     GetPage(
       name: _Paths.PROPOSAL_DETAILS,
       page: () => const ProposalDetailsView(),
