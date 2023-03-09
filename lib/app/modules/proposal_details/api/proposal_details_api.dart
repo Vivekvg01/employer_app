@@ -34,13 +34,17 @@ class ProposalDetailsApi {
 
   //accept proposal
   void acceptProposal(String proposalId, int totalAmount) async {
+    print(proposalId);
+    print(totalAmount);
     const storage = FlutterSecureStorage();
-    final token = await storage.read(key: 'token');
     final employerId = await storage.read(key: 'employerId');
+    final token = await storage.read(key: 'token');
     var headers = {
+      'Content-Type': 'application/json',
       'Accept': 'application/json',
       'Authorization': 'Bearer $token'
     };
+    print(token);
     final url = Uri.parse(
         '${ApiEndPoints().kBaseUrl}/acceptProposal/$employerId/$proposalId');
 

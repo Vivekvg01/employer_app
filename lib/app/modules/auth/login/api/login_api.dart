@@ -14,7 +14,7 @@ class LoginApi {
   Future<LoginModel?> postData(String email, String password) async {
     Get.lazyPut<DashboardController>(() => DashboardController());
     ShowLoaderOverScreen.showLoader();
-    dynamic statusCode;
+
     var headers = {'Content-Type': 'application/json'};
     try {
       Map<String, dynamic> requestBody = {
@@ -28,8 +28,7 @@ class LoginApi {
         body: jsonEncode(requestBody),
         headers: headers,
       );
-      statusCode = response.statusCode;
-      if (statusCode == 200) {
+      if (response.statusCode == 200) {
         //request success
         final data = jsonDecode(response.body);
         Get.showSnackbar(
@@ -44,7 +43,7 @@ class LoginApi {
         LoginModel respModel = LoginModel.fromJson(data);
         ShowLoaderOverScreen.stopLoader();
         return respModel;
-      } else if (statusCode == 404) {
+      } else if (response.statusCode == 404) {
         final data = jsonDecode(response.body);
         final errorMessage = data['message'];
         ShowLoaderOverScreen.stopLoader();

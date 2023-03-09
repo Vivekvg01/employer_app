@@ -31,9 +31,14 @@ class ProfileView extends GetView<ProfileController> {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               children: [
                 sizedheight(Get.height * 0.02),
-                CircleAvatar(
-                  radius: 48,
-                  child: Image.network(defaultProfileImgae),
+                InkWell(
+                  onTap: () {
+                   
+                  },
+                  child: CircleAvatar(
+                    radius: 48,
+                    child: Image.network(defaultProfileImgae),
+                  ),
                 ),
                 sizedheight(Get.height * 0.02),
                 Center(
@@ -94,7 +99,7 @@ class ProfileView extends GetView<ProfileController> {
                       top: 5.0,
                     ),
                     child: Text(
-                      'This is not your username or pin.This name will be vibile to the employes.',
+                      'This is not your username or pin.This name will be vibile to the employees.',
                       style: TextStyle(fontSize: 13),
                     ),
                   ),
@@ -146,7 +151,12 @@ class ProfileView extends GetView<ProfileController> {
                       size: 17,
                     ),
                   ),
-                  title: const Text('Sign out'),
+                  title: Text(
+                    'Sign out',
+                    style: TextStyle(
+                      color: AppColors.kredColor,
+                    ),
+                  ),
                 ),
               ],
             ),
