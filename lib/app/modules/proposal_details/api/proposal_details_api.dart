@@ -8,6 +8,7 @@ import '../../../utils/api_endpoints.dart';
 import 'package:http/http.dart' as http;
 
 class ProposalDetailsApi {
+  //Api call for getting proposal details
   Future<ProposalDetailsModel?> getProposalDetails(String proposalId) async {
     const storage = FlutterSecureStorage();
     final token = await storage.read(key: 'token');
@@ -32,10 +33,8 @@ class ProposalDetailsApi {
     return null;
   }
 
-  //accept proposal
+  //Api call for accepting proposal
   void acceptProposal(String proposalId, int totalAmount) async {
-    print(proposalId);
-    print(totalAmount);
     const storage = FlutterSecureStorage();
     final employerId = await storage.read(key: 'employerId');
     final token = await storage.read(key: 'token');
@@ -44,7 +43,6 @@ class ProposalDetailsApi {
       'Accept': 'application/json',
       'Authorization': 'Bearer $token'
     };
-    print(token);
     final url = Uri.parse(
         '${ApiEndPoints().kBaseUrl}/acceptProposal/$employerId/$proposalId');
 
@@ -90,25 +88,32 @@ class ProposalDetailsApi {
     final token = await storage.read(key: 'token');
     final employerId = await storage.read(key: 'employerId');
     var headers = {
-      'Content-Type': 'application/json',
       'Accept': 'application/json',
       'Authorization': 'Bearer $token'
     };
     final url = Uri.parse(
         '${ApiEndPoints().kBaseUrl}/updateProposal/$employerId/$propsalId');
-
+    var reqBody = {
+      'status': "shortlisted",
+    };
     try {
-      await http.patch(url, headers: headers);
-      Get.showSnackbar(
-        GetSnackBar(
-          backgroundColor: AppColors.kGreenColor,
-          title: 'Proposal rejected',
-          snackStyle: SnackStyle.FLOATING,
-          duration: const Duration(seconds: 3),
-        ),
+      http.Response response = await http.patch(
+        url,
+        headers: headers,
+        body: reqBody,
       );
+      if (response.statusCode == 201) {
+        Get.showSnackbar(
+          GetSnackBar(
+            message: 'Proposal shortlisted',
+            backgroundColor: AppColors.klightblueColor,
+            duration: const Duration(seconds: 3),
+            snackStyle: SnackStyle.FLOATING,
+          ),
+        );
+      }
     } catch (e) {
-      throw Exception(e);
+      log(e.toString());
     }
   }
 
@@ -119,26 +124,35 @@ class ProposalDetailsApi {
     final employerId = await storage.read(key: 'employerId');
 
     var headers = {
-      'Content-Type': 'application/json',
       'Accept': 'application/json',
       'Authorization': 'Bearer $token'
     };
 
     final url = Uri.parse(
-        '${ApiEndPoints().kBaseUrl}/updateProposal/$employerId/$propsalId');
+      '${ApiEndPoints().kBaseUrl}/updateProposal/$employerId/$propsalId',
+    );
 
+    var reqBody = {
+      'status': "rejected",
+    };
     try {
-      http.Response response = await http.patch(url, headers: headers);
-      Get.showSnackbar(
-        GetSnackBar(
-          backgroundColor: AppColors.kGreenColor,
-          title: 'Proposal rejected',
-          snackStyle: SnackStyle.FLOATING,
-          duration: const Duration(seconds: 3),
-        ),
+      http.Response response = await http.patch(
+        url,
+        headers: headers,
+        body: reqBody,
       );
+      if (response.statusCode == 201) {
+        Get.showSnackbar(
+          GetSnackBar(
+            message: 'Proposal Rejected',
+            backgroundColor: AppColors.kredColor,
+            duration: const Duration(seconds: 3),
+            snackStyle: SnackStyle.FLOATING,
+          ),
+        );
+      }
     } catch (e) {
-      throw Exception(e);
+      log(e.toString());
     }
   }
 }
