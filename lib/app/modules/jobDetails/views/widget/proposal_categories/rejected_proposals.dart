@@ -4,8 +4,8 @@ import 'package:employer_app/app/utils/app_sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ActivePropsal extends GetView {
-  const ActivePropsal({super.key});
+class RejectedProposal extends GetView {
+  const RejectedProposal({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +22,13 @@ class ActivePropsal extends GetView {
           child: ListTile(
             onTap: () {
               jobdeailsController.goToProposalDetails(
-                  jobdeailsController.porposalList[index].id);
+                  jobdeailsController.rejectedProposalList[index].id);
             },
             title: Padding(
               padding: const EdgeInsets.only(bottom: 9.0),
               child: Text(
-                jobdeailsController.activeProposalList[index].cover.toString(),
+                jobdeailsController.rejectedProposalList[index].cover
+                    .toString(),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
@@ -35,7 +36,7 @@ class ActivePropsal extends GetView {
             subtitle: Row(
               children: [
                 Text(
-                  'Your Bid : ${jobdeailsController.activeProposalList[index].bid}',
+                  'Your Bid : ${jobdeailsController.rejectedProposalList[index].bid}',
                   style: const TextStyle(
                     fontSize: 13,
                     fontWeight: FontWeight.bold,
@@ -43,7 +44,7 @@ class ActivePropsal extends GetView {
                 ),
                 sizedWidth(Get.width * 0.18),
                 Text(
-                  'Deadline : ${jobdeailsController.activeProposalList[index].deadline} days',
+                  'Deadline : ${jobdeailsController.rejectedProposalList[index].deadline} days',
                   style: const TextStyle(
                     fontSize: 13,
                     fontWeight: FontWeight.bold,
@@ -57,7 +58,7 @@ class ActivePropsal extends GetView {
       separatorBuilder: (_, __) {
         return sizedheight(Get.height * 0.02);
       },
-      itemCount: jobdeailsController.activeProposalList.length,
+      itemCount: jobdeailsController.rejectedProposalList.length,
     );
   }
 }

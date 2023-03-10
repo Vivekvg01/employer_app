@@ -1,5 +1,7 @@
 import 'package:employer_app/app/modules/jobDetails/controllers/job_details_controller.dart';
 import 'package:employer_app/app/modules/jobDetails/views/widget/proposal_categories/active_propsal.dart';
+import 'package:employer_app/app/modules/jobDetails/views/widget/proposal_categories/rejected_proposals.dart';
+import 'package:employer_app/app/modules/jobDetails/views/widget/proposal_categories/shortlsted_proposals.dart';
 import 'package:employer_app/app/utils/app_sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -80,7 +82,11 @@ class ActiveJobDetails extends GetView {
             const ProposalCategoryChip(),
             jobDetailsController.tabIndex.value == 0
                 ? const ActivePropsal()
-                : Container(),
+                : jobDetailsController.tabIndex.value == 1
+                    ? RejectedProposal()
+                    : jobDetailsController.tabIndex.value == 2
+                        ? ShortlistedProposal()
+                        : SizedBox(),
           ],
         ),
       ],

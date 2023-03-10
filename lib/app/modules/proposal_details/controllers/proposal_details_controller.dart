@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:employer_app/app/modules/employeeDetails/views/employee_details_view.dart';
 import 'package:employer_app/app/modules/jobDetails/controllers/job_details_controller.dart';
 import 'package:employer_app/app/modules/proposal_details/api/proposal_details_api.dart';
@@ -55,7 +57,7 @@ class ProposalDetailsController extends GetxController {
 
   Future<void> gotoProposalOwner(String? employeeId) async {
     if (employeeId != null) {
-      Get.to(EmployeeDetailsView(), arguments: employeeId);
+      print(employeeId);
     }
   }
 

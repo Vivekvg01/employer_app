@@ -32,6 +32,18 @@ class JobDetailsController extends GetxController {
 
   RxList<Proposal> porposalList = <Proposal>[].obs;
 
+  //List for active proposal.
+  List<Proposal> get activeProposalList =>
+      porposalList.where((element) => element.status == 'active').toList();
+
+  //List for rejected proposal.
+  List<Proposal> get rejectedProposalList =>
+      porposalList.where((element) => element.status == 'rejected').toList();
+
+  //List for shortlisted proposal.
+  List<Proposal> get shortListedProposalList =>
+      porposalList.where((element) => element.status == 'shortlisted').toList();
+
   void getJobDetails() async {
     isLoading(true);
     JobDetailsModel? response = await JobDetailsApi().getJobDetails(jobId);

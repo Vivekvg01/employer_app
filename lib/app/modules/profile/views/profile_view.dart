@@ -31,13 +31,13 @@ class ProfileView extends GetView<ProfileController> {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               children: [
                 sizedheight(Get.height * 0.02),
-                InkWell(
-                  onTap: () {
-                   
-                  },
-                  child: CircleAvatar(
-                    radius: 48,
-                    child: Image.network(defaultProfileImgae),
+                CircleAvatar(
+                  backgroundImage: const NetworkImage(defaultProfileImgae),
+                  radius: 48,
+                  child: InkWell(
+                    onTap: () {
+                      print('pick image');
+                    },
                   ),
                 ),
                 sizedheight(Get.height * 0.02),

@@ -1,11 +1,11 @@
+import 'package:employer_app/app/modules/all_chats/controllers/all_chats_controller.dart';
 import 'package:employer_app/app/modules/chat_room/views/chat_room_view.dart';
 import 'package:employer_app/app/utils/app_colors.dart';
 import 'package:employer_app/app/utils/const_values.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 
-import '../controllers/all_chats_controller.dart';
+
 
 class AllChatsView extends GetView<AllChatsController> {
   const AllChatsView({Key? key}) : super(key: key);

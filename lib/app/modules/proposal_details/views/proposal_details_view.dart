@@ -31,7 +31,9 @@ class ProposalDetailsView extends GetView<ProposalDetailsController> {
                   children: [
                     Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 10.0, vertical: 13.0),
+                        horizontal: 10.0,
+                        vertical: 13.0,
+                      ),
                       decoration: BoxDecoration(
                         color: AppColors.kWhiteColor,
                         boxShadow: const [
